@@ -16,168 +16,221 @@ export default function AIGlassesPage() {
   );
 
   return (
-    <main className="min-h-screen bg-slate-950 text-white">
-      <section className="border-b border-white/10">
-        <div className="mx-auto max-w-6xl px-6 py-16 sm:py-20">
-          <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
+    <main className="min-h-screen overflow-hidden bg-slate-950 text-white">
+      <section className="relative border-b border-white/10">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(34,211,238,0.10),transparent_38%)]"
+        />
+
+        <div className="relative mx-auto max-w-7xl px-6 py-14 sm:py-20 lg:py-24">
+          <div className="grid gap-10 lg:grid-cols-[1.25fr_0.75fr] lg:items-center">
             <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.25em] text-cyan-400">
-                AI glasses reviews
+              <p className="text-5xl font-black uppercase leading-none tracking-tight text-cyan-400 sm:text-6xl lg:text-7xl xl:text-8xl">
+                Tech Reviews
               </p>
 
-              <h1 className="mt-4 max-w-4xl text-5xl font-bold tracking-tight sm:text-6xl">
-                Find the right AI glasses for everyday use
+              <h1 className="mt-5 max-w-3xl text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl lg:text-5xl">
+                Find the right products
+                <span className="block">for you</span>
               </h1>
 
-              <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-300">
-                Explore AI glasses reviewed and ranked by Project Atlas. We
-                compare design, comfort, cameras, audio, battery life, AI
-                features, value, customer ratings, and real-world usability.
+              <p className="mt-6 max-w-2xl text-base leading-7 text-slate-300 sm:text-lg sm:leading-8">
+                Explore products reviewed and ranked by Project Atlas. We
+                evaluate performance, features, value, customer feedback, and
+                real-world usability so you can choose with confidence.
               </p>
+              
+<div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+  <Link
+    href="/ai-glasses"
+    className="inline-flex items-center justify-center rounded-xl bg-cyan-400 px-6 py-4 font-bold text-slate-950 transition hover:bg-cyan-300"
+  >
+    Category
+  </Link>
 
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                <Link
-                  href="/best-ai-glasses"
-                  className="rounded-full bg-cyan-400 px-6 py-3.5 text-center font-bold text-slate-950 transition hover:bg-cyan-300"
-                >
-                  View our top picks
-                </Link>
+  <Link
+    href="/best-ai-glasses"
+    className="inline-flex items-center justify-center rounded-xl border border-white/20 bg-white/[0.03] px-6 py-4 font-bold transition hover:border-cyan-400/50 hover:bg-white/[0.07]"
+  >
+    View top picks
+  </Link>
 
-                <Link
-                  href="/compare"
-                  className="rounded-full border border-white/20 bg-white/5 px-6 py-3.5 text-center font-bold text-white transition hover:border-cyan-400/50 hover:bg-white/10"
-                >
-                  Compare AI glasses
-                </Link>
-              </div>
+  <Link
+    href="/compare?category=ai-glasses"
+    className="inline-flex items-center justify-center rounded-xl border border-white/20 bg-white/[0.03] px-6 py-4 font-bold transition hover:border-cyan-400/50 hover:bg-white/[0.07]"
+  >
+    Compare products
+  </Link>
+</div>
             </div>
 
             <div className="grid grid-cols-2 gap-4">
-              <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
+              <article className="relative min-h-64 overflow-hidden rounded-2xl border border-white/15 bg-slate-900/80 p-6 shadow-2xl">
+                <p className="text-xs font-bold uppercase tracking-[0.18em] text-cyan-300">
                   Reviewed
                 </p>
 
-                <p className="mt-3 text-4xl font-black">{aiGlasses.length}</p>
-
-                <p className="mt-2 text-sm leading-6 text-slate-400">
-                  Qualifying AI-glasses products
+                <p className="mt-5 text-5xl font-black">
+                  {aiGlasses.length}
                 </p>
-              </div>
 
-              <div className="rounded-3xl border border-cyan-400/20 bg-cyan-400/5 p-6">
-                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-cyan-300">
+                <p className="mt-4 max-w-32 text-base leading-7 text-slate-300">
+                  Qualifying products
+                </p>
+
+                <svg
+                  viewBox="0 0 64 64"
+                  aria-hidden="true"
+                  className="absolute bottom-5 right-5 h-16 w-16 text-slate-700"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M7 31c3-8 8-12 15-12 6 0 10 3 12 8 2-5 6-8 12-8 7 0 12 4 15 12" />
+                  <path d="M8 31h17c4 0 7 3 7 7v2c0 7-5 12-12 12S8 47 8 40v-9Z" />
+                  <path d="M56 31H39c-4 0-7 3-7 7v2c0 7 5 12 12 12s12-5 12-12v-9Z" />
+                  <path d="M25 34h14" />
+                </svg>
+              </article>
+
+              <article className="relative min-h-64 overflow-hidden rounded-2xl border border-white/15 bg-slate-900/80 p-6 shadow-2xl">
+                <p className="text-xs font-bold uppercase tracking-[0.18em] text-cyan-300">
                   Top score
                 </p>
 
-                <p className="mt-3 text-4xl font-black">
+                <p className="mt-5 text-5xl font-black">
                   {featuredProduct
                     ? featuredProduct.editorialScore.toFixed(1)
                     : "—"}
                 </p>
 
-                <p className="mt-2 text-sm leading-6 text-slate-400">
+                <p className="mt-4 max-w-36 text-base leading-7 text-slate-300">
                   Highest current Atlas score
                 </p>
-              </div>
+
+                <svg
+                  viewBox="0 0 64 64"
+                  aria-hidden="true"
+                  className="absolute bottom-4 right-4 h-16 w-16 text-cyan-400"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <circle cx="32" cy="27" r="17" />
+                  <path d="m32 17 3 7 8 .7-6 5 2 8-7-4-7 4 2-8-6-5 8-.7 3-7Z" />
+                  <path d="m21 41-4 16 9-5 6 7 3-15" />
+                  <path d="m43 41 4 16-9-5" />
+                </svg>
+              </article>
             </div>
           </div>
         </div>
       </section>
 
       {featuredProduct && (
-        <section className="mx-auto max-w-6xl px-6 pt-14 sm:pt-16">
-          <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-400">
-                Featured review
-              </p>
+        <section className="mx-auto max-w-7xl px-6 pt-12 sm:pt-16">
+          <article className="overflow-hidden rounded-2xl border border-white/15 bg-slate-900/70 shadow-2xl shadow-black/30">
+            <div className="flex flex-col justify-between gap-4 border-b border-white/10 px-6 py-6 sm:flex-row sm:items-end sm:px-8">
+              <div>
+                <p className="text-xs font-bold uppercase tracking-[0.2em] text-cyan-400">
+                  Featured review
+                </p>
 
-              <h2 className="mt-3 text-3xl font-bold sm:text-4xl">
-                Our highest-rated AI glasses
-              </h2>
+                <h2 className="mt-3 text-2xl font-bold sm:text-3xl">
+                  Our highest-rated product
+                </h2>
+              </div>
+
+              <Link
+                href="/best-ai-glasses"
+                className="inline-flex items-center gap-2 text-sm font-bold text-cyan-400 transition hover:text-cyan-300"
+              >
+                See complete rankings
+                <span aria-hidden="true">→</span>
+              </Link>
             </div>
 
-            <Link
-              href="/best-ai-glasses"
-              className="text-sm font-semibold text-cyan-400 transition hover:text-cyan-300"
-            >
-              See complete rankings →
-            </Link>
-          </div>
-
-          <article className="mt-8 overflow-hidden rounded-[2rem] border border-cyan-400/30 bg-slate-900 shadow-2xl shadow-cyan-950/10">
-            <div className="grid lg:grid-cols-[0.85fr_1.15fr]">
-              <div className="relative border-b border-white/10 bg-slate-800/50 p-6 sm:p-8 lg:border-b-0 lg:border-r">
+            <div className="grid gap-0 lg:grid-cols-[0.9fr_1.1fr]">
+              <div className="relative border-b border-white/10 p-4 sm:p-6 lg:border-b-0 lg:border-r">
                 <ProductImage
                   src={featuredProduct.image.src}
                   alt={featuredProduct.image.alt}
                   priority
                   aspectRatio="square"
-                  sizes="(max-width: 1023px) 100vw, 42vw"
-                  className="rounded-3xl border-white/10 bg-slate-950"
-                  imageClassName="p-8 sm:p-10"
+                  sizes="(max-width: 1023px) 100vw, 45vw"
+                  className="rounded-xl border-white/15 bg-black"
+                  imageClassName="p-5 sm:p-8"
                 />
 
-                <span className="absolute left-10 top-10 rounded-full bg-white px-3 py-1.5 text-sm font-black text-slate-950 shadow-lg">
+                <span className="absolute left-8 top-8 rounded-md bg-white px-3 py-2 text-sm font-black text-slate-950 shadow-lg">
                   #1
                 </span>
 
-                <span className="absolute right-10 top-10 rounded-full bg-cyan-400 px-3 py-1.5 text-xs font-black uppercase tracking-wide text-slate-950 shadow-lg">
+                <span className="absolute right-8 top-8 rounded-md bg-cyan-400 px-3 py-2 text-[11px] font-black uppercase tracking-wide text-slate-950 shadow-lg">
                   Best overall
                 </span>
               </div>
 
-              <div className="flex flex-col p-7 sm:p-10">
-                <p className="text-sm font-semibold text-cyan-400">
+              <div className="flex flex-col p-6 sm:p-8">
+                <p className="text-xs font-bold uppercase tracking-[0.16em] text-cyan-400">
                   {featuredProduct.brand}
                 </p>
 
-                <h3 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
+                <h3 className="mt-2 text-3xl font-bold leading-tight tracking-tight">
                   {featuredProduct.name}
                 </h3>
 
                 <div className="mt-4 flex flex-wrap gap-2">
-                  <span className="rounded-full border border-cyan-400/20 bg-cyan-400/10 px-4 py-2 text-sm font-bold text-cyan-300">
+                  <span className="rounded-md bg-cyan-400 px-3 py-1.5 text-xs font-black uppercase text-slate-950">
                     {featuredProduct.verdictLabel}
                   </span>
 
-                  <span className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold capitalize text-slate-300">
+                  <span className="rounded-md border border-white/10 bg-white/10 px-3 py-1.5 text-xs font-bold uppercase text-slate-200">
                     {featuredProduct.qualification.replace("-", " ")}
                   </span>
                 </div>
 
-                <p className="mt-6 text-lg leading-8 text-slate-300">
+                <p className="mt-6 max-w-3xl text-base leading-7 text-slate-300">
                   {featuredProduct.editorVerdict}
                 </p>
 
                 <div className="mt-7 grid gap-3 sm:grid-cols-3">
-                  <div className="rounded-2xl border border-cyan-400/20 bg-cyan-400/5 p-4">
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-cyan-300">
+                  <div className="rounded-xl border border-white/10 bg-slate-950/70 p-4">
+                    <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-cyan-300">
                       Atlas score
                     </p>
 
-                    <div className="mt-2 flex items-end gap-1">
-                      <span className="text-4xl font-black">
+                    <div className="mt-2 flex items-end gap-1.5">
+                      <span className="text-3xl font-black">
                         {featuredProduct.editorialScore.toFixed(1)}
                       </span>
 
-                      <span className="pb-1 text-xs text-slate-400">/10</span>
+                      <span className="pb-1 text-xs text-slate-500">
+                        /10
+                      </span>
                     </div>
                   </div>
 
-                  <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-400">
+                  <div className="rounded-xl border border-white/10 bg-slate-950/70 p-4">
+                    <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-cyan-300">
                       Customers
                     </p>
 
                     <p className="mt-2 text-3xl font-black">
-                      ⭐ {featuredProduct.customerRating.toFixed(1)}
+                      <span aria-hidden="true" className="mr-1 text-amber-300">
+                        ★
+                      </span>
+                      {featuredProduct.customerRating.toFixed(1)}
                     </p>
                   </div>
 
-                  <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-400">
+                  <div className="rounded-xl border border-white/10 bg-slate-950/70 p-4">
+                    <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-cyan-300">
                       Reviews
                     </p>
 
@@ -187,33 +240,19 @@ export default function AIGlassesPage() {
                   </div>
                 </div>
 
-                <div className="mt-7">
-                  <p className="text-sm font-bold">Best for</p>
-
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    {featuredProduct.bestFor.slice(0, 3).map((item) => (
-                      <span
-                        key={item}
-                        className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-slate-300"
-                      >
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="mt-auto pt-8">
+                <div className="mt-auto pt-7">
                   <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                     <Link
                       href={`/products/${featuredProduct.slug}`}
-                      className="rounded-full bg-cyan-400 px-6 py-3.5 text-center font-bold text-slate-950 transition hover:bg-cyan-300"
+                      className="inline-flex items-center justify-center gap-2 rounded-lg bg-cyan-400 px-6 py-3.5 font-bold text-slate-950 transition hover:bg-cyan-300"
                     >
                       Read full review
+                      <span aria-hidden="true">→</span>
                     </Link>
 
                     <Link
                       href="/compare"
-                      className="rounded-full border border-white/20 bg-white/5 px-6 py-3.5 text-center font-bold text-white transition hover:border-cyan-400/50 hover:bg-white/10"
+                      className="inline-flex items-center justify-center rounded-lg border border-white/25 bg-white/[0.03] px-6 py-3.5 font-bold transition hover:border-cyan-400/50 hover:bg-white/[0.07]"
                     >
                       Compare products
                     </Link>
@@ -223,20 +262,12 @@ export default function AIGlassesPage() {
                         href={featuredAffiliateLink.url}
                         target="_blank"
                         rel="nofollow sponsored noopener noreferrer"
-                        className="rounded-full border border-white/20 bg-white/5 px-6 py-3.5 text-center font-bold text-white transition hover:border-cyan-400/50 hover:bg-white/10"
+                        className="inline-flex items-center justify-center rounded-lg border border-white/25 bg-white/[0.03] px-6 py-3.5 font-bold transition hover:border-cyan-400/50 hover:bg-white/[0.07]"
                       >
-                        Check current price at{" "}
-                        {featuredAffiliateLink.retailer}
+                        Check current price
                       </a>
                     )}
                   </div>
-
-                  {featuredAffiliateLink && (
-                    <p className="mt-4 text-sm leading-6 text-slate-500">
-                      Price and availability are provided by the retailer and
-                      may change.
-                    </p>
-                  )}
                 </div>
               </div>
             </div>
@@ -244,97 +275,140 @@ export default function AIGlassesPage() {
         </section>
       )}
 
-      <section className="mx-auto max-w-6xl px-6 py-14 sm:py-16">
-        <div className="flex flex-col justify-between gap-5 border-y border-white/10 py-6 sm:flex-row sm:items-center">
-          <p className="text-slate-300">
-            Showing{" "}
-            <span className="font-bold text-white">{aiGlasses.length}</span>{" "}
-            qualifying product{aiGlasses.length === 1 ? "" : "s"}
-          </p>
+      <section className="mx-auto max-w-7xl px-6 py-8">
+        <div className="grid gap-3 rounded-xl border border-white/10 bg-slate-900/60 px-5 py-4 text-sm text-slate-300 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="flex items-center gap-3">
+            <span
+              aria-hidden="true"
+              className="flex h-8 w-8 items-center justify-center rounded-full border border-white/10"
+            >
+              ◇
+            </span>
 
-          <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-slate-400">
+            <span>
+              Showing{" "}
+              <strong className="text-white">{aiGlasses.length}</strong>{" "}
+              qualifying products
+            </span>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <span
+              aria-hidden="true"
+              className="flex h-8 w-8 items-center justify-center rounded-full border border-white/10"
+            >
+              ↕
+            </span>
+
             <span>Ranked by Atlas score</span>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <span
+              aria-hidden="true"
+              className="flex h-8 w-8 items-center justify-center rounded-full border border-white/10"
+            >
+              ◇
+            </span>
+
             <span>No prices displayed</span>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <span
+              aria-hidden="true"
+              className="flex h-8 w-8 items-center justify-center rounded-full border border-white/10"
+            >
+              ✓
+            </span>
+
             <span>Affiliate links disclosed</span>
           </div>
         </div>
+      </section>
 
-        {aiGlasses.length > 0 ? (
-          <>
-            <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {remainingProducts.map((product, index) => (
-                <ProductCard
-                  key={product.id}
-                  product={product}
-                  rank={index + 2}
-                />
-              ))}
-            </div>
-
-            {remainingProducts.length === 0 && (
-              <div className="mt-10 rounded-3xl border border-white/10 bg-white/5 p-8 text-center">
-                <p className="text-lg font-semibold">
-                  More qualifying products are coming soon.
-                </p>
-
-                <p className="mt-3 text-sm leading-6 text-slate-400">
-                  New products will appear here automatically after they are
-                  added to the Atlas product database.
-                </p>
-              </div>
-            )}
-          </>
+      <section className="mx-auto max-w-7xl px-6 pb-14 sm:pb-16">
+        {remainingProducts.length > 0 ? (
+          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {remainingProducts.map((product, index) => (
+              <ProductCard
+                key={product.id}
+                product={product}
+                rank={index + 2}
+              />
+            ))}
+          </div>
         ) : (
-          <div className="mt-10 rounded-3xl border border-white/10 bg-white/5 p-10 text-center">
+          <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-10 text-center">
             <h2 className="text-2xl font-bold">
-              No qualifying AI glasses yet
+              More qualifying products are coming soon
             </h2>
 
             <p className="mx-auto mt-4 max-w-2xl leading-7 text-slate-400">
-              Products will appear here automatically after they are added to
-              the Atlas product database and meet our review requirements.
+              New products will appear here after they are added to the Atlas
+              product database and complete our review process.
             </p>
           </div>
         )}
       </section>
 
-      <section className="border-y border-white/10 bg-slate-900/50">
-        <div className="mx-auto max-w-6xl px-6 py-14 sm:py-16">
-          <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
+      <section className="mx-auto max-w-7xl px-6 pb-16">
+        <div className="rounded-2xl border border-white/10 bg-slate-900/60 p-6 sm:p-8">
+          <div className="grid gap-8 lg:grid-cols-[0.75fr_1.25fr]">
             <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-400">
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-cyan-400">
                 Atlas methodology
               </p>
 
-              <h2 className="mt-3 text-3xl font-bold sm:text-4xl">
-                How we evaluate AI glasses
+              <h2 className="mt-3 text-3xl font-bold tracking-tight">
+                How we evaluate products
               </h2>
 
-              <p className="mt-5 leading-7 text-slate-400">
+              <p className="mt-4 max-w-md text-sm leading-6 text-slate-400">
                 Our rankings combine editorial assessment with customer-rating
-                data and product research. Each product is judged using the
+                data and product research. Every product is judged using the
                 same core criteria.
               </p>
+
+              <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                <Link
+                  href="/about"
+                  className="rounded-lg border border-white/20 px-5 py-3 text-center text-sm font-semibold transition hover:border-cyan-400/50 hover:bg-white/[0.05]"
+                >
+                  About Project Atlas
+                </Link>
+
+                <Link
+                  href="/best-ai-glasses"
+                  className="rounded-lg border border-white/20 px-5 py-3 text-center text-sm font-semibold transition hover:border-cyan-400/50 hover:bg-white/[0.05]"
+                >
+                  Buying guide
+                </Link>
+              </div>
             </div>
 
             <div className="grid gap-4 sm:grid-cols-2">
               {[
                 {
+                  icon: "◉",
                   title: "Design and comfort",
                   description:
                     "Frame quality, weight, fit, controls, lens options, and suitability for everyday wear.",
                 },
                 {
+                  icon: "▣",
                   title: "Camera and audio",
                   description:
                     "Photo and video quality, microphones, speakers, calls, music, and voice capture.",
                 },
                 {
+                  icon: "✦",
                   title: "AI and software",
                   description:
                     "Assistant usefulness, app experience, smart features, reliability, and privacy controls.",
                 },
                 {
+                  icon: "▤",
                   title: "Battery and value",
                   description:
                     "Real-world battery life, charging, included features, limitations, and overall value.",
@@ -342,38 +416,31 @@ export default function AIGlassesPage() {
               ].map((criterion) => (
                 <article
                   key={criterion.title}
-                  className="rounded-3xl border border-white/10 bg-slate-950 p-6"
+                  className="flex gap-4 rounded-xl border border-white/10 bg-slate-950/80 p-5"
                 >
-                  <h3 className="text-lg font-bold">{criterion.title}</h3>
+                  <span
+                    aria-hidden="true"
+                    className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-cyan-400/20 bg-cyan-400/5 text-xl text-cyan-400"
+                  >
+                    {criterion.icon}
+                  </span>
 
-                  <p className="mt-3 text-sm leading-6 text-slate-400">
-                    {criterion.description}
-                  </p>
+                  <div>
+                    <h3 className="font-bold">{criterion.title}</h3>
+
+                    <p className="mt-2 text-sm leading-6 text-slate-400">
+                      {criterion.description}
+                    </p>
+                  </div>
                 </article>
               ))}
             </div>
           </div>
-
-          <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <Link
-              href="/about"
-              className="rounded-full border border-white/20 px-6 py-3 text-center font-semibold transition hover:border-cyan-400/50 hover:bg-white/10"
-            >
-              Learn about Project Atlas
-            </Link>
-
-            <Link
-              href="/best-ai-glasses"
-              className="rounded-full border border-white/20 px-6 py-3 text-center font-semibold transition hover:border-cyan-400/50 hover:bg-white/10"
-            >
-              Read our buying guide
-            </Link>
-          </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-6 py-10">
-        <p className="text-sm leading-6 text-slate-500">
+      <section className="mx-auto max-w-7xl px-6 pb-10">
+        <p className="text-center text-xs leading-6 text-slate-500 sm:text-sm">
           Affiliate disclosure: Project Atlas may earn a commission from
           qualifying purchases made through eligible retailer links, at no
           additional cost to you. Project Atlas does not display product

@@ -91,11 +91,11 @@ export default function Home() {
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <Link
-                href="/ai-glasses"
-                className="rounded-full bg-cyan-400 px-6 py-3.5 text-center font-bold text-slate-950 transition hover:bg-cyan-300"
-              >
-                Explore AI glasses
-              </Link>
+  href="/ai-glasses"
+  className="rounded-full bg-cyan-400 px-6 py-3.5 text-center font-bold text-slate-950 transition hover:bg-cyan-300"
+>
+  Category
+</Link>
 
               <Link
                 href="/best-ai-glasses"
