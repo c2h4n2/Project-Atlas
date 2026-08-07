@@ -2,7 +2,7 @@ import Link from "next/link";
 import ProductCard from "@/components/ProductCard";
 import { products } from "@/data/products";
 
-const scoreLabels = {
+const scoreLabels: Record<string, string> = {
   design: "Design",
   comfort: "Comfort",
   camera: "Camera",

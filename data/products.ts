@@ -1,4 +1,5 @@
 import { aiGlasses } from "./products/ai-glasses";
+import { headphonesEarbuds } from "./products/headphones-earbuds";
 
 export type ProductSource = {
   platform: string;
@@ -19,30 +20,9 @@ export type ProductImage = {
   sourceUrl?: string;
 };
 
-export type ReviewScores = {
-  design: number;
-  comfort: number;
-  camera: number;
-  audio: number;
-  battery: number;
-  aiFeatures: number;
-  value: number;
-};
-
-export type ProductSpecs = {
-  weight: string;
-  battery: string;
-  camera: string;
-  microphones: string;
-  speakers: string;
-  frameStyles: string;
-  prescriptionLenses: string;
-  voiceAssistant: string;
-  videoResolution: string;
-};
-
+export type ReviewScores = Record<string, number>;
+export type ProductSpecs = Record<string, string>;
 export type ProductFit = "Unisex" | "Smaller Fit" | "Larger Fit";
-
 export type ProductFrameSize = "Small" | "Medium" | "Large";
 
 export type Product = {
@@ -51,6 +31,8 @@ export type Product = {
   name: string;
   brand: string;
   category: string;
+  categoryId?: string;
+  productType?: string;
   shortDescription: string;
   image: ProductImage;
   editorialScore: number;
@@ -59,8 +41,8 @@ export type Product = {
   qualification: "qualified" | "strong-pick" | "top-pick";
   verdictLabel: "Good" | "Very Good" | "Excellent" | "Outstanding";
   editorVerdict: string;
-  fit: ProductFit;
-  frameSize: ProductFrameSize;
+  fit?: ProductFit;
+  frameSize?: ProductFrameSize;
   bestFor: string[];
   reviewScores: ReviewScores;
   specs: ProductSpecs;
@@ -70,4 +52,13 @@ export type Product = {
   affiliateLinks: AffiliateLink[];
 };
 
-export const products: Product[] = [...aiGlasses];
+const normalizedAiGlasses: Product[] = aiGlasses.map((product) => ({
+  ...product,
+  categoryId: "ai-glasses",
+  productType: "AI glasses",
+}));
+
+export const products: Product[] = [
+  ...normalizedAiGlasses,
+  ...headphonesEarbuds,
+];
