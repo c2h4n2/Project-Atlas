@@ -85,9 +85,9 @@ export default function Home() {
             </h1>
 
             <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
-              Project Atlas combines editorial research, customer ratings,
-              product comparisons, and practical buying advice to help you make
-              more confident purchase decisions.
+               Project C2H4N3 combines independent editorial research, real customer
+               ratings, product comparisons, and practical buying advice to help you
+               make smarter tech purchasing decisions.
             </p>
 
             <HeroActions />
