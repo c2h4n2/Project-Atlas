@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -16,34 +17,28 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   function isActive(href: string) {
-    if (href === "/") {
-      return pathname === "/";
-    }
-
+    if (href === "/") return pathname === "/";
     return pathname.startsWith(href);
   }
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-slate-950/95 text-white shadow-lg shadow-black/10 backdrop-blur-xl">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-4">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-3">
         <Link
           href="/"
           onClick={() => setMenuOpen(false)}
-          className="group flex shrink-0 items-center gap-3"
+          className="block min-w-0 shrink"
+          aria-label="C2H4N3 home"
         >
-          <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-cyan-300/30 bg-cyan-400 font-black text-slate-950 shadow-lg shadow-cyan-950/20 transition group-hover:bg-cyan-300">
-            A
-          </span>
-
-          <div>
-            <p className="text-base font-black uppercase leading-none tracking-[0.08em] sm:text-lg">
-              Project Atlas
-            </p>
-
-            <p className="mt-1 hidden text-[11px] text-slate-500 sm:block">
-              Independent product research
-            </p>
-          </div>
+          <Image
+            src="/brand/c2h4n3-header-v2.webp"
+            alt="C2H4N3 — Smart tech products search"
+            width={2048}
+            height={768}
+            priority
+            unoptimized
+            className="h-auto w-[310px] max-w-[68vw] object-contain sm:w-[390px] lg:w-[430px]"
+          />
         </Link>
 
         <nav
