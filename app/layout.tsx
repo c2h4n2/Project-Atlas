@@ -1,11 +1,12 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import "./globals.css";
 
-const siteName = "Project Atlas";
+const siteName = "Project C2H4N3";
 const siteDescription =
-  "Independent reviews, comparisons, and rankings for AI glasses and emerging consumer technology.";
+  "Independent reviews, comparisons, and rankings for smart tech products and emerging consumer technology.";
 
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
@@ -46,7 +47,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
 
   title: {
-    default: `${siteName} | Independent AI Glasses Reviews`,
+    default: `${siteName} | Smart Tech Product Search`,
     template: `%s | ${siteName}`,
   },
 
@@ -55,15 +56,16 @@ export const metadata: Metadata = {
   applicationName: siteName,
 
   keywords: [
+    "smart tech products",
+    "technology reviews",
+    "product comparisons",
     "AI glasses",
     "smart glasses",
-    "AI glasses reviews",
-    "smart glasses reviews",
-    "AI glasses comparison",
-    "Ray-Ban Meta",
-    "Oakley Meta",
+    "headphones",
+    "earbuds",
+    "smartwatches",
     "consumer technology reviews",
-    "Project Atlas",
+    "Project C2H4N3",
   ],
 
   authors: [
@@ -85,13 +87,13 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "/",
     siteName,
-    title: `${siteName} | Independent AI Glasses Reviews`,
+    title: `${siteName} | Smart Tech Product Search`,
     description: siteDescription,
   },
 
   twitter: {
     card: "summary_large_image",
-    title: `${siteName} | Independent AI Glasses Reviews`,
+    title: `${siteName} | Smart Tech Product Search`,
     description: siteDescription,
   },
 
@@ -131,8 +133,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className="min-h-screen bg-slate-950 text-white antialiased">
+    <html lang="en">
+      <body>
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2606491312719237"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
+
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
