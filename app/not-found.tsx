@@ -2,11 +2,11 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <main className="min-h-screen bg-slate-950 text-white">
-      <section className="mx-auto flex min-h-screen max-w-5xl items-center px-6 py-20">
-        <div className="w-full rounded-[2rem] border border-white/10 bg-slate-900 p-10 text-center shadow-2xl">
-          <div className="mx-auto flex h-24 w-24 items-center justify-center rounded-full bg-cyan-400/10">
-            <span className="text-5xl font-black text-cyan-400">404</span>
+    <main className="min-h-screen bg-slate-950 px-6 py-16 text-white">
+      <section className="mx-auto max-w-6xl">
+        <div className="rounded-[2rem] border border-white/10 bg-slate-900 p-8 text-center sm:p-12">
+          <div className="mx-auto flex h-36 w-36 items-center justify-center rounded-full bg-cyan-400/10 text-7xl font-black text-cyan-400">
+            404
           </div>
 
           <p className="mt-8 text-sm font-semibold uppercase tracking-[0.25em] text-cyan-400">
@@ -19,8 +19,8 @@ export default function NotFound() {
 
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-slate-300">
             The page may have been moved, deleted, or the URL may be incorrect.
-            You can return to the homepage or continue exploring our AI glasses
-            reviews and comparisons.
+            Return to the homepage or continue exploring smart tech products,
+            reviews, rankings, and comparisons on Project C2H4N3.
           </p>
 
           <div className="mt-12 flex flex-wrap justify-center gap-4">
@@ -32,44 +32,44 @@ export default function NotFound() {
             </Link>
 
             <Link
-              href="/ai-glasses"
+              href="/all-products"
               className="rounded-full border border-white/20 bg-white/5 px-6 py-3.5 font-bold transition hover:border-cyan-400/50 hover:bg-white/10"
             >
-              Browse AI Glasses
+              Browse Products
             </Link>
 
             <Link
-              href="/compare"
+              href="/top-picks"
               className="rounded-full border border-white/20 bg-white/5 px-6 py-3.5 font-bold transition hover:border-cyan-400/50 hover:bg-white/10"
             >
-              Compare Products
+              Top Picks
             </Link>
           </div>
 
           <div className="mt-14 grid gap-4 text-left md:grid-cols-3">
             <Link
-              href="/best-ai-glasses"
+              href="/all-products"
               className="rounded-2xl border border-white/10 bg-white/5 p-5 transition hover:border-cyan-400/40 hover:bg-white/10"
             >
               <p className="text-sm font-semibold text-cyan-400">
-                Best AI Glasses
+                All Products
               </p>
 
               <p className="mt-2 text-slate-300">
-                See our highest-rated AI glasses recommendations.
+                Browse smart tech products across all active categories.
               </p>
             </Link>
 
             <Link
-              href="/ai-glasses"
+              href="/top-picks"
               className="rounded-2xl border border-white/10 bg-white/5 p-5 transition hover:border-cyan-400/40 hover:bg-white/10"
             >
               <p className="text-sm font-semibold text-cyan-400">
-                Product Reviews
+                Top Picks
               </p>
 
               <p className="mt-2 text-slate-300">
-                Read detailed reviews of every AI glasses model.
+                See the highest-rated products selected by Project C2H4N3.
               </p>
             </Link>
 
@@ -78,11 +78,11 @@ export default function NotFound() {
               className="rounded-2xl border border-white/10 bg-white/5 p-5 transition hover:border-cyan-400/40 hover:bg-white/10"
             >
               <p className="text-sm font-semibold text-cyan-400">
-                Compare Models
+                Compare Products
               </p>
 
               <p className="mt-2 text-slate-300">
-                Compare features, scores, fit, and specifications side by side.
+                Compare features, scores, specifications, and buying options side by side.
               </p>
             </Link>
           </div>
