@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import ProductCard from "@/components/ProductCard";
 import ProductImage from "@/components/ProductImage";
+import RetailerButtons from "@/components/RetailerButtons";
 import { getCategory } from "@/data/categories";
 import { products } from "@/data/products";
 
@@ -10,7 +12,9 @@ type ProductPageProps = {
 };
 
 function getSiteUrl() {
-  return (process.env.NEXT_PUBLIC_SITE_URL?.trim() || "http://localhost:3000").replace(/\/$/, "");
+  return (
+    process.env.NEXT_PUBLIC_SITE_URL?.trim() || "http://localhost:3000"
+  ).replace(/\/$/, "");
 }
 
 function absolute(path: string) {
@@ -64,15 +68,23 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
   const categoryId = product.categoryId ?? "ai-glasses";
   const category = getCategory(categoryId);
-  const affiliateLinks = product.affiliateLinks.filter((link) => link.url.trim());
   const reviewScores = Object.entries(product.reviewScores);
   const specifications = Object.entries(product.specs);
+
+  const relatedProducts = products
+    .filter(
+      (item) =>
+        item.slug !== product.slug &&
+        (item.categoryId ?? "ai-glasses") === categoryId,
+    )
+    .sort((a, b) => b.editorialScore - a.editorialScore)
+    .slice(0, 3);
 
   return (
     <main className="min-h-screen bg-slate-950 text-white">
       <section className="mx-auto max-w-6xl px-6 py-12 sm:py-16">
         <Link
-          href={category?.href ?? "/"}
+          href={category?.href ?? "/all-products"}
           className="inline-flex rounded-full border border-white/20 px-4 py-2 text-sm font-semibold text-slate-200"
         >
           ← Back to {category?.label ?? product.category}
@@ -156,18 +168,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
                     Compare products
                   </Link>
                 )}
+              </div>
 
-                {affiliateLinks.map((link) => (
-                  <a
-                    key={`${link.retailer}-${link.url}`}
-                    href={link.url}
-                    target="_blank"
-                    rel="nofollow sponsored noopener noreferrer"
-                    className="rounded-full border border-white/20 px-6 py-3.5 text-center font-bold"
-                  >
-                    Check current price at {link.retailer}
-                  </a>
-                ))}
+              <div className="mt-6">
+                <RetailerButtons links={product.affiliateLinks} />
               </div>
             </div>
           </div>
@@ -269,6 +273,45 @@ export default async function ProductPage({ params }: ProductPageProps) {
             </ul>
           </section>
         </div>
+
+        {relatedProducts.length > 0 && (
+          <section className="mt-12">
+            <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-400">
+                  You may also like
+                </p>
+
+                <h2 className="mt-3 text-3xl font-bold">
+                  Related {category?.label ?? product.category}
+                </h2>
+
+                <p className="mt-3 max-w-2xl leading-7 text-slate-400">
+                  Compare this product with other highly rated options from
+                  the same category.
+                </p>
+              </div>
+
+              {category && (
+                <Link
+                  href={category.href}
+                  className="text-sm font-semibold text-cyan-400 transition hover:text-cyan-300"
+                >
+                  Browse full category →
+                </Link>
+              )}
+            </div>
+
+            <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+              {relatedProducts.map((relatedProduct) => (
+                <ProductCard
+                  key={relatedProduct.id}
+                  product={relatedProduct}
+                />
+              ))}
+            </div>
+          </section>
+        )}
 
         <section className="mt-12 rounded-3xl border border-white/10 bg-white/5 p-7">
           <h2 className="text-2xl font-bold">Product sources</h2>

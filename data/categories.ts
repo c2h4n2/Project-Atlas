@@ -63,6 +63,33 @@ export const categories: CategoryConfig[] = [
       },
     ],
   },
+  {
+    id: "smartwatches",
+    label: "Smartwatches",
+    href: "/smartwatches",
+    bestHref: "/best-smartwatches",
+    compareHref: "/compare?category=smartwatches",
+    scoreLabels: {
+      design: "Design",
+      comfort: "Comfort",
+      display: "Display",
+      healthTracking: "Health tracking",
+      fitnessTracking: "Fitness tracking",
+      battery: "Battery",
+      smartFeatures: "Smart features",
+      value: "Value",
+    },
+    cardFields: [
+      {
+        label: "Platform",
+        getValue: (product) => product.specs.compatibility ?? "Varies",
+      },
+      {
+        label: "Battery",
+        getValue: (product) => product.specs.battery ?? "Varies",
+      },
+    ],
+  },
 ];
 
 export function getCategory(categoryId: string) {
@@ -82,6 +109,13 @@ export function getCategoryForPath(pathname: string) {
     pathname.startsWith("/best-headphones-earbuds")
   ) {
     return getCategory("headphones-earbuds") ?? null;
+  }
+
+  if (
+    pathname.startsWith("/smartwatches") ||
+    pathname.startsWith("/best-smartwatches")
+  ) {
+    return getCategory("smartwatches") ?? null;
   }
 
   return null;

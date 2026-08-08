@@ -1,5 +1,6 @@
 import { aiGlasses } from "./products/ai-glasses";
 import { headphonesEarbuds } from "./products/headphones-earbuds";
+import { smartwatches } from "./products/smartwatches";
 
 export type ProductSource = {
   platform: string;
@@ -61,4 +62,5 @@ const normalizedAiGlasses: Product[] = aiGlasses.map((product) => ({
 export const products: Product[] = [
   ...normalizedAiGlasses,
   ...headphonesEarbuds,
+  ...smartwatches,
 ];

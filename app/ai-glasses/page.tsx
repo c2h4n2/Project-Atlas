@@ -1,7 +1,7 @@
 import Link from "next/link";
-import ProductCard from "@/components/ProductCard";
 import ProductImage from "@/components/ProductImage";
 import { products } from "@/data/products";
+import ProductExplorer from "@/components/ProductExplorer";
 
 export default function AIGlassesPage() {
   const aiGlasses = products
@@ -329,15 +329,11 @@ export default function AIGlassesPage() {
 
       <section className="mx-auto max-w-7xl px-6 pb-14 sm:pb-16">
         {remainingProducts.length > 0 ? (
-          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {remainingProducts.map((product, index) => (
-              <ProductCard
-                key={product.id}
-                product={product}
-                rank={index + 2}
-              />
-            ))}
-          </div>
+          <ProductExplorer
+            products={remainingProducts}
+            showBrandFilter
+            emptyMessage="No AI glasses match those filters."
+          />
         ) : (
           <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-10 text-center">
             <h2 className="text-2xl font-bold">

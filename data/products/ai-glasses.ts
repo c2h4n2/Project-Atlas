@@ -78,12 +78,10 @@ export const aiGlasses: Product[] = [
         checkedAt: "2026-07-30",
       },
     ],
-    affiliateLinks: [
-      {
+    affiliateLinks: [{ retailer: "Amazon", url: "https://www.amazon.com/s?k=Ray-Ban%20Meta%20Wayfarer%20(Gen%202)&tag=chhx2nun03-20" }, {
         retailer: "Best Buy",
         url: "",
-      },
-    ],
+      },],
   },
   {
     id: "ray-ban-meta-wayfarer-gen-1",
@@ -162,12 +160,10 @@ export const aiGlasses: Product[] = [
         checkedAt: "2026-07-30",
       },
     ],
-    affiliateLinks: [
-      {
+    affiliateLinks: [{ retailer: "Amazon", url: "https://www.amazon.com/s?k=Ray-Ban%20Meta%20Wayfarer%20(Gen%201)&tag=chhx2nun03-20" }, {
         retailer: "Best Buy",
         url: "",
-      },
-    ],
+      },],
   },
   {
     id: "oakley-meta-hstn",
@@ -253,12 +249,10 @@ export const aiGlasses: Product[] = [
         checkedAt: "2026-07-30",
       },
     ],
-    affiliateLinks: [
-      {
+    affiliateLinks: [{ retailer: "Amazon", url: "https://www.amazon.com/s?k=Oakley%20Meta%20HSTN&tag=chhx2nun03-20" }, {
         retailer: "Best Buy",
         url: "",
-      },
-    ],
+      },],
   },
   {
     id: "ray-ban-meta-skyler-gen-2",
@@ -344,12 +338,10 @@ export const aiGlasses: Product[] = [
         checkedAt: "2026-07-30",
       },
     ],
-    affiliateLinks: [
-      {
+    affiliateLinks: [{ retailer: "Amazon", url: "https://www.amazon.com/s?k=Ray-Ban%20Meta%20Skyler%20(Gen%202)&tag=chhx2nun03-20" }, {
         retailer: "Best Buy",
         url: "",
-      },
-    ],
+      },],
   },
   {
     id: "ray-ban-meta-headliner-gen-2",
@@ -435,12 +427,10 @@ export const aiGlasses: Product[] = [
         checkedAt: "2026-07-30",
       },
     ],
-    affiliateLinks: [
-      {
+    affiliateLinks: [{ retailer: "Amazon", url: "https://www.amazon.com/s?k=Ray-Ban%20Meta%20Headliner%20(Gen%202)&tag=chhx2nun03-20" }, {
         retailer: "Best Buy",
         url: "",
-      },
-    ],
+      },],
   },
   {
     id: "ray-ban-meta-skyler-gen-1",
@@ -519,12 +509,10 @@ export const aiGlasses: Product[] = [
         checkedAt: "2026-07-31",
       },
     ],
-    affiliateLinks: [
-      {
+    affiliateLinks: [{ retailer: "Amazon", url: "https://www.amazon.com/s?k=Ray-Ban%20Meta%20Skyler%20(Gen%201)&tag=chhx2nun03-20" }, {
         retailer: "Best Buy",
         url: "",
-      },
-    ],
+      },],
   },
   {
     id: "ray-ban-meta-wayfarer-large-gen-2",
@@ -603,12 +591,10 @@ export const aiGlasses: Product[] = [
         checkedAt: "2026-07-31",
       },
     ],
-    affiliateLinks: [
-      {
+    affiliateLinks: [{ retailer: "Amazon", url: "https://www.amazon.com/s?k=Ray-Ban%20Meta%20Wayfarer%20Large%20(Gen%202)&tag=chhx2nun03-20" }, {
         retailer: "Best Buy",
         url: "",
-      },
-    ],
+      },],
   },
   {
     id: "oakley-meta-vanguard",
@@ -687,12 +673,10 @@ export const aiGlasses: Product[] = [
         checkedAt: "2026-07-31",
       },
     ],
-    affiliateLinks: [
-      {
+    affiliateLinks: [{ retailer: "Amazon", url: "https://www.amazon.com/s?k=Oakley%20Meta%20Vanguard&tag=chhx2nun03-20" }, {
         retailer: "Best Buy",
         url: "",
-      },
-    ],
+      },],
   },
   {
     id: "meta-starfire-kylie-edition",
@@ -771,12 +755,10 @@ export const aiGlasses: Product[] = [
         checkedAt: "2026-07-31",
       },
     ],
-    affiliateLinks: [
-      {
+    affiliateLinks: [{ retailer: "Amazon", url: "https://www.amazon.com/s?k=Meta%20Starfire%20Kylie%20Edition&tag=chhx2nun03-20" }, {
         retailer: "Best Buy",
         url: "",
-      },
-    ],
+      },],
   },
   {
     id: "meta-ray-ban-display-neural-band",
@@ -857,12 +839,10 @@ export const aiGlasses: Product[] = [
         checkedAt: "2026-07-31",
       },
     ],
-    affiliateLinks: [
-      {
+    affiliateLinks: [{ retailer: "Amazon", url: "https://www.amazon.com/s?k=Meta%20Ray-Ban%20Display%20%26%20Neural%20Band&tag=chhx2nun03-20" }, {
         retailer: "Best Buy",
         url: "",
-      },
-    ],
+      },],
   },
   {
     id: "xreal-one",
@@ -943,12 +923,10 @@ export const aiGlasses: Product[] = [
         checkedAt: "2026-08-02",
       },
     ],
-    affiliateLinks: [
-      {
+    affiliateLinks: [{ retailer: "Amazon", url: "https://www.amazon.com/s?k=XREAL%20One&tag=chhx2nun03-20" }, {
         retailer: "Best Buy",
         url: "",
-      },
-    ],
+      },],
   },
   {
     id: "xreal-one-pro",
@@ -1029,12 +1007,10 @@ export const aiGlasses: Product[] = [
         checkedAt: "2026-08-02",
       },
     ],
-    affiliateLinks: [
-      {
+    affiliateLinks: [{ retailer: "Amazon", url: "https://www.amazon.com/s?k=XREAL%20One%20Pro&tag=chhx2nun03-20" }, {
         retailer: "Best Buy",
         url: "",
-      },
-    ],
+      },],
   },
   {
     id: "xreal-1s",
@@ -1115,12 +1091,10 @@ export const aiGlasses: Product[] = [
         checkedAt: "2026-08-02",
       },
     ],
-    affiliateLinks: [
-      {
+    affiliateLinks: [{ retailer: "Amazon", url: "https://www.amazon.com/s?k=XREAL%201S&tag=chhx2nun03-20" }, {
         retailer: "Best Buy",
         url: "",
-      },
-    ],
+      },],
   },
   {
     id: "viture-beast",
@@ -1201,12 +1175,10 @@ export const aiGlasses: Product[] = [
         checkedAt: "2026-08-02",
       },
     ],
-    affiliateLinks: [
-      {
+    affiliateLinks: [{ retailer: "Amazon", url: "https://www.amazon.com/s?k=VITURE%20Beast&tag=chhx2nun03-20" }, {
         retailer: "Best Buy",
         url: "",
-      },
-    ],
+      },],
   },
   {
     id: "rayneo-air-3s",
@@ -1287,12 +1259,10 @@ export const aiGlasses: Product[] = [
         checkedAt: "2026-08-02",
       },
     ],
-    affiliateLinks: [
-      {
+    affiliateLinks: [{ retailer: "Amazon", url: "https://www.amazon.com/s?k=RayNeo%20Air%203s&tag=chhx2nun03-20" }, {
         retailer: "Best Buy",
         url: "",
-      },
-    ],
+      },],
   },
   {
     id: "xreal-air-2-pro",
@@ -1373,12 +1343,10 @@ export const aiGlasses: Product[] = [
         checkedAt: "2026-08-02",
       },
     ],
-    affiliateLinks: [
-      {
+    affiliateLinks: [{ retailer: "Amazon", url: "https://www.amazon.com/s?k=XREAL%20Air%202%20Pro&tag=chhx2nun03-20" }, {
         retailer: "Best Buy",
         url: "",
-      },
-    ],
+      },],
   },
   {
     id: "viture-luma-pro",
@@ -1460,12 +1428,10 @@ export const aiGlasses: Product[] = [
         checkedAt: "2026-08-02",
       },
     ],
-    affiliateLinks: [
-      {
+    affiliateLinks: [{ retailer: "Amazon", url: "https://www.amazon.com/s?k=VITURE%20Luma%20Pro&tag=chhx2nun03-20" }, {
         retailer: "Best Buy",
         url: "",
-      },
-    ],
+      },],
   },
   {
     id: "viture-luma-ultra",
@@ -1546,12 +1512,10 @@ export const aiGlasses: Product[] = [
         checkedAt: "2026-08-02",
       },
     ],
-    affiliateLinks: [
-      {
+    affiliateLinks: [{ retailer: "Amazon", url: "https://www.amazon.com/s?k=VITURE%20Luma%20Ultra&tag=chhx2nun03-20" }, {
         retailer: "Best Buy",
         url: "",
-      },
-    ],
+      },],
   },
   {
     id: "rayneo-air-4-pro",
@@ -1632,12 +1596,10 @@ export const aiGlasses: Product[] = [
         checkedAt: "2026-08-02",
       },
     ],
-    affiliateLinks: [
-      {
+    affiliateLinks: [{ retailer: "Amazon", url: "https://www.amazon.com/s?k=RayNeo%20Air%204%20Pro&tag=chhx2nun03-20" }, {
         retailer: "Best Buy",
         url: "",
-      },
-    ],
+      },],
   },
   {
     id: "asus-rog-xreal-r1",
@@ -1718,12 +1680,10 @@ export const aiGlasses: Product[] = [
         checkedAt: "2026-08-02",
       },
     ],
-    affiliateLinks: [
-      {
+    affiliateLinks: [{ retailer: "Amazon", url: "https://www.amazon.com/s?k=ASUS%20ROG%20XREAL%20R1&tag=chhx2nun03-20" }, {
         retailer: "Best Buy",
         url: "",
-      },
-    ],
+      },],
   },
   {
     id: "rokid-ar-spatial",
@@ -1798,12 +1758,10 @@ export const aiGlasses: Product[] = [
         checkedAt: "2026-08-02",
       },
     ],
-    affiliateLinks: [
-      {
+    affiliateLinks: [{ retailer: "Amazon", url: "https://www.amazon.com/s?k=Rokid%20AR%20Spatial&tag=chhx2nun03-20" }, {
         retailer: "Rokid",
         url: "",
-      },
-    ],
+      },],
   },
   {
     id: "solos-airgo-v-krypton-2",
@@ -1877,12 +1835,10 @@ export const aiGlasses: Product[] = [
         checkedAt: "2026-08-02",
       },
     ],
-    affiliateLinks: [
-      {
+    affiliateLinks: [{ retailer: "Amazon", url: "https://www.amazon.com/s?k=Solos%20AirGo%20V%20Krypton%202&tag=chhx2nun03-20" }, {
         retailer: "Solos",
         url: "",
-      },
-    ],
+      },],
   },
   {
     id: "solos-airgo-v-krypton-1",
@@ -1955,12 +1911,10 @@ export const aiGlasses: Product[] = [
         checkedAt: "2026-08-02",
       },
     ],
-    affiliateLinks: [
-      {
+    affiliateLinks: [{ retailer: "Amazon", url: "https://www.amazon.com/s?k=Solos%20AirGo%20V%20Krypton%201&tag=chhx2nun03-20" }, {
         retailer: "Solos",
         url: "",
-      },
-    ],
+      },],
   },
   {
     id: "solos-airgo-a5-hydro-7",
@@ -2034,12 +1988,10 @@ export const aiGlasses: Product[] = [
         checkedAt: "2026-08-02",
       },
     ],
-    affiliateLinks: [
-      {
+    affiliateLinks: [{ retailer: "Amazon", url: "https://www.amazon.com/s?k=Solos%20AirGo%20A5%20Hydro%207&tag=chhx2nun03-20" }, {
         retailer: "Solos",
         url: "",
-      },
-    ],
+      },],
   },
   {
     id: "solos-airgo2-argon-3",
@@ -2113,11 +2065,9 @@ export const aiGlasses: Product[] = [
         checkedAt: "2026-08-02",
       },
     ],
-    affiliateLinks: [
-      {
+    affiliateLinks: [{ retailer: "Amazon", url: "https://www.amazon.com/s?k=Solos%20AirGo2%20Argon%203&tag=chhx2nun03-20" }, {
         retailer: "Solos",
         url: "",
-      },
-    ],
+      },],
   },
 ];

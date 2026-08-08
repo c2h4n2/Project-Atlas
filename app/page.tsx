@@ -1,6 +1,7 @@
 import Link from "next/link";
 import ProductCard from "@/components/ProductCard";
 import ProductImage from "@/components/ProductImage";
+import HeroActions from "@/components/HeroActions";
 import { products } from "@/data/products";
 
 const rankedProducts = [...products].sort(
@@ -46,17 +47,17 @@ const evaluationCriteria = [
   {
     title: "Design and comfort",
     description:
-      "Frame quality, weight, fit, controls, lens options, and suitability for everyday wear.",
+      "Build quality, comfort, controls, fit, and suitability for everyday use.",
   },
   {
-    title: "Camera and audio",
+    title: "Performance and features",
     description:
-      "Photo quality, video quality, microphones, speakers, calls, music, and voice capture.",
+      "Category-specific performance, software, connectivity, and practical features.",
   },
   {
-    title: "AI and software",
+    title: "Customer experience",
     description:
-      "Assistant usefulness, app quality, smart features, reliability, and privacy controls.",
+      "Customer ratings, review volume, recurring praise, and common complaints.",
   },
   {
     title: "Battery and value",
@@ -89,28 +90,7 @@ export default function Home() {
               more confident purchase decisions.
             </p>
 
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <Link
-  href="/ai-glasses"
-  className="rounded-full bg-cyan-400 px-6 py-3.5 text-center font-bold text-slate-950 transition hover:bg-cyan-300"
->
-  Category
-</Link>
-
-              <Link
-                href="/best-ai-glasses"
-                className="rounded-full border border-white/20 bg-white/5 px-6 py-3.5 text-center font-bold transition hover:border-cyan-400/50 hover:bg-white/10"
-              >
-                View top picks
-              </Link>
-
-              <Link
-                href="/compare"
-                className="rounded-full border border-white/20 px-6 py-3.5 text-center font-bold transition hover:border-cyan-400/50 hover:bg-white/10"
-              >
-                Compare products
-              </Link>
-            </div>
+            <HeroActions />
           </div>
 
           <div className="rounded-[2rem] border border-white/10 bg-white/5 p-7 shadow-2xl shadow-black/20 sm:p-8">
@@ -125,7 +105,6 @@ export default function Home() {
             <div className="mt-7 space-y-4">
               <div className="rounded-2xl border border-white/10 bg-slate-950/60 p-5">
                 <p className="font-bold text-white">Strong customer ratings</p>
-
                 <p className="mt-2 text-sm leading-6 text-slate-400">
                   Products must demonstrate consistently positive customer
                   feedback from reputable sources.
@@ -133,10 +112,7 @@ export default function Home() {
               </div>
 
               <div className="rounded-2xl border border-white/10 bg-slate-950/60 p-5">
-                <p className="font-bold text-white">
-                  Meaningful review volume
-                </p>
-
+                <p className="font-bold text-white">Meaningful review volume</p>
                 <p className="mt-2 text-sm leading-6 text-slate-400">
                   We look beyond products supported by only a small number of
                   ratings.
@@ -144,10 +120,7 @@ export default function Home() {
               </div>
 
               <div className="rounded-2xl border border-white/10 bg-slate-950/60 p-5">
-                <p className="font-bold text-white">
-                  Multiple research signals
-                </p>
-
+                <p className="font-bold text-white">Multiple research signals</p>
                 <p className="mt-2 text-sm leading-6 text-slate-400">
                   Ratings, recurring complaints, product specifications, and
                   professional testing are considered together.
@@ -165,17 +138,16 @@ export default function Home() {
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-400">
                 Current number-one pick
               </p>
-
               <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
                 Our highest-rated product
               </h2>
             </div>
 
             <Link
-              href="/best-ai-glasses"
+              href="/top-picks"
               className="text-sm font-semibold text-cyan-400 transition hover:text-cyan-300"
             >
-              View complete rankings →
+              View top picks →
             </Link>
           </div>
 
@@ -228,12 +200,10 @@ export default function Home() {
                     <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-cyan-300">
                       Atlas score
                     </p>
-
                     <div className="mt-2 flex items-end gap-1">
                       <span className="text-4xl font-black">
                         {topProduct.editorialScore.toFixed(1)}
                       </span>
-
                       <span className="pb-1 text-xs text-slate-400">/10</span>
                     </div>
                   </div>
@@ -242,9 +212,10 @@ export default function Home() {
                     <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-400">
                       Customer rating
                     </p>
-
                     <p className="mt-2 text-3xl font-black">
-                      ⭐ {topProduct.customerRating.toFixed(1)}
+                      {topProduct.totalReviewCount > 0
+                        ? `⭐ ${topProduct.customerRating.toFixed(1)}`
+                        : "New"}
                     </p>
                   </div>
 
@@ -252,26 +223,23 @@ export default function Home() {
                     <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-400">
                       Reviews
                     </p>
-
                     <p className="mt-2 text-3xl font-black">
-                      {topProduct.totalReviewCount.toLocaleString()}
+                      {topProduct.totalReviewCount > 0
+                        ? topProduct.totalReviewCount.toLocaleString()
+                        : "—"}
                     </p>
                   </div>
                 </div>
 
                 <div className="mt-7">
                   <p className="font-bold">Why it ranks first</p>
-
                   <ul className="mt-4 grid gap-3 text-sm leading-6 text-slate-300 sm:grid-cols-2">
                     {topProduct.pros.slice(0, 4).map((pro) => (
                       <li
                         key={pro}
                         className="flex gap-3 rounded-2xl border border-white/10 bg-slate-950/50 p-4"
                       >
-                        <span className="shrink-0 font-bold text-cyan-400">
-                          ✓
-                        </span>
-
+                        <span className="shrink-0 font-bold text-cyan-400">✓</span>
                         <span>{pro}</span>
                       </li>
                     ))}
@@ -305,13 +273,6 @@ export default function Home() {
                       </a>
                     )}
                   </div>
-
-                  {topAffiliateLink && (
-                    <p className="mt-4 text-sm leading-6 text-slate-500">
-                      Price and availability are provided by the retailer and
-                      may change.
-                    </p>
-                  )}
                 </div>
               </div>
             </div>
@@ -326,11 +287,9 @@ export default function Home() {
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-400">
                 Featured products
               </p>
-
               <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
                 Products that meet our standards
               </h2>
-
               <p className="mt-4 max-w-2xl leading-7 text-slate-300">
                 Products are ranked by Atlas editorial score using a consistent
                 review framework.
@@ -338,35 +297,22 @@ export default function Home() {
             </div>
 
             <Link
-              href="/ai-glasses"
+              href="/all-products"
               className="rounded-full border border-white/20 px-5 py-3 text-center text-sm font-semibold transition hover:border-cyan-400/50 hover:bg-white/10"
             >
-              Browse all AI glasses
+              Browse all products
             </Link>
           </div>
 
-          {rankedProducts.length > 0 ? (
-            <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {rankedProducts.map((product, index) => (
-                <ProductCard
-                  key={product.id}
-                  product={product}
-                  rank={index + 1}
-                />
-              ))}
-            </div>
-          ) : (
-            <div className="mt-10 rounded-3xl border border-white/10 bg-slate-950 p-10 text-center">
-              <h3 className="text-2xl font-bold">
-                No qualifying products yet
-              </h3>
-
-              <p className="mx-auto mt-4 max-w-2xl leading-7 text-slate-400">
-                Products will appear here automatically after they are added to
-                the Atlas database and meet our review requirements.
-              </p>
-            </div>
-          )}
+          <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {rankedProducts.slice(0, 12).map((product, index) => (
+              <ProductCard
+                key={product.id}
+                product={product}
+                rank={index + 1}
+              />
+            ))}
+          </div>
         </div>
       </section>
 
@@ -396,9 +342,7 @@ export default function Home() {
               <div className="flex h-10 w-10 items-center justify-center rounded-full bg-cyan-400/10 font-black text-cyan-400">
                 ✓
               </div>
-
               <h3 className="mt-5 text-lg font-bold">{point.title}</h3>
-
               <p className="mt-3 text-sm leading-6 text-slate-400">
                 {point.description}
               </p>
@@ -443,7 +387,6 @@ export default function Home() {
                   className="rounded-3xl border border-white/10 bg-slate-950 p-6"
                 >
                   <h3 className="text-lg font-bold">{criterion.title}</h3>
-
                   <p className="mt-3 text-sm leading-6 text-slate-400">
                     {criterion.description}
                   </p>
@@ -460,27 +403,34 @@ export default function Home() {
         </p>
 
         <h2 className="mt-4 text-4xl font-bold tracking-tight sm:text-5xl">
-          Ready to choose your AI glasses?
+          Ready to find your next product?
         </h2>
 
         <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-slate-400">
-          Review our highest-rated products, compare their strengths, and find
-          the option that best fits how you plan to use them.
+          Browse all reviews, see our top picks, or compare products side by
+          side.
         </p>
 
         <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row sm:flex-wrap">
           <Link
-            href="/best-ai-glasses"
+            href="/top-picks"
             className="rounded-full bg-cyan-400 px-7 py-4 text-center font-bold text-slate-950 transition hover:bg-cyan-300"
           >
-            View top picks
+            Top Picks
+          </Link>
+
+          <Link
+            href="/all-products"
+            className="rounded-full border border-white/20 bg-white/5 px-7 py-4 text-center font-bold transition hover:border-cyan-400/50 hover:bg-white/10"
+          >
+            All Products
           </Link>
 
           <Link
             href="/compare"
             className="rounded-full border border-white/20 bg-white/5 px-7 py-4 text-center font-bold transition hover:border-cyan-400/50 hover:bg-white/10"
           >
-            Compare products
+            Compare Products
           </Link>
         </div>
       </section>

@@ -66,7 +66,7 @@ export const headphonesEarbuds: Product[] = [
         checkedAt: "2026-08-04",
       },
     ],
-    affiliateLinks: [],
+    affiliateLinks: [{ retailer: "Amazon", url: "https://www.amazon.com/s?k=AirPods%20Pro%203&tag=chhx2nun03-20" }],
   },
   {
     id: "apple-airpods-4-anc",
@@ -133,7 +133,7 @@ export const headphonesEarbuds: Product[] = [
         checkedAt: "2026-08-04",
       },
     ],
-    affiliateLinks: [],
+    affiliateLinks: [{ retailer: "Amazon", url: "https://www.amazon.com/s?k=AirPods%204%20with%20ANC&tag=chhx2nun03-20" }],
   },
   {
     id: "apple-airpods-4",
@@ -200,7 +200,7 @@ export const headphonesEarbuds: Product[] = [
         checkedAt: "2026-08-04",
       },
     ],
-    affiliateLinks: [],
+    affiliateLinks: [{ retailer: "Amazon", url: "https://www.amazon.com/s?k=AirPods%204&tag=chhx2nun03-20" }],
   },
   {
     id: "samsung-galaxy-buds3-pro",
@@ -267,7 +267,7 @@ export const headphonesEarbuds: Product[] = [
         checkedAt: "2026-08-04",
       },
     ],
-    affiliateLinks: [],
+    affiliateLinks: [{ retailer: "Amazon", url: "https://www.amazon.com/s?k=Galaxy%20Buds3%20Pro&tag=chhx2nun03-20" }],
   },
   {
     id: "samsung-galaxy-buds3",
@@ -334,7 +334,7 @@ export const headphonesEarbuds: Product[] = [
         checkedAt: "2026-08-04",
       },
     ],
-    affiliateLinks: [],
+    affiliateLinks: [{ retailer: "Amazon", url: "https://www.amazon.com/s?k=Galaxy%20Buds3&tag=chhx2nun03-20" }],
   },
   {
     id: "sony-wf-1000xm6",
@@ -401,7 +401,7 @@ export const headphonesEarbuds: Product[] = [
         checkedAt: "2026-08-04",
       },
     ],
-    affiliateLinks: [],
+    affiliateLinks: [{ retailer: "Amazon", url: "https://www.amazon.com/s?k=WF-1000XM6&tag=chhx2nun03-20" }],
   },
   {
     id: "bose-qc-ultra-earbuds-2",
@@ -468,7 +468,7 @@ export const headphonesEarbuds: Product[] = [
         checkedAt: "2026-08-04",
       },
     ],
-    affiliateLinks: [],
+    affiliateLinks: [{ retailer: "Amazon", url: "https://www.amazon.com/s?k=QuietComfort%20Ultra%20Earbuds%20(2nd%20Gen)&tag=chhx2nun03-20" }],
   },
   {
     id: "google-pixel-buds-pro-2",
@@ -535,7 +535,7 @@ export const headphonesEarbuds: Product[] = [
         checkedAt: "2026-08-04",
       },
     ],
-    affiliateLinks: [],
+    affiliateLinks: [{ retailer: "Amazon", url: "https://www.amazon.com/s?k=Pixel%20Buds%20Pro%202&tag=chhx2nun03-20" }],
   },
   {
     id: "beats-fit-pro",
@@ -602,7 +602,7 @@ export const headphonesEarbuds: Product[] = [
         checkedAt: "2026-08-04",
       },
     ],
-    affiliateLinks: [],
+    affiliateLinks: [{ retailer: "Amazon", url: "https://www.amazon.com/s?k=Beats%20Fit%20Pro&tag=chhx2nun03-20" }],
   },
   {
     id: "beats-studio-buds-plus",
@@ -669,7 +669,7 @@ export const headphonesEarbuds: Product[] = [
         checkedAt: "2026-08-04",
       },
     ],
-    affiliateLinks: [],
+    affiliateLinks: [{ retailer: "Amazon", url: "https://www.amazon.com/s?k=Beats%20Studio%20Buds%20%2B&tag=chhx2nun03-20" }],
   },
   {
     id: "sennheiser-momentum-true-wireless-4",
@@ -736,7 +736,7 @@ export const headphonesEarbuds: Product[] = [
         checkedAt: "2026-08-04",
       },
     ],
-    affiliateLinks: [],
+    affiliateLinks: [{ retailer: "Amazon", url: "https://www.amazon.com/s?k=Momentum%20True%20Wireless%204&tag=chhx2nun03-20" }],
   },
   {
     id: "nothing-ear",
@@ -803,7 +803,7 @@ export const headphonesEarbuds: Product[] = [
         checkedAt: "2026-08-04",
       },
     ],
-    affiliateLinks: [],
+    affiliateLinks: [{ retailer: "Amazon", url: "https://www.amazon.com/s?k=Nothing%20Ear&tag=chhx2nun03-20" }],
   },
   {
     id: "oneplus-buds-pro-3",
@@ -870,7 +870,7 @@ export const headphonesEarbuds: Product[] = [
         checkedAt: "2026-08-04",
       },
     ],
-    affiliateLinks: [],
+    affiliateLinks: [{ retailer: "Amazon", url: "https://www.amazon.com/s?k=OnePlus%20Buds%20Pro%203&tag=chhx2nun03-20" }],
   },
   {
     id: "soundcore-liberty-4-pro",
@@ -937,7 +937,7 @@ export const headphonesEarbuds: Product[] = [
         checkedAt: "2026-08-04",
       },
     ],
-    affiliateLinks: [],
+    affiliateLinks: [{ retailer: "Amazon", url: "https://www.amazon.com/s?k=Soundcore%20Liberty%204%20Pro&tag=chhx2nun03-20" }],
   },
   {
     id: "jabra-elite-10-gen-2",
@@ -1004,7 +1004,7 @@ export const headphonesEarbuds: Product[] = [
         checkedAt: "2026-08-04",
       },
     ],
-    affiliateLinks: [],
+    affiliateLinks: [{ retailer: "Amazon", url: "https://www.amazon.com/s?k=Jabra%20Elite%2010%20Gen%202&tag=chhx2nun03-20" }],
   },
   {
     id: "sony-wh-1000xm6",
@@ -1071,7 +1071,7 @@ export const headphonesEarbuds: Product[] = [
         checkedAt: "2026-08-04",
       },
     ],
-    affiliateLinks: [],
+    affiliateLinks: [{ retailer: "Amazon", url: "https://www.amazon.com/s?k=WH-1000XM6&tag=chhx2nun03-20" }],
   },
   {
     id: "bose-qc-ultra-headphones-2",
@@ -1138,7 +1138,7 @@ export const headphonesEarbuds: Product[] = [
         checkedAt: "2026-08-04",
       },
     ],
-    affiliateLinks: [],
+    affiliateLinks: [{ retailer: "Amazon", url: "https://www.amazon.com/s?k=QuietComfort%20Ultra%20Headphones%20(2nd%20Gen)&tag=chhx2nun03-20" }],
   },
   {
     id: "apple-airpods-max-2",
@@ -1205,7 +1205,7 @@ export const headphonesEarbuds: Product[] = [
         checkedAt: "2026-08-04",
       },
     ],
-    affiliateLinks: [],
+    affiliateLinks: [{ retailer: "Amazon", url: "https://www.amazon.com/s?k=AirPods%20Max%202&tag=chhx2nun03-20" }],
   },
   {
     id: "sonos-ace",
@@ -1272,7 +1272,7 @@ export const headphonesEarbuds: Product[] = [
         checkedAt: "2026-08-04",
       },
     ],
-    affiliateLinks: [],
+    affiliateLinks: [{ retailer: "Amazon", url: "https://www.amazon.com/s?k=Sonos%20Ace&tag=chhx2nun03-20" }],
   },
   {
     id: "beats-studio-pro",
@@ -1339,7 +1339,7 @@ export const headphonesEarbuds: Product[] = [
         checkedAt: "2026-08-04",
       },
     ],
-    affiliateLinks: [],
+    affiliateLinks: [{ retailer: "Amazon", url: "https://www.amazon.com/s?k=Beats%20Studio%20Pro&tag=chhx2nun03-20" }],
   },
   {
     id: "sennheiser-momentum-4-wireless",
@@ -1406,7 +1406,7 @@ export const headphonesEarbuds: Product[] = [
         checkedAt: "2026-08-04",
       },
     ],
-    affiliateLinks: [],
+    affiliateLinks: [{ retailer: "Amazon", url: "https://www.amazon.com/s?k=Momentum%204%20Wireless&tag=chhx2nun03-20" }],
   },
   {
     id: "jbl-tour-one-m3",
@@ -1473,7 +1473,7 @@ export const headphonesEarbuds: Product[] = [
         checkedAt: "2026-08-04",
       },
     ],
-    affiliateLinks: [],
+    affiliateLinks: [{ retailer: "Amazon", url: "https://www.amazon.com/s?k=JBL%20Tour%20One%20M3&tag=chhx2nun03-20" }],
   },
   {
     id: "marshall-monitor-iii-anc",
@@ -1540,7 +1540,7 @@ export const headphonesEarbuds: Product[] = [
         checkedAt: "2026-08-04",
       },
     ],
-    affiliateLinks: [],
+    affiliateLinks: [{ retailer: "Amazon", url: "https://www.amazon.com/s?k=Monitor%20III%20A.N.C.&tag=chhx2nun03-20" }],
   },
   {
     id: "bowers-wilkins-px7-s3",
@@ -1607,7 +1607,7 @@ export const headphonesEarbuds: Product[] = [
         checkedAt: "2026-08-04",
       },
     ],
-    affiliateLinks: [],
+    affiliateLinks: [{ retailer: "Amazon", url: "https://www.amazon.com/s?k=Px7%20S3&tag=chhx2nun03-20" }],
   },
   {
     id: "soundcore-space-one-pro",
@@ -1674,6 +1674,6 @@ export const headphonesEarbuds: Product[] = [
         checkedAt: "2026-08-04",
       },
     ],
-    affiliateLinks: [],
+    affiliateLinks: [{ retailer: "Amazon", url: "https://www.amazon.com/s?k=Space%20One%20Pro&tag=chhx2nun03-20" }],
   }
 ];
