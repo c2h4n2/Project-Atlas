@@ -5,12 +5,15 @@ import Footer from "@/components/Footer";
 import "./globals.css";
 
 const siteName = "Project C2H4N3";
+
 const siteDescription =
   "Independent reviews, comparisons, and rankings for smart tech products and emerging consumer technology.";
 
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
   "http://localhost:3000";
+
+const adsensePublisherId = "ca-pub-2606491312719237";
 
 function serializeJsonLd(value: unknown) {
   return JSON.stringify(value).replace(/</g, "\\u003c");
@@ -64,6 +67,8 @@ export const metadata: Metadata = {
     "headphones",
     "earbuds",
     "smartwatches",
+    "laptops",
+    "monitors",
     "consumer technology reviews",
     "Project C2H4N3",
   ],
@@ -134,14 +139,24 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
+      <head>
         <Script
+          id="adsense-loader"
           async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2606491312719237"
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsensePublisherId}`}
           crossOrigin="anonymous"
-          strategy="afterInteractive"
+          strategy="beforeInteractive"
         />
 
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: serializeJsonLd(structuredData),
+          }}
+        />
+      </head>
+
+      <body className="bg-slate-950 text-white">
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-B26QWEY6WM"
           strategy="afterInteractive"
@@ -150,24 +165,23 @@ export default function RootLayout({
         <Script id="google-analytics" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
+
+            function gtag() {
+              window.dataLayer.push(arguments);
+            }
+
             gtag('js', new Date());
 
             gtag('config', 'G-B26QWEY6WM');
           `}
         </Script>
 
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: serializeJsonLd(structuredData),
-          }}
-        />
-
         <div className="flex min-h-screen flex-col">
           <Header />
 
-          <div className="flex-1">{children}</div>
+          <div className="flex-1">
+            {children}
+          </div>
 
           <Footer />
         </div>
