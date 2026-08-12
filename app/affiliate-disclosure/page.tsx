@@ -6,7 +6,7 @@ export default function AffiliateDisclosurePage() {
       <header className="border-b border-white/10">
         <div className="mx-auto flex max-w-4xl items-center justify-between px-6 py-5">
           <Link href="/" className="text-xl font-bold">
-            Project Atlas
+            Project C2H4N3
           </Link>
 
           <Link
@@ -34,11 +34,11 @@ export default function AffiliateDisclosurePage() {
         <div className="mt-10 space-y-8 leading-8 text-slate-300">
           <section>
             <h2 className="text-2xl font-bold text-white">
-              How Project Atlas earns money
+              How Project C2H4N3 earns money
             </h2>
 
             <p className="mt-3">
-              Project Atlas may earn a commission when you purchase a product
+              Project C2H4N3 may earn a commission when you purchase a product
               through certain links on this website. This does not increase the
               price you pay.
             </p>
@@ -88,7 +88,7 @@ export default function AffiliateDisclosurePage() {
 
             <p className="mt-3">
               Questions about this disclosure can be submitted through the
-              Project Atlas contact page once it becomes available.
+              Project C2H4N3 contact page once it becomes available.
             </p>
           </section>
         </div>

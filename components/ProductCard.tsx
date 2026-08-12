@@ -4,8 +4,11 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import ProductImage from "@/components/ProductImage";
 import RetailerButtons from "@/components/RetailerButtons";
+import EditorialScore from "@/components/EditorialScore";
 import { getCategory } from "@/data/categories";
+import { getLaptopUseCases } from "@/data/laptop-use-cases";
 import type { Product } from "@/data/products";
+import ProductVerdict from "@/components/ProductVerdict";
 
 type Props = {
   product: Product;
@@ -30,28 +33,43 @@ function readComparedProducts(categoryId: string) {
     const parsed: unknown = value ? JSON.parse(value) : [];
 
     return Array.isArray(parsed)
-      ? parsed.filter((item): item is string => typeof item === "string")
+      ? parsed.filter(
+          (item): item is string => typeof item === "string",
+        )
       : [];
   } catch {
     return [];
   }
 }
 
-function saveComparedProducts(categoryId: string, slugs: string[]) {
+function saveComparedProducts(
+  categoryId: string,
+  slugs: string[],
+) {
   window.localStorage.setItem(
     getStorageKey(categoryId),
     JSON.stringify(slugs),
   );
 
-  window.dispatchEvent(new CustomEvent("atlas-compare-updated"));
+  window.dispatchEvent(
+    new CustomEvent("atlas-compare-updated"),
+  );
 }
 
-export default function ProductCard({ product, rank }: Props) {
+export default function ProductCard({
+  product,
+  rank,
+}: Props) {
   const categoryId = product.categoryId ?? "ai-glasses";
   const category = getCategory(categoryId);
 
   const [isCompared, setIsCompared] = useState(false);
   const [compareMessage, setCompareMessage] = useState("");
+
+  const bestForItems =
+    product.categoryId === "laptops"
+      ? getLaptopUseCases(product.slug)
+      : product.bestFor.slice(0, 2);
 
   useEffect(() => {
     const updateState = () => {
@@ -63,11 +81,17 @@ export default function ProductCard({ product, rank }: Props) {
     updateState();
 
     window.addEventListener("storage", updateState);
-    window.addEventListener("atlas-compare-updated", updateState);
+    window.addEventListener(
+      "atlas-compare-updated",
+      updateState,
+    );
 
     return () => {
       window.removeEventListener("storage", updateState);
-      window.removeEventListener("atlas-compare-updated", updateState);
+      window.removeEventListener(
+        "atlas-compare-updated",
+        updateState,
+      );
     };
   }, [categoryId, product.slug]);
 
@@ -100,15 +124,17 @@ export default function ProductCard({ product, rank }: Props) {
   }
 
   return (
-    <article className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-white/10 bg-slate-900">
+    <article className="flex h-full flex-col overflow-hidden rounded-3xl border border-white/10 bg-slate-900">
       <div className="relative">
-        <Link href={`/products/${product.slug}`} className="block">
+        <Link
+          href={`/products/${product.slug}`}
+          className="block"
+        >
           <ProductImage
             src={product.image.src}
             alt={product.image.alt}
             aspectRatio="card"
-            sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
-            className="rounded-none border-0 border-b border-white/10 bg-slate-800"
+            className="w-full"
           />
         </Link>
 
@@ -169,33 +195,33 @@ export default function ProductCard({ product, rank }: Props) {
         <div className="mt-6 grid grid-cols-2 gap-3">
           <div className="rounded-2xl border border-cyan-400/20 bg-cyan-400/5 p-4">
             <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-cyan-300">
-              Atlas score
+              C2H4N3 score
             </p>
 
-            <p className="mt-2 text-4xl font-black">
-              {product.editorialScore.toFixed(1)}
-            </p>
+            <div className="mt-2">
+              <EditorialScore score={product.editorialScore} />
+            </div>
           </div>
 
           <div className="rounded-2xl border border-white/10 bg-slate-800 p-4">
             <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-400">
-              Customers
+              C2H4N3 verdict
             </p>
 
-            <p className="mt-2 text-2xl font-black">
-              {product.totalReviewCount > 0
-                ? `⭐ ${product.customerRating.toFixed(1)}`
-                : "New"}
-            </p>
+            <div className="mt-2">
+              <ProductVerdict product={product} />
+            </div>
           </div>
         </div>
-
-        <div className="mt-6">
+<div className="mt-6">
           <p className="text-sm font-bold">Best for</p>
 
           <ul className="mt-3 space-y-2 text-sm leading-5 text-slate-300">
-            {product.bestFor.slice(0, 2).map((item) => (
-              <li key={item} className="flex gap-2">
+            {bestForItems.map((item) => (
+              <li
+                key={item}
+                className="flex gap-2"
+              >
                 <span className="text-cyan-400">✓</span>
                 <span>{item}</span>
               </li>
@@ -221,7 +247,9 @@ export default function ProductCard({ product, rank }: Props) {
                   : "border-white/20 bg-white/5"
               }`}
             >
-              {isCompared ? "✓ Added to compare" : "Add to compare"}
+              {isCompared
+                ? "✓ Added to compare"
+                : "Add to compare"}
             </button>
 
             {isCompared && category && (

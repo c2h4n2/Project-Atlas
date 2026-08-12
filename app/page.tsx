@@ -437,11 +437,11 @@ export default function Home() {
 
       <section className="mx-auto max-w-6xl px-6 pb-10">
         <p className="text-sm leading-6 text-slate-500">
-          Affiliate disclosure: Project Atlas may earn a commission from
-          qualifying purchases made through eligible retailer links, at no
-          additional cost to you. Project Atlas does not display product
-          prices. Current price and availability are provided by the retailer.
-        </p>
+          Affiliate disclosure: Project C2H4N3 may earn a commission from qualifying
+          purchases made through eligible retailer links, at no additional cost to you.
+          Project C2H4N3 does not display product prices. Current price and availability
+          are provided by the retailer.
+  </p>
       </section>
     </main>
   );

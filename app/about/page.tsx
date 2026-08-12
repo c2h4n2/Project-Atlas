@@ -3,7 +3,7 @@ export default function AboutPage() {
     <main className="min-h-screen bg-slate-950 text-white">
       <article className="mx-auto max-w-4xl px-6 py-16">
         <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-400">
-          About Project Atlas
+          About Project C2H4N3
         </p>
 
         <h1 className="mt-4 text-5xl font-bold">
@@ -15,7 +15,7 @@ export default function AboutPage() {
             <h2 className="text-2xl font-bold text-white">Our mission</h2>
 
             <p className="mt-3">
-              Project Atlas helps consumers make informed buying decisions by
+              Project C2H4N3 helps consumers make informed buying decisions by
               combining customer ratings, product research, comparisons, and
               editorial analysis into clear, easy-to-understand reviews.
             </p>
@@ -23,13 +23,13 @@ export default function AboutPage() {
 
           <section>
             <h2 className="text-2xl font-bold text-white">
-              Why Project Atlas exists
+              Why Project C2H4N3 exists
             </h2>
 
             <p className="mt-3">
               Shopping online can be overwhelming. Thousands of products often
               look similar, while reviews, specifications, and marketing claims
-              can be difficult to evaluate. Project Atlas aims to simplify that
+              can be difficult to evaluate. Project C2H4N3 aims to simplify that
               process through transparent research and consistent evaluation
               standards.
             </p>

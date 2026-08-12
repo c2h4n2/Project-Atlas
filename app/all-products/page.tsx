@@ -22,9 +22,8 @@ export default function AllProductsPage() {
           </h1>
 
           <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-300">
-            Search all Project Atlas reviews, filter by category or brand, and
-            sort products by Atlas score, customer feedback, review volume, or
-            name.
+            Search all Project C2H4N3 reviews, filter by category or brand, and sort products by C2H4N3 score,
+            customer feedback, review volume, or name.
           </p>
         </div>
       </section>

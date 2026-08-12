@@ -5,7 +5,7 @@ import ProductCard from "@/components/ProductCard";
 import type { Product } from "@/data/products";
 
 type SortMode =
-  | "atlas-desc"
+  | "C2H4N3-desc"
   | "rating-desc"
   | "reviews-desc"
   | "name-asc";
@@ -26,7 +26,7 @@ export default function ProductExplorer({
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("all");
   const [brand, setBrand] = useState("all");
-  const [sortMode, setSortMode] = useState<SortMode>("atlas-desc");
+  const [sortMode, setSortMode] = useState<SortMode>("C2H4N3-desc");
 
   const categories = useMemo(
     () =>
@@ -102,13 +102,13 @@ export default function ProductExplorer({
     query.trim().length > 0 ||
     (showCategoryFilter && category !== "all") ||
     (showBrandFilter && brand !== "all") ||
-    sortMode !== "atlas-desc";
+    sortMode !== "C2H4N3-desc";
 
   function clearFilters() {
     setQuery("");
     setCategory("all");
     setBrand("all");
-    setSortMode("atlas-desc");
+    setSortMode("C2H4N3-desc");
   }
 
   return (
@@ -175,7 +175,7 @@ export default function ProductExplorer({
               onChange={(event) => setSortMode(event.target.value as SortMode)}
               className="mt-2 w-full rounded-2xl border border-white/10 bg-slate-950 px-4 py-3.5 text-sm text-white outline-none focus:border-cyan-400/60"
             >
-              <option value="atlas-desc">Highest Atlas score</option>
+              <option value="C2H4N3-desc">Highest C2H4N3 score</option>
               <option value="rating-desc">Highest customer rating</option>
               <option value="reviews-desc">Most customer reviews</option>
               <option value="name-asc">Product name A–Z</option>
@@ -245,7 +245,7 @@ export default function ProductExplorer({
             <ProductCard
               key={product.id}
               product={product}
-              rank={sortMode === "atlas-desc" ? index + 1 : undefined}
+              rank={sortMode === "C2H4N3-desc" ? index + 1 : undefined}
             />
           ))}
         </div>

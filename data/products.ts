@@ -1,6 +1,11 @@
 import { aiGlasses } from "./products/ai-glasses";
 import { headphonesEarbuds } from "./products/headphones-earbuds";
 import { smartwatches } from "./products/smartwatches";
+import { expansionTo100 } from "./products/expansion-to-100";
+import { expansionTo125 } from "./products/expansion-to-125";
+import { laptops } from "./products/laptops";
+import { monitors } from "./products/monitors";
+import { applyCustomerRatingsInPlace } from "@/lib/apply-customer-ratings";
 
 export type ProductSource = {
   platform: string;
@@ -60,7 +65,13 @@ const normalizedAiGlasses: Product[] = aiGlasses.map((product) => ({
 }));
 
 export const products: Product[] = [
+  ...laptops,
+  ...monitors,
   ...normalizedAiGlasses,
   ...headphonesEarbuds,
   ...smartwatches,
+  ...expansionTo100,
+  ...expansionTo125,
 ];
+
+applyCustomerRatingsInPlace(products);

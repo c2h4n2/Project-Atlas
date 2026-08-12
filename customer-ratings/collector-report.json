@@ -1,0 +1,653 @@
+{
+  "generatedAt": "2026-08-09T21:06:07.216Z",
+  "consideredProducts": 129,
+  "accepted": [],
+  "rejected": [],
+  "failures": [
+    {
+      "slug": "apple-macbook-air-13-m5",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "apple-macbook-air-15-m5",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "apple-macbook-pro-14-m5",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "apple-macbook-pro-14-m5-pro",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "apple-macbook-pro-16-m5-max",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "dell-xps-13-2026",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "dell-xps-14-2026",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "dell-xps-16-2026",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "dell-pro-max-14-premium",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "lenovo-thinkpad-x1-carbon-gen-14",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "asus-rog-zephyrus-g14-2026",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "asus-rog-zephyrus-g16-2026",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "lenovo-thinkpad-x1-carbon-gen-13",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "dell-pro-max-16-premium",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "apple-macbook-air-13-m5-24gb",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "dell-s3225qc",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "alienware-aw3225qf",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "samsung-odyssey-oled-g8-g80sh",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "samsung-odyssey-g8-g80hf",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "asus-rog-swift-pg32ucdm3",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "asus-rog-swift-pg32ucwm",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "asus-rog-swift-pg27ucwm",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "lg-ultragear-32gs95ue",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "samsung-odyssey-oled-g9",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "dell-ultrasharp-u4025qw",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "dell-ultrasharp-u2725qe",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "asus-rog-swift-pg32ucdmr",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "samsung-odyssey-3d-6k",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "lg-ultragear-45gx950a",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "apple-airpods-pro-3",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "apple-airpods-4-anc",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "apple-airpods-4",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "samsung-galaxy-buds3-pro",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "samsung-galaxy-buds3",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "sony-wf-1000xm6",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "bose-qc-ultra-earbuds-2",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "google-pixel-buds-pro-2",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "beats-fit-pro",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "beats-studio-buds-plus",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "sennheiser-momentum-true-wireless-4",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "nothing-ear",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "oneplus-buds-pro-3",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "soundcore-liberty-4-pro",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "jabra-elite-10-gen-2",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "sony-wh-1000xm6",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "bose-qc-ultra-headphones-2",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "apple-airpods-max-2",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "sonos-ace",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "beats-studio-pro",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "sennheiser-momentum-4-wireless",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "jbl-tour-one-m3",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "marshall-monitor-iii-anc",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "bowers-wilkins-px7-s3",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "soundcore-space-one-pro",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "apple-watch-series-11",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "apple-watch-ultra-3",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "apple-watch-se-3",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "samsung-galaxy-watch9",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "samsung-galaxy-watch8-classic",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "samsung-galaxy-watch-ultra-2025",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "google-pixel-watch-4-41mm",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "google-pixel-watch-4-45mm",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "garmin-venu-4-41mm",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "garmin-venu-4-45mm",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "garmin-forerunner-970",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "garmin-venu-x1",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "garmin-fenix-8-pro-amoled",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "garmin-fenix-8-pro-microled",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "garmin-instinct-3-amoled",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "garmin-lily-2-active",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "oneplus-watch-3",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "oneplus-watch-3-43mm",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "amazfit-balance-2",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "amazfit-t-rex-3-pro",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "amazfit-active-3-premium",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "amazfit-bip-6",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "fitbit-sense-2",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "withings-scanwatch-2",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "withings-scanwatch-nova",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "samsung-galaxy-buds4-pro",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "samsung-galaxy-buds4",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "samsung-galaxy-buds3-fe",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "sony-linkbuds-clip",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "sony-linkbuds-fit",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "sony-wf-1000xm5",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "sony-wh-1000xm5",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "bose-ultra-open-earbuds",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "bose-quietcomfort-earbuds",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "sennheiser-accentum-plus-wireless",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "sennheiser-momentum-5-wireless",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "jbl-tour-pro-3",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "jbl-live-beam-3",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "apple-airpods-pro-2",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "nothing-ear-a",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "sony-linkbuds-open",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "garmin-vivoactive-6",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "garmin-enduro-3",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "garmin-forerunner-570",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "garmin-instinct-e-45mm",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "garmin-venu-3",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "garmin-forerunner-265",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "garmin-fenix-8-51mm-amoled",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "garmin-forerunner-965",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "garmin-forerunner-170",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "jbl-tune-buds-2",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "jbl-tune-beam-2",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "jbl-tune-flex-2",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "jbl-vibe-buds-2",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "jbl-live-buds-3",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "jbl-endurance-peak-4",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "jbl-live-pro-2-tws",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "jbl-live-770nc",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "jbl-tune-770nc",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "jbl-tune-720bt",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "sennheiser-accentum-true-wireless",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "sennheiser-momentum-sport",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "sennheiser-accentum-wireless",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "sennheiser-accentum-open",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "sennheiser-hd-620s",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "garmin-forerunner-70",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "garmin-descent-g2",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "garmin-quatix-8-47mm",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "garmin-quatix-8-pro-47mm",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "garmin-tactix-8-47mm-amoled",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "garmin-instinct-3-45mm-solar",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "garmin-approach-s50",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "garmin-approach-s70-47mm",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "garmin-lily-2",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    },
+    {
+      "slug": "garmin-approach-s44",
+      "platform": "Best Buy",
+      "error": "Best Buy API 403 Forbidden"
+    }
+  ]
+}

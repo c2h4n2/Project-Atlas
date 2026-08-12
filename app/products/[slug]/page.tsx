@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import ProductCard from "@/components/ProductCard";
 import ProductImage from "@/components/ProductImage";
+import ProductVerdict from "@/components/ProductVerdict";
 import RetailerButtons from "@/components/RetailerButtons";
 import { getCategory } from "@/data/categories";
 import { products } from "@/data/products";
@@ -54,13 +55,15 @@ export async function generateMetadata({
       title: `${product.name} Review`,
       description: product.shortDescription,
       url: productUrl,
-      siteName: "Project Atlas",
+      siteName: "Project C2H4N3",
       images: [{ url: imageUrl, alt: product.image.alt }],
     },
   };
 }
 
-export default async function ProductPage({ params }: ProductPageProps) {
+export default async function ProductPage({
+  params,
+}: ProductPageProps) {
   const { slug } = await params;
   const product = products.find((item) => item.slug === slug);
 
@@ -124,8 +127,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
               <div className="mt-8 grid gap-3 sm:grid-cols-3">
                 <div className="rounded-2xl border border-cyan-400/20 bg-cyan-400/5 p-4">
                   <p className="text-xs uppercase tracking-widest text-cyan-300">
-                    Atlas score
+                    C2H4N3 score
                   </p>
+
                   <p className="mt-2 text-4xl font-black">
                     {product.editorialScore.toFixed(1)}
                   </p>
@@ -133,19 +137,19 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
                 <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
                   <p className="text-xs uppercase tracking-widest text-slate-400">
-                    Customer rating
+                    C2H4N3 verdict
                   </p>
-                  <p className="mt-2 text-3xl font-black">
-                    {product.totalReviewCount > 0
-                      ? `⭐ ${product.customerRating.toFixed(1)}`
-                      : "New"}
-                  </p>
+
+                  <div className="mt-2">
+                    <ProductVerdict product={product} />
+                  </div>
                 </div>
 
                 <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
                   <p className="text-xs uppercase tracking-widest text-slate-400">
                     Type
                   </p>
+
                   <p className="mt-2 text-lg font-black">
                     {product.productType ?? product.category}
                   </p>
@@ -184,9 +188,11 @@ export default async function ProductPage({ params }: ProductPageProps) {
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-400">
             Editor&apos;s verdict
           </p>
+
           <h2 className="mt-3 text-3xl font-bold">
             Our take on {product.name}
           </h2>
+
           <p className="mt-5 text-lg leading-8 text-slate-300">
             {product.editorVerdict}
           </p>
@@ -194,7 +200,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
         <div className="mt-12 grid gap-6 lg:grid-cols-2">
           <section className="rounded-3xl border border-white/10 bg-slate-900 p-7">
-            <h2 className="text-3xl font-bold">Atlas score details</h2>
+            <h2 className="text-3xl font-bold">
+              C2H4N3 score details
+            </h2>
 
             <div className="mt-7 space-y-5">
               {reviewScores.map(([key, score]) => (
@@ -203,6 +211,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                     <p className="font-semibold">
                       {category?.scoreLabels[key] ?? key}
                     </p>
+
                     <p className="font-bold text-cyan-400">
                       {score.toFixed(1)}/10
                     </p>
@@ -210,8 +219,12 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
                   <div className="mt-2 h-2 overflow-hidden rounded-full bg-slate-800">
                     <div
-                      className={`h-full rounded-full ${getScoreBarClass(score)}`}
-                      style={{ width: `${Math.min(score * 10, 100)}%` }}
+                      className={`h-full rounded-full ${getScoreBarClass(
+                        score,
+                      )}`}
+                      style={{
+                        width: `${Math.min(score * 10, 100)}%`,
+                      }}
                     />
                   </div>
                 </div>
@@ -237,7 +250,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
         </div>
 
         <section className="mt-12 rounded-3xl border border-white/10 bg-white/5 p-7 sm:p-9">
-          <h2 className="text-3xl font-bold">Quick specifications</h2>
+          <h2 className="text-3xl font-bold">
+            Quick specifications
+          </h2>
 
           <div className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {specifications.map(([key, value]) => (
@@ -248,7 +263,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 <p className="text-sm font-semibold capitalize text-cyan-400">
                   {key.replace(/([A-Z])/g, " $1")}
                 </p>
-                <p className="mt-2 leading-7 text-slate-300">{value}</p>
+
+                <p className="mt-2 leading-7 text-slate-300">
+                  {value}
+                </p>
               </div>
             ))}
           </div>
@@ -257,6 +275,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
         <div className="mt-12 grid gap-6 md:grid-cols-2">
           <section className="rounded-3xl border border-emerald-400/20 bg-emerald-400/5 p-7">
             <h2 className="text-2xl font-bold">Pros</h2>
+
             <ul className="mt-5 space-y-3 text-slate-300">
               {product.pros.map((item) => (
                 <li key={item}>✓ {item}</li>
@@ -266,6 +285,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
           <section className="rounded-3xl border border-rose-400/20 bg-rose-400/5 p-7">
             <h2 className="text-2xl font-bold">Cons</h2>
+
             <ul className="mt-5 space-y-3 text-slate-300">
               {product.cons.map((item) => (
                 <li key={item}>– {item}</li>
@@ -287,8 +307,8 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 </h2>
 
                 <p className="mt-3 max-w-2xl leading-7 text-slate-400">
-                  Compare this product with other highly rated options from
-                  the same category.
+                  Compare this product with other highly rated options
+                  from the same category.
                 </p>
               </div>
 
@@ -323,7 +343,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 className="flex flex-col justify-between gap-3 border-b border-white/10 pb-4 sm:flex-row"
               >
                 <div>
-                  <p className="font-semibold">{source.platform}</p>
+                  <p className="font-semibold">
+                    {source.platform}
+                  </p>
+
                   <p className="text-sm text-slate-400">
                     Checked {source.checkedAt}
                   </p>

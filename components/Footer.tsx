@@ -1,12 +1,18 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const footerLinks = [
   {
     title: "Explore",
     links: [
-      { label: "AI Glasses", href: "/ai-glasses" },
-      { label: "Best AI Glasses", href: "/best-ai-glasses" },
+      { label: "All Products", href: "/all-products" },
+      { label: "Top Picks", href: "/top-picks" },
       { label: "Compare Products", href: "/compare" },
+      { label: "AI Glasses", href: "/ai-glasses" },
+      { label: "Headphones & Earbuds", href: "/headphones-earbuds" },
+      { label: "Smartwatches", href: "/smartwatches" },
+      { label: "Laptops", href: "/laptops" },
+      { label: "Monitors", href: "/monitors" },
     ],
   },
   {
@@ -27,30 +33,39 @@ const footerLinks = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-slate-950 text-white">
-      <div className="mx-auto grid max-w-6xl gap-12 px-6 py-14 md:grid-cols-[1.4fr_2fr]">
+    <footer className="border-t border-white/10 bg-slate-950">
+      <div className="mx-auto grid max-w-6xl gap-12 px-6 py-14 lg:grid-cols-[1.5fr_1fr]">
         <div>
-          <Link href="/" className="inline-flex items-center gap-3">
-            <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-cyan-400 font-black text-slate-950">
-              A
-            </span>
+          <Link href="/" className="flex items-center gap-4">
+            <Image
+              src="/brand/c2h4n3-header-v2.webp"
+              alt="Project C2H4N3"
+              width={2048}
+              height={768}
+              className="h-16 w-auto object-contain"
+            />
 
             <div>
-              <p className="text-lg font-bold tracking-tight">Project Atlas</p>
+              <p className="text-xl font-bold tracking-tight text-white">
+                Project C2H4N3
+              </p>
+
               <p className="text-sm text-slate-400">
-                Independent product research
+                Smart tech products search
               </p>
             </div>
           </Link>
 
-          <p className="mt-5 max-w-md leading-7 text-slate-400">
-            Clear reviews, comparisons, and rankings designed to help shoppers
-            make more confident buying decisions.
+          <p className="mt-6 max-w-md leading-7 text-slate-400">
+            Independent reviews, comparisons, ratings, and buying guides
+            designed to help shoppers make smarter technology purchasing
+            decisions.
           </p>
 
-          <p className="mt-5 text-sm leading-6 text-slate-500">
-            Project Atlas may earn commissions from qualifying purchases, but
-            affiliate relationships do not determine our editorial rankings.
+          <p className="mt-6 text-sm leading-6 text-slate-500">
+            Project C2H4N3 may earn commissions from qualifying purchases,
+            but affiliate relationships never influence our editorial ratings
+            or recommendations.
           </p>
         </div>
 
@@ -81,10 +96,10 @@ export default function Footer() {
       <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-6xl flex-col gap-3 px-6 py-6 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between">
           <p>
-            © {new Date().getFullYear()} Project Atlas. All rights reserved.
+            © {new Date().getFullYear()} Project C2H4N3. All rights reserved.
           </p>
 
-          <p>Research before you buy.</p>
+          <p>Research smarter. Buy better.</p>
         </div>
       </div>
     </footer>

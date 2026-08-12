@@ -6,7 +6,7 @@ export default function ContactPage() {
       <header className="border-b border-white/10">
         <div className="mx-auto flex max-w-4xl items-center justify-between px-6 py-5">
           <Link href="/" className="text-xl font-bold">
-            Project Atlas
+            Project C2H4N3
           </Link>
 
           <Link
@@ -37,7 +37,7 @@ export default function ContactPage() {
 
           <p className="mt-6 text-slate-300">
             A dedicated contact email will be added before the public launch of
-            Project Atlas.
+            Project C2H4N3.
           </p>
 
           <p className="mt-4 text-slate-400">

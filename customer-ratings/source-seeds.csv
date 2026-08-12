@@ -1,0 +1,4 @@
+slug,platform,url
+# Add exact retailer/manufacturer product-page URLs here when no API adapter exists.
+# Example:
+# samsung-galaxy-watch8-classic,Walmart,https://www.walmart.com/ip/EXACT-ITEM

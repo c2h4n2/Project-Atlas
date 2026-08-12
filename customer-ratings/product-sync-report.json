@@ -1,0 +1,20 @@
+{
+  "startedAt": "2026-08-09T22:30:26.778Z",
+  "finishedAt": "2026-08-09T22:30:36.680Z",
+  "mode": "write",
+  "steps": [
+    {
+      "name": "Catalog audit",
+      "ok": true,
+      "command": "npx tsx -e import { products } from \"./data/products\"; const slugs=new Set(products.map(p=>p.slug)); console.log(`Products: ${products.length}`); console.log(`Unique slugs: ${slugs.size}`); if(slugs.size!==products.length) process.exit(1);",
+      "exitCode": 0
+    },
+    {
+      "name": "Product image sync",
+      "ok": false,
+      "command": "npm run sync-product-images",
+      "exitCode": 1
+    }
+  ],
+  "success": false
+}

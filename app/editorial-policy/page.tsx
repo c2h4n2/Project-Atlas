@@ -6,7 +6,7 @@ export default function EditorialPolicyPage() {
       <header className="border-b border-white/10">
         <div className="mx-auto flex max-w-4xl items-center justify-between px-6 py-5">
           <Link href="/" className="text-xl font-bold">
-            Project Atlas
+            Project C2H4N3
           </Link>
 
           <Link
@@ -38,7 +38,7 @@ export default function EditorialPolicyPage() {
             </h2>
 
             <p className="mt-3">
-              Project Atlas publishes product research, comparisons, rankings,
+              Project C2H4N3 publishes product research, comparisons, rankings,
               and buying guidance intended to help readers make informed
               purchase decisions.
             </p>
@@ -72,13 +72,13 @@ export default function EditorialPolicyPage() {
 
           <section>
             <h2 className="text-2xl font-bold text-white">
-              Customer ratings and Atlas scores
+              Customer ratings and C2H4N3 scores
             </h2>
 
             <p className="mt-3">
               Retailer customer ratings are displayed separately from the
-              Project Atlas editorial score. Customer ratings reflect the
-              source platform, while the Atlas score reflects our broader
+              Project C2H4N3 editorial score. Customer ratings reflect the
+              source platform, while the C2H4N3 score reflects our broader
               editorial assessment.
             </p>
           </section>
