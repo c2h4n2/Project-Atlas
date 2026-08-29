@@ -5,6 +5,7 @@ import { expansionTo100 } from "./products/expansion-to-100";
 import { expansionTo125 } from "./products/expansion-to-125";
 import { laptops } from "./products/laptops";
 import { monitors } from "./products/monitors";
+import { newCategoryProducts } from "./products/new-categories";
 import { applyCustomerRatingsInPlace } from "@/lib/apply-customer-ratings";
 
 export type ProductSource = {
@@ -72,6 +73,7 @@ export const products: Product[] = [
   ...smartwatches,
   ...expansionTo100,
   ...expansionTo125,
+  ...newCategoryProducts,
 ];
 
 applyCustomerRatingsInPlace(products);

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import ProductCard from "@/components/ProductCard";
 import { products } from "@/data/products";
+import { categories } from "@/data/categories";
 
 export const metadata: Metadata = {
   title: "Top Picks",
@@ -9,26 +10,12 @@ export const metadata: Metadata = {
     "See Project Atlas top-rated products across every active product category.",
 };
 
-const groups = [
-  {
-    id: "ai-glasses",
-    label: "AI Glasses",
-    heading: "Top AI Glasses",
-    href: "/best-ai-glasses",
-  },
-  {
-    id: "headphones-earbuds",
-    label: "Headphones & Earbuds",
-    heading: "Top Headphones & Earbuds",
-    href: "/best-headphones-earbuds",
-  },
-  {
-    id: "smartwatches",
-    label: "Smartwatches",
-    heading: "Top Smartwatches",
-    href: "/best-smartwatches",
-  },
-];
+const groups = categories.map((category) => ({
+  id: category.id,
+  label: category.label,
+  heading: `Top ${category.label}`,
+  href: category.bestHref,
+}));
 
 export default function TopPicksPage() {
   return (

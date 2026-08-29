@@ -3,6 +3,7 @@ import ProductCard from "@/components/ProductCard";
 import ProductImage from "@/components/ProductImage";
 import HeroActions from "@/components/HeroActions";
 import { products } from "@/data/products";
+import { categories } from "@/data/categories";
 
 const rankedProducts = [...products].sort(
   (a, b) => b.editorialScore - a.editorialScore,
@@ -279,6 +280,49 @@ export default function Home() {
           </article>
         </section>
       )}
+
+      <section className="border-t border-white/10 bg-slate-950">
+        <div className="mx-auto max-w-6xl px-6 py-14 sm:py-16">
+          <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-400">
+                Browse by category
+              </p>
+              <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
+                Start with the kind of tech you need
+              </h2>
+              <p className="mt-4 max-w-2xl leading-7 text-slate-300">
+                Each category uses its own scoring criteria, comparison fields, and buying context.
+              </p>
+            </div>
+            <Link href="/all-products" className="text-sm font-semibold text-cyan-400 transition hover:text-cyan-300">
+              Search the full catalog →
+            </Link>
+          </div>
+
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {categories.map((category) => {
+              const count = products.filter((product) => product.categoryId === category.id).length;
+              return (
+                <Link
+                  key={category.id}
+                  href={category.href}
+                  className="group rounded-3xl border border-white/10 bg-white/5 p-5 transition hover:-translate-y-0.5 hover:border-cyan-400/40 hover:bg-cyan-400/5"
+                >
+                  <div className="flex items-start justify-between gap-3">
+                    <h3 className="text-lg font-bold group-hover:text-cyan-300">{category.label}</h3>
+                    <span className="rounded-full border border-white/10 bg-slate-950 px-2.5 py-1 text-xs font-bold text-slate-300">
+                      {count}
+                    </span>
+                  </div>
+                  <p className="mt-3 text-sm leading-6 text-slate-400">{category.description}</p>
+                  <span className="mt-5 inline-flex text-sm font-semibold text-cyan-400">Explore category →</span>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </section>
 
       <section className="border-y border-white/10 bg-slate-900/60">
         <div className="mx-auto max-w-6xl px-6 py-14 sm:py-16">
