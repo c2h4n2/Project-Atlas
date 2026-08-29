@@ -42,3 +42,7 @@ Project Atlas now includes dedicated tablet, TV, and camera catalogs with catego
 ## Catalog expansion
 
 Added SSDs, Wi-Fi routers, and printers as full browse/ranking/comparison categories, plus category shortcuts on the All Products page.
+
+## Final catalog expansion before fine-tuning
+
+Added Keyboards, Mice, and Webcams as full browse/ranking/comparison categories. This brings Atlas to 14 active categories before the site fine-tuning phase.

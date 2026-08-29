@@ -159,6 +159,46 @@ export const categories: CategoryConfig[] = [
     ],
   },
 
+  {
+    id: "keyboards",
+    label: "Keyboards",
+    href: "/keyboards",
+    bestHref: "/best-keyboards",
+    compareHref: "/compare?category=keyboards",
+    description: "Mechanical, low-profile, productivity, and gaming keyboards for work and play.",
+    scoreLabels: { typing: "Typing", gaming: "Gaming", build: "Build", wireless: "Wireless", software: "Software", value: "Value" },
+    cardFields: [
+      { label: "Layout", getValue: (product) => product.specs.layout ?? "Varies" },
+      { label: "Connection", getValue: (product) => product.specs.connection ?? "Varies" },
+    ],
+  },
+  {
+    id: "mice",
+    label: "Mice",
+    href: "/mice",
+    bestHref: "/best-mice",
+    compareHref: "/compare?category=mice",
+    description: "Gaming, productivity, and ergonomic mice across lightweight, wireless, and vertical designs.",
+    scoreLabels: { tracking: "Tracking", comfort: "Comfort", latency: "Latency", battery: "Battery", software: "Software", value: "Value" },
+    cardFields: [
+      { label: "Connection", getValue: (product) => product.specs.connection ?? "Varies" },
+      { label: "Sensor", getValue: (product) => product.specs.sensor ?? "Varies" },
+    ],
+  },
+  {
+    id: "webcams",
+    label: "Webcams",
+    href: "/webcams",
+    bestHref: "/best-webcams",
+    compareHref: "/compare?category=webcams",
+    description: "Webcams for remote work, streaming, presentations, and creator setups from 1080p to 4K.",
+    scoreLabels: { image: "Image", lowLight: "Low light", autofocus: "Autofocus", microphone: "Microphone", software: "Software", value: "Value" },
+    cardFields: [
+      { label: "Resolution", getValue: (product) => product.specs.resolution ?? "Varies" },
+      { label: "Autofocus", getValue: (product) => product.specs.autofocus ?? "Varies" },
+    ],
+  },
+
 ];
 
 export function getCategory(categoryId: string) {
