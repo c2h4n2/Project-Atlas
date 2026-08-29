@@ -2,12 +2,8 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { categories } from "@/data/categories";
 
-const categoryLinks = [
-  { label: "AI Glasses", href: "/ai-glasses" },
-  { label: "Headphones & Earbuds", href: "/headphones-earbuds" },
-  { label: "Smartwatches", href: "/smartwatches" },
-];
 
 export default function HeroActions() {
   const [categoriesOpen, setCategoriesOpen] = useState(false);
@@ -58,13 +54,14 @@ export default function HeroActions() {
         {categoriesOpen && (
           <div
             id="home-category-menu"
-            className="absolute left-0 top-full z-30 mt-3 w-72 overflow-hidden rounded-2xl border border-white/10 bg-slate-900 p-2 shadow-2xl shadow-black/40"
+            className="absolute left-0 top-full z-30 mt-3 max-h-[70vh] w-[min(34rem,calc(100vw-3rem))] overflow-y-auto rounded-2xl border border-white/10 bg-slate-900 p-2 shadow-2xl shadow-black/40"
           >
             <p className="px-3 pb-2 pt-2 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500">
               Product categories
             </p>
 
-            {categoryLinks.map((category) => (
+            <div className="grid gap-1 sm:grid-cols-2">
+              {categories.map((category) => (
               <Link
                 key={category.href}
                 href={category.href}
@@ -73,7 +70,15 @@ export default function HeroActions() {
               >
                 {category.label}
               </Link>
-            ))}
+              ))}
+            </div>
+            <Link
+              href="/all-products#browse-categories"
+              onClick={() => setCategoriesOpen(false)}
+              className="mt-2 block rounded-xl border border-white/10 px-4 py-3 text-center text-sm font-bold text-cyan-300 transition hover:bg-white/5"
+            >
+              View all categories
+            </Link>
           </div>
         )}
       </div>

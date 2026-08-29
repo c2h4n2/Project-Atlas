@@ -86,9 +86,7 @@ export default function Home() {
             </h1>
 
             <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
-               Project C2H4N3 combines independent editorial research, real customer
-               ratings, product comparisons, and practical buying advice to help you
-               make smarter tech purchasing decisions.
+               Project C2H4N3 brings {products.length} reviewed products across {categories.length} tech categories into one place, with separate editorial scores, customer signals, comparisons, and practical buying advice.
             </p>
 
             <HeroActions />
@@ -137,10 +135,10 @@ export default function Home() {
           <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
             <div>
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-400">
-                Current number-one pick
+                Highest Atlas score
               </p>
               <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
-                Our highest-rated product
+                One of the strongest products in the catalog
               </h2>
             </div>
 
@@ -233,7 +231,7 @@ export default function Home() {
                 </div>
 
                 <div className="mt-7">
-                  <p className="font-bold">Why it ranks first</p>
+                  <p className="font-bold">Why it scores so highly</p>
                   <ul className="mt-4 grid gap-3 text-sm leading-6 text-slate-300 sm:grid-cols-2">
                     {topProduct.pros.slice(0, 4).map((pro) => (
                       <li

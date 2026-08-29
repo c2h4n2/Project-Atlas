@@ -7,10 +7,10 @@ import { useState } from "react";
 
 const navigation = [
   { label: "Home", href: "/" },
-  { label: "All Products", href: "/all-products" },
+  { label: "Categories", href: "/all-products#browse-categories" },
   { label: "Top Picks", href: "/top-picks" },
+  { label: "Compare", href: "/compare" },
   { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
 ];
 
 export default function Header() {

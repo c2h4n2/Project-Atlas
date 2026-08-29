@@ -175,6 +175,18 @@ export default function ProductCard({
           {product.shortDescription}
         </p>
 
+        <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2 text-xs text-slate-400">
+          <span className="font-semibold text-slate-300">Customer signal</span>
+          {product.totalReviewCount > 0 ? (
+            <>
+              <span className="text-amber-300">★ {product.customerRating.toFixed(1)}</span>
+              <span>{product.totalReviewCount.toLocaleString()} reviews</span>
+            </>
+          ) : (
+            <span>Rating data pending — editorial score shown separately.</span>
+          )}
+        </div>
+
         <div className="mt-5 grid grid-cols-2 gap-3">
           {(category?.cardFields ?? []).map((field) => (
             <div
@@ -238,6 +250,12 @@ export default function ProductCard({
               Read full review
             </Link>
 
+            <RetailerButtons
+              links={product.affiliateLinks}
+              compact
+              maxLinks={2}
+            />
+
             <button
               type="button"
               onClick={handleCompareToggle}
@@ -261,11 +279,6 @@ export default function ProductCard({
               </Link>
             )}
 
-            <RetailerButtons
-              links={product.affiliateLinks}
-              compact
-              maxLinks={2}
-            />
           </div>
 
           <p

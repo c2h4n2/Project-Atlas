@@ -24,11 +24,10 @@ export default function AllProductsPage() {
           </h1>
 
           <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-300">
-            Search all Project C2H4N3 reviews, filter by category or brand, and sort products by C2H4N3 score,
-            customer feedback, review volume, or name.
+            Search the full Atlas catalog, jump into a category, filter by brand, and sort by editorial score, customer feedback, review volume, or name.
           </p>
 
-          <div className="mt-8">
+          <div id="browse-categories" className="mt-8 scroll-mt-28">
             <p className="text-xs font-bold uppercase tracking-[0.16em] text-slate-500">Browse categories</p>
             <div className="mt-3 flex flex-wrap gap-2">
               {categories.map((category) => (

@@ -46,11 +46,11 @@ export default function RetailerButtons({ links, compact = false, maxLinks }: Pr
         })}
       </div>
 
-      {!compact && (
-        <p className="mt-3 text-xs leading-5 text-slate-500">
-          Retailer availability and pricing can change. Project C2H4N3 may earn a commission from qualifying purchases at no additional cost to you.
-        </p>
-      )}
+      <p className={compact ? "mt-2 text-center text-[11px] leading-4 text-slate-500" : "mt-3 text-xs leading-5 text-slate-500"}>
+        {compact
+          ? "Affiliate links may earn Atlas a commission at no extra cost to you."
+          : "Retailer availability and pricing can change. Project C2H4N3 may earn a commission from qualifying purchases at no additional cost to you."}
+      </p>
     </div>
   );
 }
