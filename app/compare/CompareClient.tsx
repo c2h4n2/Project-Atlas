@@ -4,7 +4,8 @@ import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import ProductImage from "@/components/ProductImage";
-import { getCategory } from "@/data/categories";
+import RetailerButtons from "@/components/RetailerButtons";
+import { categories, getCategory } from "@/data/categories";
 import { products, type Product } from "@/data/products";
 
 const MAX_COMPARE_PRODUCTS = 3;
@@ -76,6 +77,13 @@ export default function CompareClient() {
     .map((slug) => categoryProducts.find((product) => product.slug === slug))
     .filter((product): product is Product => Boolean(product));
 
+  const editorialLeader =
+    selectedProducts.length > 0
+      ? [...selectedProducts].sort(
+          (a, b) => b.editorialScore - a.editorialScore,
+        )[0]
+      : null;
+
   function save(slugs: string[]) {
     setSelectedSlugs(slugs);
     window.localStorage.setItem(storageKey(category.id), JSON.stringify(slugs));
@@ -119,6 +127,27 @@ export default function CompareClient() {
             Compare up to three products from the same category across
             editorial scores, specifications, strengths, and drawbacks.
           </p>
+
+          <div className="mt-8">
+            <p className="text-xs font-bold uppercase tracking-[0.16em] text-slate-500">
+              Switch category
+            </p>
+            <div className="mt-3 flex gap-2 overflow-x-auto pb-2">
+              {categories.map((item) => (
+                <Link
+                  key={item.id}
+                  href={item.compareHref}
+                  className={`shrink-0 rounded-full border px-4 py-2 text-sm font-semibold transition ${
+                    item.id === category.id
+                      ? "border-cyan-400/60 bg-cyan-400/10 text-cyan-200"
+                      : "border-white/15 text-slate-300 hover:border-white/30 hover:bg-white/5"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
@@ -146,6 +175,26 @@ export default function CompareClient() {
           </div>
         ) : (
           <>
+            {editorialLeader && (
+              <div className="mb-8 rounded-3xl border border-cyan-400/20 bg-cyan-400/5 p-6">
+                <p className="text-xs font-black uppercase tracking-[0.18em] text-cyan-300">
+                  Editorial score leader
+                </p>
+                <div className="mt-2 flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
+                  <div>
+                    <h2 className="text-2xl font-bold">{editorialLeader.name}</h2>
+                    <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-300">
+                      Highest Atlas editorial score among the products currently selected. Use the tables below to check whether its strengths match your priorities.
+                    </p>
+                  </div>
+                  <p className="shrink-0 text-3xl font-black">
+                    {editorialLeader.editorialScore.toFixed(1)}
+                    <span className="text-sm text-slate-400"> / 10</span>
+                  </p>
+                </div>
+              </div>
+            )}
+
             <div
               className={`grid gap-6 ${
                 selectedProducts.length === 3
@@ -185,6 +234,14 @@ export default function CompareClient() {
                       <strong>{product.editorialScore.toFixed(1)}/10</strong>
                     </div>
 
+                    <div className="mt-5">
+                      <RetailerButtons
+                        links={product.affiliateLinks}
+                        compact
+                        maxLinks={1}
+                      />
+                    </div>
+
                     <div className="mt-5 flex flex-col gap-3">
                       <Link
                         href={`/products/${product.slug}`}
@@ -212,11 +269,15 @@ export default function CompareClient() {
               ))}
             </div>
 
-            <section className="mt-16 overflow-x-auto rounded-3xl border border-white/10">
+            <section className="mt-16">
+              <p className="mb-3 text-xs text-slate-500 sm:hidden">
+                Swipe horizontally to see every compared product.
+              </p>
+              <div className="overflow-x-auto rounded-3xl border border-white/10">
               <table className="w-full min-w-[760px]">
                 <thead>
                   <tr className="bg-slate-900">
-                    <th className="p-5 text-left">Score</th>
+                    <th className="sticky left-0 z-10 bg-slate-900 p-5 text-left">Score</th>
 
                     {selectedProducts.map((product) => (
                       <th key={product.id} className="p-5 text-left">
@@ -229,7 +290,7 @@ export default function CompareClient() {
                 <tbody>
                   {scoreKeys.map((key) => (
                     <tr key={key} className="border-t border-white/10">
-                      <td className="p-5 font-semibold">
+                      <td className="sticky left-0 bg-slate-950 p-5 font-semibold">
                         {category.scoreLabels[key] ?? key}
                       </td>
 
@@ -242,13 +303,18 @@ export default function CompareClient() {
                   ))}
                 </tbody>
               </table>
+              </div>
             </section>
 
-            <section className="mt-16 overflow-x-auto rounded-3xl border border-white/10">
+            <section className="mt-16">
+              <p className="mb-3 text-xs text-slate-500 sm:hidden">
+                Swipe horizontally to see every specification.
+              </p>
+              <div className="overflow-x-auto rounded-3xl border border-white/10">
               <table className="w-full min-w-[800px]">
                 <thead>
                   <tr className="bg-slate-900">
-                    <th className="p-5 text-left">Specification</th>
+                    <th className="sticky left-0 z-10 bg-slate-900 p-5 text-left">Specification</th>
 
                     {selectedProducts.map((product) => (
                       <th key={product.id} className="p-5 text-left">
@@ -261,7 +327,7 @@ export default function CompareClient() {
                 <tbody>
                   {specKeys.map((key) => (
                     <tr key={key} className="border-t border-white/10">
-                      <td className="p-5 font-semibold capitalize">
+                      <td className="sticky left-0 bg-slate-950 p-5 font-semibold capitalize">
                         {key.replace(/([A-Z])/g, " $1")}
                       </td>
 
@@ -274,6 +340,7 @@ export default function CompareClient() {
                   ))}
                 </tbody>
               </table>
+              </div>
             </section>
           </>
         )}

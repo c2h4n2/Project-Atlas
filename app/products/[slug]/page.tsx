@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import CustomerRating from "@/components/CustomerRating";
 import ProductCard from "@/components/ProductCard";
 import ProductImage from "@/components/ProductImage";
 import ProductVerdict from "@/components/ProductVerdict";
@@ -44,7 +45,7 @@ export async function generateMetadata({
   if (!product) return {};
 
   const productUrl = absolute(`/products/${product.slug}`);
-  const imageUrl = absolute(product.image.src);
+  const imageUrl = product.image.src ? absolute(product.image.src) : null;
 
   return {
     title: `${product.name} Review`,
@@ -56,7 +57,15 @@ export async function generateMetadata({
       description: product.shortDescription,
       url: productUrl,
       siteName: "Project C2H4N3",
-      images: [{ url: imageUrl, alt: product.image.alt }],
+      ...(imageUrl
+        ? { images: [{ url: imageUrl, alt: product.image.alt }] }
+        : {}),
+    },
+    twitter: {
+      card: imageUrl ? "summary_large_image" : "summary",
+      title: `${product.name} Review`,
+      description: product.shortDescription,
+      ...(imageUrl ? { images: [imageUrl] } : {}),
     },
   };
 }
@@ -124,20 +133,31 @@ export default async function ProductPage({
                 {product.shortDescription}
               </p>
 
-              <div className="mt-8 grid gap-3 sm:grid-cols-3">
+              <div className="mt-8 grid gap-3 sm:grid-cols-2">
                 <div className="rounded-2xl border border-cyan-400/20 bg-cyan-400/5 p-4">
                   <p className="text-xs uppercase tracking-widest text-cyan-300">
-                    C2H4N3 score
+                    Atlas editorial score
                   </p>
 
                   <p className="mt-2 text-4xl font-black">
                     {product.editorialScore.toFixed(1)}
+                    <span className="text-base text-slate-400"> / 10</span>
                   </p>
                 </div>
 
                 <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
                   <p className="text-xs uppercase tracking-widest text-slate-400">
-                    C2H4N3 verdict
+                    Customer signal
+                  </p>
+
+                  <div className="mt-2">
+                    <CustomerRating product={product} />
+                  </div>
+                </div>
+
+                <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
+                  <p className="text-xs uppercase tracking-widest text-slate-400">
+                    Atlas verdict
                   </p>
 
                   <div className="mt-2">
@@ -177,6 +197,59 @@ export default async function ProductPage({
               <div className="mt-6">
                 <RetailerButtons links={product.affiliateLinks} />
               </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="mt-12 rounded-3xl border border-white/10 bg-white/5 p-7 sm:p-9">
+          <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-400">
+                Decision snapshot
+              </p>
+              <h2 className="mt-3 text-3xl font-bold">Who should buy it?</h2>
+            </div>
+            {category && (
+              <Link
+                href={category.compareHref}
+                className="text-sm font-semibold text-cyan-400 transition hover:text-cyan-300"
+              >
+                Compare against alternatives →
+              </Link>
+            )}
+          </div>
+
+          <div className="mt-7 grid gap-5 lg:grid-cols-3">
+            <div className="rounded-2xl border border-white/10 bg-slate-900 p-5">
+              <p className="text-xs font-bold uppercase tracking-[0.16em] text-slate-400">
+                Best fit
+              </p>
+              <ul className="mt-4 space-y-3 text-sm leading-6 text-slate-300">
+                {product.bestFor.slice(0, 3).map((item) => (
+                  <li key={item} className="flex gap-2">
+                    <span className="text-cyan-400">✓</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="rounded-2xl border border-emerald-400/20 bg-emerald-400/5 p-5">
+              <p className="text-xs font-bold uppercase tracking-[0.16em] text-emerald-300">
+                Strongest reason to buy
+              </p>
+              <p className="mt-4 text-sm leading-6 text-slate-200">
+                {product.pros[0] ?? product.editorVerdict}
+              </p>
+            </div>
+
+            <div className="rounded-2xl border border-rose-400/20 bg-rose-400/5 p-5">
+              <p className="text-xs font-bold uppercase tracking-[0.16em] text-rose-300">
+                Biggest trade-off
+              </p>
+              <p className="mt-4 text-sm leading-6 text-slate-200">
+                {product.cons[0] ?? "No major drawback is listed in the current review."}
+              </p>
             </div>
           </div>
         </section>

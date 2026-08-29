@@ -11,7 +11,7 @@ const siteDescription =
 
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
-  "http://localhost:3000";
+  "https://project-c2h4n3.vercel.app";
 
 const adsensePublisherId = "ca-pub-2606491312719237";
 
@@ -69,6 +69,15 @@ export const metadata: Metadata = {
     "smartwatches",
     "laptops",
     "monitors",
+    "tablets",
+    "TVs",
+    "cameras",
+    "SSDs",
+    "Wi-Fi routers",
+    "printers",
+    "keyboards",
+    "gaming mice",
+    "webcams",
     "consumer technology reviews",
     "Project C2H4N3",
   ],
