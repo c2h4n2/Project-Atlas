@@ -38,3 +38,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 ## Category expansion: tablets, TVs, and cameras
 
 Project Atlas now includes dedicated tablet, TV, and camera catalogs with category-specific scoring, rankings, and comparison support. The central category configuration also covers laptops and monitors, so comparison navigation works consistently across all active categories. The homepage now includes a category browser, Top Picks covers every active category, and the primary navigation includes a direct Top Picks link.
+
+## Catalog expansion
+
+Added SSDs, Wi-Fi routers, and printers as full browse/ranking/comparison categories, plus category shortcuts on the All Products page.

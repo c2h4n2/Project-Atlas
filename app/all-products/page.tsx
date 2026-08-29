@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import ProductExplorer from "@/components/ProductExplorer";
 import { products } from "@/data/products";
+import { categories } from "@/data/categories";
 
 export const metadata: Metadata = {
   title: "All Products",
@@ -25,6 +27,17 @@ export default function AllProductsPage() {
             Search all Project C2H4N3 reviews, filter by category or brand, and sort products by C2H4N3 score,
             customer feedback, review volume, or name.
           </p>
+
+          <div className="mt-8">
+            <p className="text-xs font-bold uppercase tracking-[0.16em] text-slate-500">Browse categories</p>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {categories.map((category) => (
+                <Link key={category.id} href={category.href} className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-slate-300 transition hover:border-cyan-400/40 hover:text-cyan-300">
+                  {category.label}
+                </Link>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 

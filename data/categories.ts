@@ -119,6 +119,46 @@ export const categories: CategoryConfig[] = [
       { label: "Mount", getValue: (product) => product.specs.mount ?? "Varies" },
     ],
   },
+  {
+    id: "ssds",
+    label: "SSDs",
+    href: "/ssds",
+    bestHref: "/best-ssds",
+    compareHref: "/compare?category=ssds",
+    description: "Internal and portable solid-state storage for gaming, creative work, upgrades, and backups.",
+    scoreLabels: { performance: "Performance", sustained: "Sustained speed", thermals: "Thermals", efficiency: "Efficiency", software: "Software", value: "Value" },
+    cardFields: [
+      { label: "Interface", getValue: (product) => product.specs.interface ?? "Varies" },
+      { label: "Capacity", getValue: (product) => product.specs.capacity ?? "Varies" },
+    ],
+  },
+  {
+    id: "routers",
+    label: "Wi-Fi Routers",
+    href: "/routers",
+    bestHref: "/best-routers",
+    compareHref: "/compare?category=routers",
+    description: "Routers and mesh systems for faster wireless networking, broader coverage, and multi-gig homes.",
+    scoreLabels: { coverage: "Coverage", speed: "Speed", latency: "Latency", ports: "Ports", software: "Software", security: "Security", value: "Value" },
+    cardFields: [
+      { label: "Wi-Fi", getValue: (product) => product.specs.wifi ?? "Varies" },
+      { label: "Ethernet", getValue: (product) => product.specs.ethernet ?? "Varies" },
+    ],
+  },
+  {
+    id: "printers",
+    label: "Printers",
+    href: "/printers",
+    bestHref: "/best-printers",
+    compareHref: "/compare?category=printers",
+    description: "Laser, ink-tank, office, and photo printers for documents, schoolwork, home offices, and photos.",
+    scoreLabels: { printQuality: "Print quality", speed: "Speed", runningCost: "Running cost", features: "Features", connectivity: "Connectivity", reliability: "Reliability", value: "Value" },
+    cardFields: [
+      { label: "Technology", getValue: (product) => product.specs.technology ?? "Varies" },
+      { label: "Functions", getValue: (product) => product.specs.functions ?? "Varies" },
+    ],
+  },
+
 ];
 
 export function getCategory(categoryId: string) {
