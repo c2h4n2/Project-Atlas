@@ -48,6 +48,8 @@ const structuredData = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
+  manifest: "/manifest.webmanifest",
+  applicationName: "Project C2H4N3",
 
   title: {
     default: `${siteName} | Smart Tech Product Search`,
@@ -56,7 +58,6 @@ export const metadata: Metadata = {
 
   description: siteDescription,
 
-  applicationName: siteName,
 
   keywords: [
     "smart tech products",

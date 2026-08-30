@@ -90,6 +90,11 @@ export default function Home() {
             </p>
 
             <HeroActions />
+            <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs font-semibold text-slate-500">
+              <Link href="/editorial-policy" className="transition hover:text-cyan-300">Independent scoring methodology</Link>
+              <Link href="/affiliate-disclosure" className="transition hover:text-cyan-300">Clear affiliate disclosure</Link>
+              <span>{products.length} reviewed products</span>
+            </div>
           </div>
 
           <div className="rounded-[2rem] border border-white/10 bg-white/5 p-7 shadow-2xl shadow-black/20 sm:p-8">

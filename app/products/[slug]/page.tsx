@@ -201,6 +201,20 @@ export default async function ProductPage({
           </div>
         </section>
 
+        <section className="mt-8 rounded-3xl border border-cyan-400/20 bg-cyan-400/5 p-5 sm:p-6">
+          <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+            <div className="max-w-2xl">
+              <p className="text-sm font-bold text-white">Check retailer availability</p>
+              <p className="mt-1 text-xs leading-5 text-slate-400">
+                Retailer links may be affiliate links. Atlas editorial scores are independent of retailer availability and affiliate relationships.
+              </p>
+            </div>
+            <div className="w-full lg:max-w-md">
+              <RetailerButtons links={product.affiliateLinks} compact maxLinks={2} />
+            </div>
+          </div>
+        </section>
+
         <section className="mt-12 rounded-3xl border border-white/10 bg-white/5 p-7 sm:p-9">
           <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
             <div>
