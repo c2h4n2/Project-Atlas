@@ -107,6 +107,7 @@ export default async function ProductPage({
             <div className="border-b border-white/10 bg-slate-800/50 p-5 sm:p-8 lg:border-b-0 lg:border-r">
               <ProductImage
                 src={product.image.src}
+                slug={product.slug}
                 alt={product.image.alt}
                 priority
                 aspectRatio="square"

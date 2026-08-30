@@ -159,6 +159,7 @@ export default function AIGlassesPage() {
               <div className="relative border-b border-white/10 p-4 sm:p-6 lg:border-b-0 lg:border-r">
                 <ProductImage
                   src={featuredProduct.image.src}
+                  slug={featuredProduct.slug}
                   alt={featuredProduct.image.alt}
                   priority
                   aspectRatio="square"

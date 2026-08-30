@@ -132,6 +132,7 @@ export default function ProductCard({
         >
           <ProductImage
             src={product.image.src}
+            slug={product.slug}
             alt={product.image.alt}
             aspectRatio="card"
             className="w-full"

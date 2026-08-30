@@ -1,10 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useMemo, useState } from "react";
+import { hasLocalProductImage } from "@/data/local-product-images";
 
 type ProductImageProps = {
   src?: string;
+  slug?: string;
   alt: string;
   priority?: boolean;
   sizes?: string;
@@ -21,6 +23,7 @@ const aspectRatioClasses = {
 
 export default function ProductImage({
   src,
+  slug,
   alt,
   priority = false,
   sizes = "(max-width: 768px) 100vw, 400px",
@@ -28,10 +31,28 @@ export default function ProductImage({
   imageClassName = "",
   aspectRatio = "square",
 }: ProductImageProps) {
-  const [imageFailed, setImageFailed] = useState(false);
+  const candidates = useMemo(() => {
+    const localSrc = hasLocalProductImage(slug)
+      ? `/products/${slug}.webp`
+      : "";
+    const explicitSrc = src?.trim() ?? "";
 
-  const normalizedSrc = src?.trim() ?? "";
-  const hasImage = normalizedSrc.length > 0 && !imageFailed;
+    return [...new Set([localSrc, explicitSrc].filter(Boolean))];
+  }, [slug, src]);
+
+  const candidateKey = candidates.join("|");
+  const [failureState, setFailureState] = useState({
+    candidateKey,
+    index: 0,
+  });
+
+  const candidateIndex =
+    failureState.candidateKey === candidateKey
+      ? failureState.index
+      : 0;
+
+  const activeSrc = candidates[candidateIndex] ?? "";
+  const hasImage = activeSrc.length > 0;
 
   return (
     <div
@@ -41,12 +62,18 @@ export default function ProductImage({
     >
       {hasImage ? (
         <Image
-          src={normalizedSrc}
+          key={activeSrc}
+          src={activeSrc}
           alt={alt}
           fill
           sizes={sizes}
           priority={priority}
-          onError={() => setImageFailed(true)}
+          onError={() =>
+            setFailureState({
+              candidateKey,
+              index: candidateIndex + 1,
+            })
+          }
           className={`object-contain p-5 transition duration-300 group-hover:scale-105 ${imageClassName}`}
         />
       ) : (

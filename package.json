@@ -18,7 +18,11 @@
     "collect-ratings:web": "tsx scripts/collect-customer-ratings-web.ts --only-unrated",
     "collect-ratings:web:write": "tsx scripts/collect-customer-ratings-web.ts --only-unrated --write",
     "collect-ratings:web:test": "tsx scripts/collect-customer-ratings-web.ts --only-unrated --limit=3",
-    "product-health": "tsx scripts/audit-product-health.ts"
+    "product-health": "tsx scripts/audit-product-health.ts",
+    "images:manifest": "tsx scripts/product-images/generate-upload-manifest.ts",
+    "images:import": "tsx scripts/product-images/import-local-images.ts",
+    "images:audit": "tsx scripts/product-images/audit-product-images.ts",
+    "images:index": "tsx scripts/product-images/index-local-images.ts"
   },
   "dependencies": {
     "next": "16.2.12",

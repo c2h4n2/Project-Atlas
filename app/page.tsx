@@ -160,6 +160,7 @@ export default function Home() {
               <div className="relative border-b border-white/10 bg-slate-900 p-6 sm:p-8 lg:border-b-0 lg:border-r">
                 <ProductImage
                   src={topProduct.image.src}
+                  slug={topProduct.slug}
                   alt={topProduct.image.alt}
                   priority
                   aspectRatio="square"

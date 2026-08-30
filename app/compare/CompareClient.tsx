@@ -211,6 +211,7 @@ export default function CompareClient() {
                 >
                   <ProductImage
                     src={product.image.src}
+                    slug={product.slug}
                     alt={product.image.alt}
                     aspectRatio="card"
                     className="rounded-none border-0 border-b border-white/10"
