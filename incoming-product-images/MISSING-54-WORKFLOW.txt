@@ -1,0 +1,13 @@
+Atlas missing-image batch workflow
+==================================
+
+1. Run: npm run images:prepare-missing
+2. Open incoming-product-images/.
+3. Category folders will contain README files listing the exact filenames needed.
+4. Add approved/manufacturer-authorized product images using those exact filenames.
+5. Run: npm run images:import
+6. Run: npm run images:audit
+7. Run: npm run build
+
+The importer now scans category subfolders recursively.
+Do not use random search-result images without checking reuse rights.

@@ -22,7 +22,8 @@
     "images:manifest": "tsx scripts/product-images/generate-upload-manifest.ts",
     "images:import": "tsx scripts/product-images/import-local-images.ts",
     "images:audit": "tsx scripts/product-images/audit-product-images.ts",
-    "images:index": "tsx scripts/product-images/index-local-images.ts"
+    "images:index": "tsx scripts/product-images/index-local-images.ts",
+    "images:prepare-missing": "tsx scripts/product-images/prepare-missing-batch.ts"
   },
   "dependencies": {
     "next": "16.2.12",
