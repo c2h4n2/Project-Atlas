@@ -133,6 +133,7 @@ export const localProductImageSlugs = new Set<string>([
   "oneplus-pad-2",
   "oneplus-watch-3",
   "oneplus-watch-3-43mm",
+  "pulsar-x2v3",
   "ray-ban-meta-headliner-gen-2",
   "ray-ban-meta-skyler-gen-1",
   "ray-ban-meta-skyler-gen-2",
