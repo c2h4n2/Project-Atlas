@@ -55,7 +55,7 @@ export function applyCustomerRatingsInPlace(products: Product[]) {
 
     // Preserve existing catalog rating data when no exact-match synced
     // source has been added yet. Do not erase valid historical ratings.
-    if (originalCustomerRating > 0 && originalReviewCount > 0) {
+    if (originalCustomerRating > 0) {
       product.customerRating = originalCustomerRating;
       product.totalReviewCount = originalReviewCount;
       continue;

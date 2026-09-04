@@ -137,18 +137,19 @@ export default async function ProductPage({
               <div className="mt-8 grid gap-3 sm:grid-cols-2">
                 <div className="rounded-2xl border border-cyan-400/20 bg-cyan-400/5 p-4">
                   <p className="text-xs uppercase tracking-widest text-cyan-300">
-                    Atlas editorial score
+                    C2H4N3 score
                   </p>
 
-                  <p className="mt-2 text-4xl font-black">
-                    {product.editorialScore.toFixed(1)}
-                    <span className="text-base text-slate-400"> / 10</span>
+                  <p className="mt-2 flex items-baseline gap-2 text-4xl font-black">
+                    <span className="text-amber-400">★</span>
+                    <span>{product.editorialScore.toFixed(1)}</span>
+                    <span className="text-base font-bold text-slate-400">/ 10</span>
                   </p>
                 </div>
 
                 <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                  <p className="text-xs uppercase tracking-widest text-slate-400">
-                    Customer signal
+                  <p className="text-xs uppercase tracking-widest text-cyan-300">
+                    Overall score
                   </p>
 
                   <div className="mt-2">
@@ -156,24 +157,14 @@ export default async function ProductPage({
                   </div>
                 </div>
 
-                <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                  <p className="text-xs uppercase tracking-widest text-slate-400">
-                    Atlas verdict
+                <div className="rounded-2xl border border-white/10 bg-white/5 p-4 sm:col-span-2">
+                  <p className="text-xs uppercase tracking-widest text-cyan-300">
+                    C2H4N3 verdict
                   </p>
 
                   <div className="mt-2">
                     <ProductVerdict product={product} />
                   </div>
-                </div>
-
-                <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                  <p className="text-xs uppercase tracking-widest text-slate-400">
-                    Type
-                  </p>
-
-                  <p className="mt-2 text-lg font-black">
-                    {product.productType ?? product.category}
-                  </p>
                 </div>
               </div>
 
@@ -198,20 +189,6 @@ export default async function ProductPage({
               <div className="mt-6">
                 <RetailerButtons links={product.affiliateLinks} />
               </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="mt-8 rounded-3xl border border-cyan-400/20 bg-cyan-400/5 p-5 sm:p-6">
-          <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
-            <div className="max-w-2xl">
-              <p className="text-sm font-bold text-white">Check retailer availability</p>
-              <p className="mt-1 text-xs leading-5 text-slate-400">
-                Retailer links may be affiliate links. Atlas editorial scores are independent of retailer availability and affiliate relationships.
-              </p>
-            </div>
-            <div className="w-full lg:max-w-md">
-              <RetailerButtons links={product.affiliateLinks} compact maxLinks={2} />
             </div>
           </div>
         </section>

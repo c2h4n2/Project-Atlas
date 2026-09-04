@@ -15,7 +15,7 @@ const trustPoints = [
   {
     title: "Independent editorial scores",
     description:
-      "Atlas scores are shown separately from customer ratings and retailer data.",
+      "C2H4N3 scores are shown separately from customer ratings and retailer data.",
   },
   {
     title: "Customer feedback considered",
@@ -35,7 +35,7 @@ const trustPoints = [
   {
     title: "No sponsored rankings",
     description:
-      "Products do not receive a higher Atlas score because of advertising or retailer relationships.",
+      "Products do not receive a higher C2H4N3 score because of advertising or retailer relationships.",
   },
   {
     title: "Built for practical decisions",
@@ -58,7 +58,7 @@ const evaluationCriteria = [
   {
     title: "Customer experience",
     description:
-      "Customer ratings, review volume, recurring praise, and common complaints.",
+      "Overall scores, review volume, recurring praise, and common complaints.",
   },
   {
     title: "Battery and value",
@@ -140,7 +140,7 @@ export default function Home() {
           <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
             <div>
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-400">
-                Highest Atlas score
+                Highest C2H4N3 score
               </p>
               <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
                 One of the strongest products in the catalog
@@ -203,10 +203,12 @@ export default function Home() {
                 <div className="mt-7 grid gap-3 sm:grid-cols-3">
                   <div className="rounded-2xl border border-cyan-400/20 bg-cyan-400/5 p-4">
                     <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-cyan-300">
-                      Atlas score
+                      C2H4N3 score
                     </p>
                     <div className="mt-2 flex items-end gap-1">
                       <span className="text-4xl font-black">
+                      <span className="mr-2 text-amber-400">★</span>
+                      
                         {topProduct.editorialScore.toFixed(1)}
                       </span>
                       <span className="pb-1 text-xs text-slate-400">/10</span>
@@ -214,8 +216,8 @@ export default function Home() {
                   </div>
 
                   <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-400">
-                      Customer rating
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-cyan-300">
+                      Overall score
                     </p>
                     <p className="mt-2 text-3xl font-black">
                       {topProduct.totalReviewCount > 0
@@ -225,7 +227,7 @@ export default function Home() {
                   </div>
 
                   <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-400">
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-cyan-300">
                       Reviews
                     </p>
                     <p className="mt-2 text-3xl font-black">

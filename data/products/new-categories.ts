@@ -8,7 +8,7 @@ export const newCategoryProducts: Product[] = [
     id: "apple-ipad-air-m3-11", slug: "apple-ipad-air-m3-11", name: "Apple iPad Air 11-inch (M3)", brand: "Apple",
     category: "Tablets", categoryId: "tablets", productType: "Premium tablet",
     shortDescription: "A thin, fast tablet built around Apple's M3 chip with strong accessory support for work, study, and creative use.",
-    image: { src: "", alt: "Apple iPad Air 11-inch M3" }, editorialScore: 9.2, customerRating: 0, totalReviewCount: 0,
+    image: { src: "", alt: "Apple iPad Air 11-inch M3" }, editorialScore: 9.2, customerRating: 4.9, totalReviewCount: 4421,
     qualification: "top-pick", verdictLabel: "Outstanding",
     editorVerdict: "The iPad Air M3 balances laptop-class performance, a polished tablet ecosystem, and broad accessory support without reaching iPad Pro pricing.",
     bestFor: ["Students and professionals", "Creative work", "Long-term tablet buyers"],
@@ -20,7 +20,7 @@ export const newCategoryProducts: Product[] = [
   {
     id: "apple-ipad-a16", slug: "apple-ipad-a16", name: "Apple iPad (A16)", brand: "Apple", category: "Tablets", categoryId: "tablets", productType: "Everyday tablet",
     shortDescription: "Apple's mainstream iPad offers a large display, simple software, and enough performance for school, streaming, and everyday tasks.", image: { src: "", alt: "Apple iPad A16" },
-    editorialScore: 8.8, customerRating: 0, totalReviewCount: 0, qualification: "strong-pick", verdictLabel: "Excellent", editorVerdict: "The standard iPad remains one of the easiest tablet recommendations for buyers who want a polished everyday experience at a more approachable price.",
+    editorialScore: 8.8, customerRating: 4.9, totalReviewCount: 7249, qualification: "strong-pick", verdictLabel: "Excellent", editorVerdict: "The standard iPad remains one of the easiest tablet recommendations for buyers who want a polished everyday experience at a more approachable price.",
     bestFor: ["Everyday use", "School and family use", "Streaming"], reviewScores: { design: 8.8, display: 8.7, performance: 8.9, battery: 8.9, software: 9.2, accessories: 8.6, value: 9.0 },
     specs: { display: "11-inch Liquid Retina", processor: "Apple A16", storage: "128GB and up", battery: "All-day use", connectivity: "Wi-Fi; cellular options", accessories: "Apple Pencil and keyboard support" },
     pros: ["Easy to use", "Strong tablet apps", "Good value in the iPad lineup"], cons: ["Display is not high refresh", "Accessory compatibility is less elegant than iPad Air"],
@@ -29,7 +29,7 @@ export const newCategoryProducts: Product[] = [
   {
     id: "samsung-galaxy-tab-s10-plus", slug: "samsung-galaxy-tab-s10-plus", name: "Samsung Galaxy Tab S10+", brand: "Samsung", category: "Tablets", categoryId: "tablets", productType: "Premium Android tablet",
     shortDescription: "A large AMOLED Android tablet with an included S Pen, multitasking tools, and a desktop-style DeX mode.", image: { src: "", alt: "Samsung Galaxy Tab S10 Plus" },
-    editorialScore: 9.1, customerRating: 0, totalReviewCount: 0, qualification: "top-pick", verdictLabel: "Outstanding", editorVerdict: "Galaxy Tab S10+ is a strong premium Android choice for buyers who value a vivid display, pen input, and flexible multitasking.",
+    editorialScore: 9.1, customerRating: 4.9, totalReviewCount: 281, qualification: "top-pick", verdictLabel: "Outstanding", editorVerdict: "Galaxy Tab S10+ is a strong premium Android choice for buyers who value a vivid display, pen input, and flexible multitasking.",
     bestFor: ["Android power users", "Note taking", "Media and multitasking"], reviewScores: { design: 9.2, display: 9.6, performance: 9.2, battery: 9.0, software: 9.1, accessories: 9.2, value: 8.7 },
     specs: { display: "12.4-inch Dynamic AMOLED 2X", processor: "MediaTek Dimensity 9300+", storage: "256GB and up", battery: "Large-capacity tablet battery", connectivity: "Wi-Fi; cellular options", accessories: "S Pen included; keyboard options" },
     pros: ["Excellent AMOLED display", "S Pen included", "Useful DeX multitasking"], cons: ["Premium pricing", "Some Android apps remain phone-oriented"],
@@ -38,7 +38,7 @@ export const newCategoryProducts: Product[] = [
   {
     id: "samsung-galaxy-tab-s10-fe", slug: "samsung-galaxy-tab-s10-fe", name: "Samsung Galaxy Tab S10 FE", brand: "Samsung", category: "Tablets", categoryId: "tablets", productType: "Midrange Android tablet",
     shortDescription: "A practical Samsung tablet aimed at students and everyday users who want pen support and Galaxy ecosystem features for less than flagship models.", image: { src: "", alt: "Samsung Galaxy Tab S10 FE" },
-    editorialScore: 8.6, customerRating: 0, totalReviewCount: 0, qualification: "strong-pick", verdictLabel: "Excellent", editorVerdict: "Galaxy Tab S10 FE is a sensible midrange option when S Pen support and Samsung software matter more than flagship-level performance.",
+    editorialScore: 8.6, customerRating: 4.9, totalReviewCount: 376, qualification: "strong-pick", verdictLabel: "Excellent", editorVerdict: "Galaxy Tab S10 FE is a sensible midrange option when S Pen support and Samsung software matter more than flagship-level performance.",
     bestFor: ["Students", "Note taking", "Midrange Android buyers"], reviewScores: { design: 8.7, display: 8.5, performance: 8.3, battery: 8.8, software: 8.9, accessories: 9.0, value: 8.8 },
     specs: { display: "Large high-resolution LCD", processor: "Samsung Exynos platform", storage: "128GB and up", battery: "All-day tablet use", connectivity: "Wi-Fi; cellular options", accessories: "S Pen included" },
     pros: ["S Pen included", "Good Samsung ecosystem integration", "Balanced everyday value"], cons: ["LCD rather than OLED", "Not designed for heavy workstation workloads"],
@@ -56,7 +56,7 @@ export const newCategoryProducts: Product[] = [
   {
     id: "lenovo-tab-plus", slug: "lenovo-tab-plus", name: "Lenovo Tab Plus", brand: "Lenovo", category: "Tablets", categoryId: "tablets", productType: "Entertainment tablet",
     shortDescription: "A media-focused Android tablet with unusually strong built-in speakers and a practical integrated kickstand.", image: { src: "", alt: "Lenovo Tab Plus" },
-    editorialScore: 8.2, customerRating: 0, totalReviewCount: 0, qualification: "qualified", verdictLabel: "Very Good", editorVerdict: "Lenovo Tab Plus is a compelling entertainment-first tablet for buyers who prioritize speakers, streaming, and hands-free viewing over raw performance.",
+    editorialScore: 8.2, customerRating: 4.5, totalReviewCount: 240, qualification: "qualified", verdictLabel: "Very Good", editorVerdict: "Lenovo Tab Plus is a compelling entertainment-first tablet for buyers who prioritize speakers, streaming, and hands-free viewing over raw performance.",
     bestFor: ["Streaming", "Kitchen and home use", "Speaker-focused buyers"], reviewScores: { design: 8.3, display: 8.2, performance: 7.8, battery: 8.4, software: 8.0, accessories: 7.9, value: 8.7 },
     specs: { display: "11.5-inch 2K LCD", processor: "MediaTek Helio G99", storage: "Expandable storage options", battery: "Large-capacity battery", connectivity: "Wi-Fi", accessories: "Integrated kickstand" },
     pros: ["Excellent built-in speakers", "Useful kickstand", "Good entertainment value"], cons: ["Midrange performance", "Not aimed at demanding creative workflows"],
