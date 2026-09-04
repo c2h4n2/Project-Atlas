@@ -229,7 +229,7 @@ export const monitors: Product[] = [
     id: "lg-ultragear-45gx950a", slug: "lg-ultragear-45gx950a", name: "LG UltraGear 45GX950A", brand: "LG",
     category: "Monitors", categoryId: "monitors", productType: "Ultrawide OLED gaming monitor",
     shortDescription: "LG UltraGear 45GX950A is built for immersive ultrawide oled gaming, pairing 45-inch curved OLED technology with 5K2K ultrawide resolution and High refresh refresh capability.",
-    image: { src: "/products/lg-ultragear-45gx950a-verified.jpg", alt: "LG UltraGear 45GX950A" },
+    image: { src: "/products/lg-ultragear-45gx950a-final.jpg", alt: "LG UltraGear 45GX950A" },
     editorialScore: 9.3, customerRating: 4.8, totalReviewCount: 477,
     qualification: "top-pick", verdictLabel: "Outstanding",
     editorVerdict: "LG UltraGear 45GX950A is a strong monitor choice for immersive ultrawide oled gaming. Buyers should confirm GPU compatibility, desk space, connectivity, and current pricing before purchase.",
