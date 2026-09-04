@@ -47,7 +47,7 @@ export const newCategoryProducts: Product[] = [
   {
     id: "oneplus-pad-2", slug: "oneplus-pad-2", name: "OnePlus Pad 2", brand: "OnePlus", category: "Tablets", categoryId: "tablets", productType: "Performance Android tablet",
     shortDescription: "A fast Android tablet with a high-refresh display and strong hardware value for entertainment, multitasking, and light productivity.", image: { src: "", alt: "OnePlus Pad 2" },
-    editorialScore: 8.7, customerRating: 0, totalReviewCount: 0, qualification: "strong-pick", verdictLabel: "Excellent", editorVerdict: "OnePlus Pad 2 stands out for performance and display smoothness at a price that often undercuts premium Apple and Samsung alternatives.",
+    editorialScore: 8.7, customerRating: 4.6, totalReviewCount: 2032, qualification: "strong-pick", verdictLabel: "Excellent", editorVerdict: "OnePlus Pad 2 stands out for performance and display smoothness at a price that often undercuts premium Apple and Samsung alternatives.",
     bestFor: ["Performance value", "Media consumption", "Android users"], reviewScores: { design: 8.8, display: 9.0, performance: 9.2, battery: 8.8, software: 8.5, accessories: 8.3, value: 9.1 },
     specs: { display: "12.1-inch high-refresh LCD", processor: "Snapdragon 8 Gen 3", storage: "256GB", battery: "Large-capacity battery with fast charging", connectivity: "Wi-Fi", accessories: "Keyboard and stylus options" },
     pros: ["Very strong performance", "Smooth display", "Competitive value"], cons: ["Tablet app ecosystem trails iPadOS", "Accessories may be sold separately"],
@@ -66,7 +66,7 @@ export const newCategoryProducts: Product[] = [
   {
     id: "lg-c4-oled-55", slug: "lg-c4-oled-55", name: "LG C4 OLED 55-inch", brand: "LG", category: "TVs", categoryId: "tvs", productType: "OLED TV",
     shortDescription: "A versatile OLED television with excellent contrast, strong gaming support, and broad HDR compatibility.", image: { src: "", alt: "LG C4 OLED 55-inch TV" },
-    editorialScore: 9.4, customerRating: 0, totalReviewCount: 0, qualification: "top-pick", verdictLabel: "Outstanding", editorVerdict: "LG C4 remains an excellent all-round OLED for movies and gaming thanks to deep contrast, four HDMI 2.1 inputs, and a mature smart-TV platform.",
+    editorialScore: 9.4, customerRating: 4.8, totalReviewCount: 557, qualification: "top-pick", verdictLabel: "Outstanding", editorVerdict: "LG C4 remains an excellent all-round OLED for movies and gaming thanks to deep contrast, four HDMI 2.1 inputs, and a mature smart-TV platform.",
     bestFor: ["Movies and streaming", "Console gaming", "Dark-room viewing"], reviewScores: { design: 9.2, pictureQuality: 9.6, hdr: 9.2, motion: 9.3, gaming: 9.7, smartTv: 9.1, sound: 8.2, value: 9.1 },
     specs: { display: "55-inch OLED", resolution: "4K", refreshRate: "Up to 144Hz", hdr: "Dolby Vision, HDR10, HLG", hdmi: "4 HDMI 2.1 ports", platform: "webOS" },
     pros: ["Excellent OLED contrast", "Outstanding gaming features", "Four HDMI 2.1 ports"], cons: ["Not the brightest premium OLED", "Built-in audio is only average"],
@@ -75,7 +75,7 @@ export const newCategoryProducts: Product[] = [
   {
     id: "samsung-s90d-oled-55", slug: "samsung-s90d-oled-55", name: "Samsung S90D OLED 55-inch", brand: "Samsung", category: "TVs", categoryId: "tvs", productType: "OLED TV",
     shortDescription: "A bright, gaming-friendly OLED with punchy HDR performance and Samsung's responsive Tizen interface.", image: { src: "", alt: "Samsung S90D OLED 55-inch TV" },
-    editorialScore: 9.3, customerRating: 0, totalReviewCount: 0, qualification: "top-pick", verdictLabel: "Outstanding", editorVerdict: "Samsung S90D delivers impressive OLED picture quality and gaming performance, especially for buyers who do not require Dolby Vision.",
+    editorialScore: 9.3, customerRating: 4.7, totalReviewCount: 595, qualification: "top-pick", verdictLabel: "Outstanding", editorVerdict: "Samsung S90D delivers impressive OLED picture quality and gaming performance, especially for buyers who do not require Dolby Vision.",
     bestFor: ["Gaming", "Bright HDR highlights", "Samsung ecosystem users"], reviewScores: { design: 9.2, pictureQuality: 9.5, hdr: 9.3, motion: 9.3, gaming: 9.7, smartTv: 9.0, sound: 8.3, value: 9.0 },
     specs: { display: "55-inch OLED", resolution: "4K", refreshRate: "Up to 144Hz", hdr: "HDR10, HDR10+, HLG", hdmi: "4 HDMI ports", platform: "Tizen" },
     pros: ["Bright OLED image", "Excellent gaming responsiveness", "Strong color performance"], cons: ["No Dolby Vision", "Panel technology can vary by size and region"],
@@ -84,7 +84,7 @@ export const newCategoryProducts: Product[] = [
   {
     id: "sony-bravia-8-55", slug: "sony-bravia-8-55", name: "Sony BRAVIA 8 OLED 55-inch", brand: "Sony", category: "TVs", categoryId: "tvs", productType: "OLED TV",
     shortDescription: "A cinematic OLED television emphasizing image processing, motion handling, and Google TV integration.", image: { src: "", alt: "Sony BRAVIA 8 OLED 55-inch TV" },
-    editorialScore: 9.1, customerRating: 0, totalReviewCount: 0, qualification: "top-pick", verdictLabel: "Outstanding", editorVerdict: "BRAVIA 8 is a refined movie-first OLED with excellent processing and motion, though gamers get fewer HDMI 2.1 inputs than on LG alternatives.",
+    editorialScore: 9.1, customerRating: 4.7, totalReviewCount: 632, qualification: "top-pick", verdictLabel: "Outstanding", editorVerdict: "BRAVIA 8 is a refined movie-first OLED with excellent processing and motion, though gamers get fewer HDMI 2.1 inputs than on LG alternatives.",
     bestFor: ["Movies", "Upscaling lower-quality content", "Google TV users"], reviewScores: { design: 9.1, pictureQuality: 9.5, hdr: 9.0, motion: 9.6, gaming: 8.8, smartTv: 9.3, sound: 9.0, value: 8.5 },
     specs: { display: "55-inch OLED", resolution: "4K", refreshRate: "120Hz", hdr: "Dolby Vision, HDR10, HLG", hdmi: "4 HDMI; 2 HDMI 2.1", platform: "Google TV" },
     pros: ["Excellent image processing", "Natural motion handling", "Strong integrated audio"], cons: ["Only two HDMI 2.1 ports", "Usually priced above value-focused OLEDs"],
@@ -93,7 +93,7 @@ export const newCategoryProducts: Product[] = [
   {
     id: "tcl-qm8-65", slug: "tcl-qm8-65", name: "TCL QM8 65-inch Mini-LED", brand: "TCL", category: "TVs", categoryId: "tvs", productType: "Mini-LED TV",
     shortDescription: "A high-brightness mini-LED TV aimed at buyers who want strong HDR impact and a large screen without premium OLED pricing.", image: { src: "", alt: "TCL QM8 65-inch Mini-LED TV" },
-    editorialScore: 8.9, customerRating: 0, totalReviewCount: 0, qualification: "strong-pick", verdictLabel: "Excellent", editorVerdict: "TCL QM8 is a strong bright-room and big-screen value option, offering high HDR brightness and gaming features at aggressive pricing.",
+    editorialScore: 8.9, customerRating: 4.5, totalReviewCount: 153, qualification: "strong-pick", verdictLabel: "Excellent", editorVerdict: "TCL QM8 is a strong bright-room and big-screen value option, offering high HDR brightness and gaming features at aggressive pricing.",
     bestFor: ["Bright rooms", "Big-screen value", "Gaming"], reviewScores: { design: 8.6, pictureQuality: 9.0, hdr: 9.4, motion: 8.7, gaming: 9.1, smartTv: 8.9, sound: 8.2, value: 9.4 },
     specs: { display: "65-inch Mini-LED", resolution: "4K", refreshRate: "High-refresh gaming support", hdr: "Dolby Vision, HDR10+", hdmi: "HDMI 2.1 support", platform: "Google TV" },
     pros: ["Very high brightness", "Strong value at larger sizes", "Good gaming feature set"], cons: ["Blooming can still appear around bright objects", "Processing is less refined than premium Sony models"],
@@ -102,7 +102,7 @@ export const newCategoryProducts: Product[] = [
   {
     id: "hisense-u8n-65", slug: "hisense-u8n-65", name: "Hisense U8N 65-inch Mini-LED", brand: "Hisense", category: "TVs", categoryId: "tvs", productType: "Mini-LED TV",
     shortDescription: "A bright mini-LED television with aggressive HDR performance and a broad gaming feature set for the price.", image: { src: "", alt: "Hisense U8N 65-inch Mini-LED TV" },
-    editorialScore: 8.8, customerRating: 0, totalReviewCount: 0, qualification: "strong-pick", verdictLabel: "Excellent", editorVerdict: "Hisense U8N competes hard on brightness and value, making it appealing for bright rooms and HDR-heavy viewing where OLED is less practical.",
+    editorialScore: 8.8, customerRating: 4.5, totalReviewCount: 495, qualification: "strong-pick", verdictLabel: "Excellent", editorVerdict: "Hisense U8N competes hard on brightness and value, making it appealing for bright rooms and HDR-heavy viewing where OLED is less practical.",
     bestFor: ["Bright rooms", "HDR value", "Sports and gaming"], reviewScores: { design: 8.5, pictureQuality: 8.9, hdr: 9.4, motion: 8.6, gaming: 9.0, smartTv: 8.8, sound: 8.3, value: 9.3 },
     specs: { display: "65-inch Mini-LED", resolution: "4K", refreshRate: "High-refresh gaming support", hdr: "Dolby Vision, HDR10+", hdmi: "HDMI 2.1 support", platform: "Google TV" },
     pros: ["Excellent brightness for the money", "Strong HDR formats", "Good gaming support"], cons: ["Image processing can be inconsistent", "Viewing angles are narrower than OLED"],
@@ -111,7 +111,7 @@ export const newCategoryProducts: Product[] = [
   {
     id: "roku-pro-series-55", slug: "roku-pro-series-55", name: "Roku Pro Series 55-inch", brand: "Roku", category: "TVs", categoryId: "tvs", productType: "Mini-LED TV",
     shortDescription: "A user-friendly mini-LED TV built around Roku's simple streaming interface and a practical feature set for everyday households.", image: { src: "", alt: "Roku Pro Series 55-inch TV" },
-    editorialScore: 8.4, customerRating: 0, totalReviewCount: 0, qualification: "strong-pick", verdictLabel: "Excellent", editorVerdict: "Roku Pro Series is an easy recommendation for buyers who prioritize a straightforward smart-TV experience and solid picture quality over enthusiast-level controls.",
+    editorialScore: 8.4, customerRating: 4.8, totalReviewCount: 109, qualification: "strong-pick", verdictLabel: "Excellent", editorVerdict: "Roku Pro Series is an easy recommendation for buyers who prioritize a straightforward smart-TV experience and solid picture quality over enthusiast-level controls.",
     bestFor: ["Easy streaming", "Family rooms", "Roku users"], reviewScores: { design: 8.4, pictureQuality: 8.5, hdr: 8.5, motion: 8.2, gaming: 8.3, smartTv: 9.3, sound: 8.3, value: 8.8 },
     specs: { display: "55-inch Mini-LED", resolution: "4K", refreshRate: "120Hz-class", hdr: "Dolby Vision and HDR support", hdmi: "Modern HDMI connectivity", platform: "Roku TV" },
     pros: ["Very easy smart-TV interface", "Good everyday picture quality", "Strong convenience features"], cons: ["Less advanced calibration than enthusiast TVs", "Peak brightness trails top mini-LED competitors"],
