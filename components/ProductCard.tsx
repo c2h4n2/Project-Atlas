@@ -6,7 +6,6 @@ import ProductImage from "@/components/ProductImage";
 import RetailerButtons from "@/components/RetailerButtons";
 import EditorialScore from "@/components/EditorialScore";
 import { getCategory } from "@/data/categories";
-import { getLaptopUseCases } from "@/data/laptop-use-cases";
 import type { Product } from "@/data/products";
 import ProductVerdict from "@/components/ProductVerdict";
 
@@ -66,10 +65,9 @@ export default function ProductCard({
   const [isCompared, setIsCompared] = useState(false);
   const [compareMessage, setCompareMessage] = useState("");
 
-  const bestForItems =
-    product.categoryId === "laptops"
-      ? getLaptopUseCases(product.slug)
-      : product.bestFor.slice(0, 2);
+
+
+
 
   useEffect(() => {
     const updateState = () => {
@@ -176,73 +174,61 @@ export default function ProductCard({
           {product.shortDescription}
         </p>
 
-        <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2 text-xs text-slate-400">
-          <span className="font-semibold text-slate-300">Customer signal</span>
-          {product.totalReviewCount > 0 ? (
-            <>
-              <span className="text-amber-300">★ {product.customerRating.toFixed(1)}</span>
-              <span>{product.totalReviewCount.toLocaleString()} reviews</span>
-            </>
-          ) : (
-            <span>Rating data pending — editorial score shown separately.</span>
-          )}
-        </div>
+          <div className="mt-6 grid grid-cols-2 gap-3">
+            <div className="rounded-2xl border border-cyan-400/20 bg-cyan-400/5 p-4">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-cyan-300">
+                C2H4N3 score
+              </p>
 
-        <div className="mt-5 grid grid-cols-2 gap-3">
-          {(category?.cardFields ?? []).map((field) => (
-            <div
-              key={field.label}
-              className="rounded-2xl border border-white/10 bg-white/5 p-3.5"
-            >
+              <div className="mt-2">
+                <EditorialScore score={product.editorialScore} />
+              </div>
+            </div>
+
+            <div className="rounded-2xl border border-white/10 bg-slate-800 p-4">
               <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-400">
-                {field.label}
+                Overall score
               </p>
 
-              <p className="mt-1.5 line-clamp-2 text-sm font-bold text-white">
-                {field.getValue(product)}
+              {product.totalReviewCount > 0 ? (
+                <>
+                  <div className="mt-2 flex items-end gap-1">
+                    <span className="text-2xl font-black text-white">
+                      {(product.customerRating * 2).toFixed(1)}
+                    </span>
+                    <span className="pb-1 text-xs text-slate-400">
+                      /10
+                    </span>
+                  </div>
+
+                  <p className="mt-2 text-[10px] leading-4 text-slate-400">
+                    {product.totalReviewCount.toLocaleString()} customer reviews
+                  </p>
+                </>
+              ) : (
+                <>
+                  <p className="mt-2 text-lg font-black text-white">
+                    Pending
+                  </p>
+
+                  <p className="mt-2 text-[10px] leading-4 text-slate-400">
+                    Review data not yet available
+                  </p>
+                </>
+              )}
+            </div>
+
+            <div className="col-span-2 rounded-2xl border border-white/10 bg-slate-800 p-4">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-400">
+                C2H4N3 verdict
               </p>
-            </div>
-          ))}
-        </div>
 
-        <div className="mt-6 grid grid-cols-2 gap-3">
-          <div className="rounded-2xl border border-cyan-400/20 bg-cyan-400/5 p-4">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-cyan-300">
-              C2H4N3 score
-            </p>
-
-            <div className="mt-2">
-              <EditorialScore score={product.editorialScore} />
+              <div className="mt-2">
+                <ProductVerdict product={product} />
+              </div>
             </div>
           </div>
-
-          <div className="rounded-2xl border border-white/10 bg-slate-800 p-4">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-slate-400">
-              C2H4N3 verdict
-            </p>
-
-            <div className="mt-2">
-              <ProductVerdict product={product} />
-            </div>
-          </div>
-        </div>
-<div className="mt-6">
-          <p className="text-sm font-bold">Best for</p>
-
-          <ul className="mt-3 space-y-2 text-sm leading-5 text-slate-300">
-            {bestForItems.map((item) => (
-              <li
-                key={item}
-                className="flex gap-2"
-              >
-                <span className="text-cyan-400">✓</span>
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="mt-auto pt-7">
+          <div className="mt-auto pt-7">
           <div className="flex flex-col gap-3">
             <Link
               href={`/products/${product.slug}`}
