@@ -241,13 +241,35 @@ export default function ProductExplorer({
 
       {visibleProducts.length > 0 ? (
         <div className="mt-8 grid gap-7 md:grid-cols-2 xl:grid-cols-3">
-          {visibleProducts.map((product, index) => (
-            <ProductCard
-              key={product.id}
-              product={product}
-              rank={sortMode === "C2H4N3-desc" ? index + 1 : undefined}
-            />
-          ))}
+          {visibleProducts.map((product) => {
+            const categoryProducts = products
+              .filter(
+                (candidate) =>
+                  candidate.categoryId === product.categoryId,
+              )
+              .sort(
+                (a, b) =>
+                  b.editorialScore - a.editorialScore ||
+                  a.name.localeCompare(b.name),
+              );
+
+            const categoryRank =
+              categoryProducts.findIndex(
+                (candidate) => candidate.slug === product.slug,
+              ) + 1;
+
+            return (
+              <ProductCard
+                key={product.id}
+                product={product}
+                rank={
+                  categoryRank >= 1 && categoryRank <= 3
+                    ? categoryRank
+                    : undefined
+                }
+              />
+            );
+          })}
         </div>
       ) : (
         <div className="mt-8 rounded-3xl border border-white/10 bg-white/5 p-10 text-center">

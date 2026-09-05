@@ -16,26 +16,25 @@ function storageKey(categoryId: string) {
 
 function getStoredComparison(
   categoryId: string,
-  defaultSlugs: string[],
 ): string[] {
   try {
     const stored = window.localStorage.getItem(storageKey(categoryId));
 
     if (!stored) {
-      return defaultSlugs;
+      return [];
     }
 
     const parsed: unknown = JSON.parse(stored);
 
     if (!Array.isArray(parsed)) {
-      return defaultSlugs;
+      return [];
     }
 
     return parsed
       .filter((slug): slug is string => typeof slug === "string")
       .slice(0, MAX_COMPARE_PRODUCTS);
   } catch {
-    return defaultSlugs;
+    return [];
   }
 }
 
@@ -65,17 +64,31 @@ export default function CompareClient() {
 
   useEffect(() => {
     const frameId = window.requestAnimationFrame(() => {
-      setSelectedSlugs(getStoredComparison(category.id, defaultSlugs));
+      setSelectedSlugs(getStoredComparison(category.id));
     });
 
     return () => {
       window.cancelAnimationFrame(frameId);
     };
-  }, [category.id, defaultSlugs]);
+  }, [category.id]);
 
   const selectedProducts = selectedSlugs
     .map((slug) => categoryProducts.find((product) => product.slug === slug))
     .filter((product): product is Product => Boolean(product));
+
+  const categoryRankBySlug = useMemo(
+    () =>
+      new Map(
+        [...categoryProducts]
+          .sort(
+            (a, b) =>
+              b.editorialScore - a.editorialScore ||
+              a.name.localeCompare(b.name),
+          )
+          .map((product, index) => [product.slug, index + 1]),
+      ),
+    [categoryProducts],
+  );
 
   const editorialLeader =
     selectedProducts.length > 0
@@ -112,15 +125,11 @@ export default function CompareClient() {
             href={category.href}
             className="inline-flex rounded-full border border-white/20 px-4 py-2 text-sm font-semibold"
           >
-            ← Back to {category.label}
+            ← Back
           </Link>
 
-          <p className="mt-10 text-sm font-semibold uppercase tracking-[0.25em] text-cyan-400">
+          <h1 className="mt-10 text-4xl font-black uppercase tracking-[0.12em] text-cyan-400 sm:text-5xl">
             Product comparison
-          </p>
-
-          <h1 className="mt-4 text-4xl font-bold sm:text-6xl">
-            Compare {category.label}
           </h1>
 
           <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-300">
@@ -137,6 +146,9 @@ export default function CompareClient() {
                 <Link
                   key={item.id}
                   href={item.compareHref}
+                  onClick={() => {
+                    window.localStorage.removeItem(storageKey(item.id));
+                  }}
                   className={`shrink-0 rounded-full border px-4 py-2 text-sm font-semibold transition ${
                     item.id === category.id
                       ? "border-cyan-400/60 bg-cyan-400/10 text-cyan-200"
@@ -209,13 +221,38 @@ export default function CompareClient() {
                   key={product.id}
                   className="overflow-hidden rounded-3xl border border-white/10 bg-slate-900"
                 >
-                  <ProductImage
-                    src={product.image.src}
-                    slug={product.slug}
-                    alt={product.image.alt}
-                    aspectRatio="card"
-                    className="rounded-none border-0 border-b border-white/10"
-                  />
+                  <div className="relative">
+                    <ProductImage
+                      src={product.image.src}
+                      slug={product.slug}
+                      alt={product.image.alt}
+                      aspectRatio="card"
+                      className="rounded-none border-0 border-b border-white/10"
+                    />
+
+                    {(() => {
+                      const rank = categoryRankBySlug.get(product.slug);
+
+                      if (!rank || rank > 3) {
+                        return null;
+                      }
+
+                      return (
+                        <span
+                          className="absolute left-4 top-4 z-20 flex h-11 w-11 items-center justify-center rounded-full bg-slate-950/90 text-2xl shadow-lg"
+                          aria-label={
+                            rank === 1
+                              ? "Gold medal"
+                              : rank === 2
+                                ? "Silver medal"
+                                : "Bronze medal"
+                          }
+                        >
+                          {rank === 1 ? "🥇" : rank === 2 ? "🥈" : "🥉"}
+                        </span>
+                      );
+                    })()}
+                  </div>
 
                   <div className="p-6">
                     <p className="text-sm font-semibold text-cyan-400">

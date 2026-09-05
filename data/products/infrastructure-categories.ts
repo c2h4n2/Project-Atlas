@@ -1090,7 +1090,7 @@ export const infrastructureCategoryProducts: Product[] = [
     "productType": "PCIe 5.0 NVMe SSD",
     "shortDescription": "A fast Gen5 NVMe drive with strong endurance credentials and performance suited to gaming and workstation-class storage.",
     "image": {
-      "src": "",
+      "src": "/products/seagate-firecuda-540-2tb-v2.webp",
       "alt": "Seagate FireCuda 540 2TB"
     },
     "editorialScore": 9,

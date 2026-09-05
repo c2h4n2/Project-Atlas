@@ -61,7 +61,7 @@ export default function HeroActions() {
             </p>
 
             <div className="grid gap-1 sm:grid-cols-2">
-              {categories.map((category) => (
+              {[...categories].sort((a, b) => a.label.localeCompare(b.label)).map((category) => (
               <Link
                 key={category.href}
                 href={category.href}

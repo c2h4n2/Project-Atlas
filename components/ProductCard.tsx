@@ -6,7 +6,7 @@ import ProductImage from "@/components/ProductImage";
 import RetailerButtons from "@/components/RetailerButtons";
 import EditorialScore from "@/components/EditorialScore";
 import { getCategory } from "@/data/categories";
-import type { Product } from "@/data/products";
+import { products, type Product } from "@/data/products";
 import ProductVerdict from "@/components/ProductVerdict";
 
 type Props = {
@@ -57,10 +57,37 @@ function saveComparedProducts(
 
 export default function ProductCard({
   product,
-  rank,
 }: Props) {
   const categoryId = product.categoryId ?? "ai-glasses";
   const category = getCategory(categoryId);
+
+  const rankingCategory =
+    (category?.label ?? product.category).trim().toLowerCase();
+
+  const categoryRank =
+    [...products]
+      .filter((candidate) => {
+        const candidateCategory = candidate.categoryId
+          ? getCategory(candidate.categoryId)?.label ?? candidate.category
+          : candidate.category;
+
+        return (
+          candidateCategory.trim().toLowerCase() === rankingCategory
+        );
+      })
+      .sort(
+        (a, b) =>
+          b.editorialScore - a.editorialScore ||
+          a.name.localeCompare(b.name),
+      )
+      .findIndex(
+        (candidate) => candidate.slug === product.slug,
+      ) + 1;
+
+  const medalRank =
+    categoryRank >= 1 && categoryRank <= 3
+      ? categoryRank
+      : undefined;
 
   const [isCompared, setIsCompared] = useState(false);
   const [compareMessage, setCompareMessage] = useState("");
@@ -137,9 +164,18 @@ export default function ProductCard({
           />
         </Link>
 
-        {typeof rank === "number" && (
-          <span className="absolute left-4 top-4 rounded-full bg-white px-3 py-1.5 text-sm font-black text-slate-950">
-            #{rank}
+        {typeof medalRank === "number" && (
+          <span
+            className="absolute left-4 top-4 z-20 flex h-11 w-11 items-center justify-center rounded-full bg-slate-950/90 text-2xl shadow-lg"
+            aria-label={
+              medalRank === 1
+                ? "Gold medal"
+                : medalRank === 2
+                  ? "Silver medal"
+                  : "Bronze medal"
+            }
+          >
+            {medalRank === 1 ? "🥇" : medalRank === 2 ? "🥈" : "🥉"}
           </span>
         )}
 

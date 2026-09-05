@@ -80,6 +80,39 @@ export default async function ProductPage({
 
   const categoryId = product.categoryId ?? "ai-glasses";
   const category = getCategory(categoryId);
+
+  const rankingCategory = (
+    product.categoryId
+      ? getCategory(product.categoryId)?.label ?? product.category
+      : product.category
+  )
+    .trim()
+    .toLowerCase();
+
+  const categoryRank =
+    [...products]
+      .filter((candidate) => {
+        const candidateCategory = candidate.categoryId
+          ? getCategory(candidate.categoryId)?.label ?? candidate.category
+          : candidate.category;
+
+        return (
+          candidateCategory.trim().toLowerCase() === rankingCategory
+        );
+      })
+      .sort(
+        (a, b) =>
+          b.editorialScore - a.editorialScore ||
+          a.name.localeCompare(b.name),
+      )
+      .findIndex(
+        (candidate) => candidate.slug === product.slug,
+      ) + 1;
+
+  const medalRank =
+    categoryRank >= 1 && categoryRank <= 3
+      ? categoryRank
+      : undefined;
   const reviewScores = Object.entries(product.reviewScores);
   const specifications = Object.entries(product.specs);
 
@@ -104,7 +137,26 @@ export default async function ProductPage({
 
         <section className="mt-10 overflow-hidden rounded-[2rem] border border-white/10 bg-slate-900">
           <div className="grid lg:grid-cols-[0.9fr_1.1fr]">
-            <div className="border-b border-white/10 bg-slate-800/50 p-5 sm:p-8 lg:border-b-0 lg:border-r">
+            <div className="relative border-b border-white/10 bg-slate-800/50 p-5 sm:p-8 lg:border-b-0 lg:border-r">
+              {typeof medalRank === "number" && (
+                <span
+                  className="absolute left-9 top-9 z-20 flex h-11 w-11 items-center justify-center rounded-full bg-slate-950/90 text-2xl shadow-lg"
+                  aria-label={
+                    medalRank === 1
+                      ? "Gold medal"
+                      : medalRank === 2
+                        ? "Silver medal"
+                        : "Bronze medal"
+                  }
+                >
+                  {medalRank === 1
+                    ? "🥇"
+                    : medalRank === 2
+                      ? "🥈"
+                      : "🥉"}
+                </span>
+              )}
+
               <ProductImage
                 src={product.image.src}
                 slug={product.slug}

@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import BackToTop from "@/components/BackToTop";
 import "./globals.css";
 
 const siteName = "Project C2H4N3";
@@ -195,6 +196,8 @@ export default function RootLayout({
 
           <Footer />
         </div>
+
+        <BackToTop />
       </body>
     </html>
   );

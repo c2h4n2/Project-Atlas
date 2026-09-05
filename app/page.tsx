@@ -9,7 +9,19 @@ const rankedProducts = [...products].sort(
   (a, b) => b.editorialScore - a.editorialScore,
 );
 
-const topProduct = rankedProducts[0];
+const topProductsByCategory = categories.flatMap((category) => {
+  const categoryProducts = products
+    .filter(
+      (product) =>
+        product.categoryId === category.id ||
+        product.category === category.label,
+    )
+    .sort((a, b) => b.editorialScore - a.editorialScore);
+
+  const product = categoryProducts[0];
+
+  return product ? [{ category, product }] : [];
+});
 
 const trustPoints = [
   {
@@ -68,10 +80,6 @@ const evaluationCriteria = [
 ];
 
 export default function Home() {
-  const topAffiliateLink = topProduct?.affiliateLinks.find(
-    (link) => link.url.trim() !== "",
-  );
-
   return (
     <main className="min-h-screen bg-slate-950 text-white">
       <section className="border-b border-white/10">
@@ -135,157 +143,122 @@ export default function Home() {
         </div>
       </section>
 
-      {topProduct && (
-        <section className="mx-auto max-w-6xl px-6 py-14 sm:py-16">
-          <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-400">
-                Highest C2H4N3 score
-              </p>
-              <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
-                One of the strongest products in the catalog
-              </h2>
-            </div>
-
-            <Link
-              href="/top-picks"
-              className="text-sm font-semibold text-cyan-400 transition hover:text-cyan-300"
-            >
-              View top picks →
-            </Link>
+      <section className="mx-auto max-w-6xl px-6 py-14 sm:py-16">
+        <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-400">
+              #1 C2H4N3 picks
+            </p>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
+              Top pick from every category
+            </h2>
+            <p className="mt-3 max-w-2xl text-slate-400">
+              The highest C2H4N3-scoring product in each category.
+            </p>
           </div>
 
-          <article className="mt-8 overflow-hidden rounded-[2rem] border border-cyan-400/30 bg-cyan-400/5">
-            <div className="grid lg:grid-cols-[0.8fr_1.2fr]">
-              <div className="relative border-b border-white/10 bg-slate-900 p-6 sm:p-8 lg:border-b-0 lg:border-r">
-                <ProductImage
-                  src={topProduct.image.src}
-                  slug={topProduct.slug}
-                  alt={topProduct.image.alt}
-                  priority
-                  aspectRatio="square"
-                  sizes="(max-width: 1023px) 100vw, 40vw"
-                  className="border-white/10 bg-slate-950"
-                />
+          <Link
+            href="/top-picks"
+            className="text-sm font-semibold text-cyan-400 transition hover:text-cyan-300"
+          >
+            View all top picks →
+          </Link>
+        </div>
 
-                <span className="absolute left-10 top-10 rounded-full bg-white px-3 py-1.5 text-sm font-black text-slate-950 shadow-lg">
-                  #1
-                </span>
+        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {topProductsByCategory.map(({ category, product }) => (
+            <article
+              key={category.id}
+              className="flex overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/[0.035] transition hover:border-cyan-400/30 hover:bg-white/[0.05]"
+            >
+              <div className="flex w-full flex-col">
+                <div className="relative border-b border-white/10 bg-slate-900 p-4">
+                  <ProductImage
+                    src={product.image.src}
+                    slug={product.slug}
+                    alt={product.image.alt}
+                    aspectRatio="square"
+                    sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw"
+                    className="border-white/10 bg-slate-950"
+                  />
 
-                <span className="absolute right-10 top-10 rounded-full bg-cyan-400 px-3 py-1.5 text-xs font-black uppercase tracking-wide text-slate-950 shadow-lg">
-                  Best overall
-                </span>
-              </div>
-
-              <div className="flex flex-col p-7 sm:p-10">
-                <p className="text-sm font-semibold text-cyan-400">
-                  {topProduct.brand}
-                </p>
-
-                <h3 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
-                  {topProduct.name}
-                </h3>
-
-                <div className="mt-4 flex flex-wrap gap-2">
-                  <span className="rounded-full border border-cyan-400/20 bg-cyan-400/10 px-4 py-2 text-sm font-bold text-cyan-300">
-                    {topProduct.verdictLabel}
+                  <span
+                    className="absolute left-7 top-7 flex h-10 w-10 items-center justify-center rounded-full bg-slate-950/90 text-2xl shadow-lg"
+                    aria-label="Gold medal"
+                  >
+                    🥇
                   </span>
 
-                  <span className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold capitalize text-slate-300">
-                    {topProduct.qualification.replace("-", " ")}
+                  <span className="absolute right-7 top-7 rounded-full bg-cyan-400 px-3 py-1.5 text-[10px] font-black uppercase tracking-wide text-slate-950 shadow-lg">
+                    {category.label}
                   </span>
                 </div>
 
-                <p className="mt-6 text-lg leading-8 text-slate-300">
-                  {topProduct.editorVerdict}
-                </p>
+                <div className="flex flex-1 flex-col p-5">
+                  <p className="text-xs font-semibold text-cyan-400">
+                    {product.brand}
+                  </p>
 
-                <div className="mt-7 grid gap-3 sm:grid-cols-3">
-                  <div className="rounded-2xl border border-cyan-400/20 bg-cyan-400/5 p-4">
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-cyan-300">
-                      C2H4N3 score
-                    </p>
-                    <div className="mt-2 flex items-end gap-1">
-                      <span className="text-4xl font-black">
-                      <span className="mr-2 text-amber-400">★</span>
-                      
-                        {topProduct.editorialScore.toFixed(1)}
-                      </span>
-                      <span className="pb-1 text-xs text-slate-400">/10</span>
+                  <h3 className="mt-2 text-xl font-bold tracking-tight">
+                    {product.name}
+                  </h3>
+
+                  <div className="mt-5 grid grid-cols-2 gap-3">
+                    <div className="rounded-2xl border border-cyan-400/20 bg-cyan-400/5 p-3">
+                      <p className="text-[9px] font-semibold uppercase tracking-[0.14em] text-cyan-300">
+                        C2H4N3 score
+                      </p>
+                      <div className="mt-2 flex items-end gap-1">
+                        <span className="text-2xl font-black">
+                          <span className="mr-1 text-amber-400">★</span>
+                          {product.editorialScore.toFixed(1)}
+                        </span>
+                        <span className="pb-0.5 text-[10px] text-slate-400">
+                          /10
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="rounded-2xl border border-white/10 bg-white/5 p-3">
+                      <p className="text-[9px] font-semibold uppercase tracking-[0.14em] text-cyan-300">
+                        Overall score
+                      </p>
+                      <div className="mt-2 flex items-end gap-1">
+                        {product.customerRating > 0 ? (
+                          <>
+                            <span className="text-2xl font-black">
+                              <span className="mr-1 text-amber-400">★</span>
+                              {(product.customerRating * 2).toFixed(1)}
+                            </span>
+                            <span className="pb-0.5 text-[10px] text-slate-400">
+                              /10
+                            </span>
+                          </>
+                        ) : (
+                          <span className="text-2xl font-black">—</span>
+                        )}
+                      </div>
                     </div>
                   </div>
 
-                  <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-cyan-300">
-                      Overall score
-                    </p>
-                    <p className="mt-2 text-3xl font-black">
-                      {topProduct.totalReviewCount > 0
-                        ? `⭐ ${topProduct.customerRating.toFixed(1)}`
-                        : "New"}
-                    </p>
-                  </div>
+                  <p className="mt-4 line-clamp-3 text-sm leading-6 text-slate-400">
+                    {product.editorVerdict}
+                  </p>
 
-                  <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-cyan-300">
-                      Reviews
-                    </p>
-                    <p className="mt-2 text-3xl font-black">
-                      {topProduct.totalReviewCount > 0
-                        ? topProduct.totalReviewCount.toLocaleString()
-                        : "—"}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="mt-7">
-                  <p className="font-bold">Why it scores so highly</p>
-                  <ul className="mt-4 grid gap-3 text-sm leading-6 text-slate-300 sm:grid-cols-2">
-                    {topProduct.pros.slice(0, 4).map((pro) => (
-                      <li
-                        key={pro}
-                        className="flex gap-3 rounded-2xl border border-white/10 bg-slate-950/50 p-4"
-                      >
-                        <span className="shrink-0 font-bold text-cyan-400">✓</span>
-                        <span>{pro}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="mt-auto pt-8">
-                  <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                  <div className="mt-auto pt-5">
                     <Link
-                      href={`/products/${topProduct.slug}`}
-                      className="rounded-full bg-cyan-400 px-6 py-3.5 text-center font-bold text-slate-950 transition hover:bg-cyan-300"
+                      href={`/products/${product.slug}`}
+                      className="block rounded-full bg-cyan-400 px-5 py-3 text-center text-sm font-bold text-slate-950 transition hover:bg-cyan-300"
                     >
                       Read full review
                     </Link>
-
-                    <Link
-                      href="/compare"
-                      className="rounded-full border border-white/20 bg-white/5 px-6 py-3.5 text-center font-bold transition hover:border-cyan-400/50 hover:bg-white/10"
-                    >
-                      Compare products
-                    </Link>
-
-                    {topAffiliateLink && (
-                      <a
-                        href={topAffiliateLink.url}
-                        target="_blank"
-                        rel="nofollow sponsored noopener noreferrer"
-                        className="rounded-full border border-white/20 bg-white/5 px-6 py-3.5 text-center font-bold transition hover:border-cyan-400/50 hover:bg-white/10"
-                      >
-                        Check current price at {topAffiliateLink.retailer}
-                      </a>
-                    )}
                   </div>
                 </div>
               </div>
-            </div>
-          </article>
-        </section>
-      )}
+            </article>
+          ))}
+        </div>
+      </section>
 
       <section className="border-t border-white/10 bg-slate-950">
         <div className="mx-auto max-w-6xl px-6 py-14 sm:py-16">
@@ -355,11 +328,11 @@ export default function Home() {
           </div>
 
           <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {rankedProducts.slice(0, 12).map((product, index) => (
+            {rankedProducts.slice(0, 12).map((product) => (
               <ProductCard
                 key={product.id}
                 product={product}
-                rank={index + 1}
+                rank={1}
               />
             ))}
           </div>
