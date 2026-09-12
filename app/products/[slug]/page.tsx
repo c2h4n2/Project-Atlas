@@ -393,6 +393,7 @@ export default async function ProductPage({
                     links={product.affiliateLinks}
                     productSlug={product.slug}
                     productName={product.name}
+                    sourceSurface="product_review"
                   />
                 </div>
 

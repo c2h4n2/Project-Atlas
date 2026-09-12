@@ -276,6 +276,7 @@ export default function ProductCard({
               maxLinks={2}
               productSlug={product.slug}
               productName={product.name}
+              sourceSurface="product_card"
             />
 
             <button

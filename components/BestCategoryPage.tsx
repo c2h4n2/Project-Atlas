@@ -198,6 +198,7 @@ export default function BestCategoryPage({
                       links={topProduct.affiliateLinks}
                       productSlug={topProduct.slug}
                       productName={topProduct.name}
+                      sourceSurface="ranking_winner"
                     />
                   </div>
 

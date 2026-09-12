@@ -1,5 +1,7 @@
 "use client";
 
+import { trackAtlasEvent } from "@/lib/analytics";
+
 import { sortRetailerLinks } from "@/data/retailers";
 import type { AffiliateLink } from "@/data/products";
 
@@ -9,11 +11,9 @@ type Props = {
   maxLinks?: number;
   productSlug?: string;
   productName?: string;
+  sourceSurface?: string;
 };
 
-type AnalyticsWindow = Window & {
-  gtag?: (...args: unknown[]) => void;
-};
 
 function isAmazonSearch(link: AffiliateLink) {
   return link.retailer.trim().toLowerCase() === "amazon" &&
@@ -26,6 +26,7 @@ export default function RetailerButtons({
   maxLinks,
   productSlug,
   productName,
+  sourceSurface = "unknown",
 }: Props) {
   const sorted = sortRetailerLinks(links);
   const visible = typeof maxLinks === "number" ? sorted.slice(0, maxLinks) : sorted;
@@ -47,16 +48,13 @@ export default function RetailerButtons({
               target="_blank"
               rel="nofollow sponsored noopener noreferrer"
               onClick={() => {
-                (window as AnalyticsWindow).gtag?.(
-                  "event",
-                  "affiliate_click",
-                  {
-                    retailer: link.retailer,
-                    product_slug: productSlug ?? "",
-                    product_name: productName ?? "",
-                    destination_url: link.url,
-                  },
-                );
+                trackAtlasEvent("affiliate_click", {
+                  retailer: link.retailer,
+                  product_slug: productSlug ?? "",
+                  product_name: productName ?? "",
+                  destination_url: link.url,
+                  source_surface: sourceSurface,
+                });
               }}
               className={
                 compact
