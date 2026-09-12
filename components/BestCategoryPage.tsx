@@ -94,6 +94,44 @@ export default function BestCategoryPage({
 
   const buyingFactors = Object.values(category.scoreLabels).slice(0, 4);
 
+
+  const rankingFaqs = topProduct
+    ? [
+        {
+          question: `What is the best ${category.label.toLowerCase()} overall?`,
+          answer: `${topProduct.name} is currently ranked #1 by C2H4N3 with an editorial score of ${topProduct.editorialScore.toFixed(1)}/10. It leads this category based on the current scoring criteria, but the best choice still depends on your own priorities.`,
+        },
+        {
+          question: `What should I look for when buying ${category.label.toLowerCase()}?`,
+          answer: `Focus on ${buyingFactors.map((factor) => factor.toLowerCase()).join(", ")} and how those areas match your intended use, budget, and tolerance for trade-offs.`,
+        },
+        {
+          question: `How does C2H4N3 rank ${category.label.toLowerCase()}?`,
+          answer: `C2H4N3 compares qualifying products using category-specific review scores, product specifications, strengths, drawbacks, usability, value, customer evidence, and editorial judgment.`,
+        },
+        {
+          question: `Is the #1 ranked ${category.label.toLowerCase().replace(/s$/, "")} best for everyone?`,
+          answer: `No. The #1 product has the highest current C2H4N3 score in this category, but another product may be a better fit if your priorities, budget, preferred features, or use case are different.`,
+        },
+      ]
+    : [];
+
+  const rankingFaqJsonLd =
+    rankingFaqs.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: rankingFaqs.map((faq) => ({
+            "@type": "Question",
+            name: faq.question,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: faq.answer,
+            },
+          })),
+        }
+      : null;
+
   const siteUrl =
     process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
     "https://project-c2h4n3.vercel.app";
@@ -120,6 +158,19 @@ export default function BestCategoryPage({
           __html: JSON.stringify(rankingJsonLd).replace(/</g, "\\u003c"),
         }}
       />
+
+
+      {rankingFaqJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(rankingFaqJsonLd).replace(
+              /</g,
+              "\\u003c",
+            ),
+          }}
+        />
+      )}
       <AtlasAnalyticsEvent
         eventName="ranking_view"
         params={{
@@ -647,6 +698,35 @@ export default function BestCategoryPage({
             ))}
           </div>
         </section>
+
+        {rankingFaqs.length > 0 && (
+          <section className="mt-20 rounded-[2rem] border border-white/10 bg-slate-900 p-7 sm:p-9">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-400">
+              Frequently asked questions
+            </p>
+
+            <h2 className="mt-3 text-3xl font-bold">
+              Best {category.label}: FAQ
+            </h2>
+
+            <div className="mt-7 grid gap-4 lg:grid-cols-2">
+              {rankingFaqs.map((faq) => (
+                <div
+                  key={faq.question}
+                  className="rounded-2xl border border-white/10 bg-white/5 p-5"
+                >
+                  <h3 className="text-lg font-bold text-white">
+                    {faq.question}
+                  </h3>
+
+                  <p className="mt-3 leading-7 text-slate-300">
+                    {faq.answer}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
 
         <section className="mt-20 rounded-[2rem] border border-white/10 bg-white/5 p-8 sm:p-10">
           <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
