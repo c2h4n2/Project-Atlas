@@ -89,10 +89,113 @@ export default async function SeoComparisonPage({ params }: Props) {
 
       <section className="mx-auto max-w-6xl px-6 py-14">
         <section className="rounded-[2rem] border border-cyan-400/25 bg-cyan-400/5 p-7 sm:p-9">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">C2H4N3 verdict</p>
-          <div className="mt-4 flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
-            <div><h2 className="text-3xl font-bold">{winner.name} leads on C2H4N3 score</h2><p className="mt-4 max-w-3xl leading-7 text-slate-300">{winner.name} scores {winner.editorialScore.toFixed(1)}/10 versus {runnerUp.editorialScore.toFixed(1)}/10 for {runnerUp.name}. Use the tables below to check the trade-offs that matter to you.</p></div>
-            <p className="shrink-0 text-5xl font-black text-cyan-300">{winner.editorialScore.toFixed(1)}<span className="text-lg text-slate-400"> / 10</span></p>
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-300">
+            C2H4N3 verdict
+          </p>
+
+          <div className="mt-4 flex flex-col justify-between gap-6 lg:flex-row lg:items-start">
+            <div className="max-w-3xl">
+              <h2 className="text-3xl font-bold sm:text-4xl">
+                Which should you buy?
+              </h2>
+
+              <p className="mt-4 text-lg leading-8 text-slate-200">
+                <span className="font-bold text-white">
+                  {winner.name}
+                </span>{" "}
+                is our overall pick in this matchup with a C2H4N3 score of{" "}
+                <span className="font-bold text-cyan-300">
+                  {winner.editorialScore.toFixed(1)}/10
+                </span>{" "}
+                versus {runnerUp.editorialScore.toFixed(1)}/10 for{" "}
+                {runnerUp.name}.
+              </p>
+
+              <p className="mt-3 leading-7 text-slate-400">
+                The score is not the whole decision. Choose based on your
+                priorities, budget, and the trade-offs below.
+              </p>
+            </div>
+
+            <div className="shrink-0 rounded-2xl border border-cyan-400/25 bg-slate-950/70 px-6 py-5">
+              <p className="text-xs font-black uppercase tracking-[0.16em] text-cyan-300">
+                Overall pick
+              </p>
+
+              <p className="mt-2 text-5xl font-black text-cyan-300">
+                {winner.editorialScore.toFixed(1)}
+                <span className="text-lg text-slate-400"> / 10</span>
+              </p>
+
+              <p className="mt-2 max-w-[220px] font-bold text-white">
+                {winner.name}
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-8 grid gap-4 lg:grid-cols-2">
+            <div className="rounded-2xl border border-cyan-400/20 bg-slate-950/60 p-5">
+              <p className="text-xs font-black uppercase tracking-[0.16em] text-cyan-300">
+                Choose {winner.name} if
+              </p>
+
+              <p className="mt-3 text-sm leading-6 text-slate-300">
+                {winner.bestFor[0] ?? winner.pros[0] ?? winner.editorVerdict}
+              </p>
+
+              {winner.pros[0] && (
+                <p className="mt-3 text-sm leading-6 text-slate-400">
+                  <span className="font-semibold text-white">
+                    Key advantage:
+                  </span>{" "}
+                  {winner.pros[0]}
+                </p>
+              )}
+            </div>
+
+            <div className="rounded-2xl border border-white/10 bg-slate-950/40 p-5">
+              <p className="text-xs font-black uppercase tracking-[0.16em] text-slate-300">
+                Choose {runnerUp.name} if
+              </p>
+
+              <p className="mt-3 text-sm leading-6 text-slate-300">
+                {runnerUp.bestFor[0] ?? runnerUp.pros[0] ?? runnerUp.editorVerdict}
+              </p>
+
+              {runnerUp.pros[0] && (
+                <p className="mt-3 text-sm leading-6 text-slate-400">
+                  <span className="font-semibold text-white">
+                    Key advantage:
+                  </span>{" "}
+                  {runnerUp.pros[0]}
+                </p>
+              )}
+            </div>
+          </div>
+
+          <div className="mt-8 rounded-2xl border border-cyan-400/20 bg-slate-950/60 p-5">
+            <div className="flex flex-col justify-between gap-5 lg:flex-row lg:items-center">
+              <div>
+                <p className="text-xs font-black uppercase tracking-[0.16em] text-cyan-300">
+                  Ready to buy our pick?
+                </p>
+
+                <p className="mt-2 font-bold text-white">
+                  Check current retailer availability for {winner.name}
+                </p>
+              </div>
+
+              <div className="min-w-0 lg:w-[320px]">
+                <RetailerButtons
+                  links={winner.affiliateLinks}
+                  productSlug={winner.slug}
+                  productName={winner.name}
+                  sourceSurface="seo_comparison_verdict"
+                  compact
+                  maxLinks={2}
+                />
+              </div>
+            </div>
           </div>
         </section>
 

@@ -10,6 +10,7 @@ import RetailerButtons from "@/components/RetailerButtons";
 import { getCategory } from "@/data/categories";
 import { products } from "@/data/products";
 import { hasLocalProductImage } from "@/data/local-product-images";
+import { seoComparisons } from "@/data/seo-comparisons";
 
 type ProductPageProps = {
   params: Promise<{ slug: string }>;
@@ -148,6 +149,39 @@ export default async function ProductPage({
         a.name.localeCompare(b.name),
     )
     .slice(0, 3);
+
+  const curatedComparisons = seoComparisons
+    .filter((comparison) =>
+      comparison.productSlugs.includes(product.slug),
+    )
+    .map((comparison) => {
+      const otherSlug = comparison.productSlugs.find(
+        (item) => item !== product.slug,
+      );
+
+      if (!otherSlug) return null;
+
+      const otherProduct = products.find(
+        (item) => item.slug === otherSlug,
+      );
+
+      if (!otherProduct) return null;
+
+      return {
+        comparison,
+        otherProduct,
+      };
+    })
+    .filter(
+      (
+        item,
+      ): item is {
+        comparison: (typeof seoComparisons)[number];
+        otherProduct: (typeof products)[number];
+      } => item !== null,
+    )
+    .slice(0, 3);
+
 
   const productUrl = absolute(`/products/${product.slug}`);
 
@@ -398,10 +432,6 @@ export default async function ProductPage({
                   />
                 </div>
 
-                <p className="mt-3 text-xs leading-5 text-slate-500">
-                  Prices and availability may change. Affiliate links may earn
-                  Project C2H4N3 a commission at no additional cost to you.
-                </p>
               </div>
             </div>
           </div>
@@ -620,6 +650,97 @@ export default async function ProductPage({
             </ul>
           </section>
         </div>
+
+        {curatedComparisons.length > 0 && (
+          <section className="mt-12 rounded-[2rem] border border-cyan-400/20 bg-cyan-400/5 p-7 sm:p-9">
+            <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-400">
+                  Head-to-head comparisons
+                </p>
+
+                <h2 className="mt-3 text-3xl font-bold">
+                  Compare {product.name}
+                </h2>
+
+                <p className="mt-4 max-w-3xl leading-7 text-slate-300">
+                  See how this product compares with other strong options
+                  before you decide which one to buy.
+                </p>
+              </div>
+
+              {category && (
+                <AtlasTrackedLink
+                  href={category.compareHref}
+                  eventName="compare_click"
+                  eventParams={{
+                    action: "open_comparison_tool",
+                    product_slug: product.slug,
+                    product_name: product.name,
+                    category_id: category.id,
+                    source_surface: "product_review_comparisons",
+                  }}
+                  className="rounded-full border border-white/20 px-5 py-3 text-sm font-bold transition hover:border-cyan-400/50 hover:bg-white/5"
+                >
+                  Build your own comparison
+                </AtlasTrackedLink>
+              )}
+            </div>
+
+            <div className="mt-7 grid gap-4 lg:grid-cols-3">
+              {curatedComparisons.map(
+                ({ comparison, otherProduct }) => (
+                  <AtlasTrackedLink
+                    key={comparison.slug}
+                    href={`/compare/${comparison.slug}`}
+                    eventName="compare_click"
+                    eventParams={{
+                      action: "open_seo_comparison",
+                      product_slug: product.slug,
+                      product_name: product.name,
+                      compared_with_slug: otherProduct.slug,
+                      compared_with_name: otherProduct.name,
+                      comparison_slug: comparison.slug,
+                      category_id:
+                        category?.id ??
+                        product.categoryId ??
+                        "",
+                      source_surface:
+                        "product_review_comparisons",
+                    }}
+                    className="rounded-2xl border border-white/10 bg-slate-900 p-5 transition hover:border-cyan-400/40 hover:bg-slate-800"
+                  >
+                    <p className="text-xs font-bold uppercase tracking-[0.16em] text-cyan-300">
+                      Head-to-head
+                    </p>
+
+                    <h3 className="mt-3 text-lg font-bold leading-snug text-white">
+                      {product.name}
+                      <span className="text-slate-500"> vs </span>
+                      {otherProduct.name}
+                    </h3>
+
+                    <div className="mt-4 flex items-center justify-between gap-4 text-sm">
+                      <span className="text-slate-400">
+                        C2H4N3 scores
+                      </span>
+
+                      <span className="font-bold text-cyan-300">
+                        {product.editorialScore.toFixed(1)}
+                        <span className="text-slate-500"> vs </span>
+                        {otherProduct.editorialScore.toFixed(1)}
+                      </span>
+                    </div>
+
+                    <p className="mt-4 text-sm font-semibold text-cyan-300">
+                      View comparison →
+                    </p>
+                  </AtlasTrackedLink>
+                ),
+              )}
+            </div>
+          </section>
+        )}
 
         {relatedProducts.length > 0 && (
           <section className="mt-12 rounded-[2rem] border border-white/10 bg-white/5 p-7 sm:p-9">
