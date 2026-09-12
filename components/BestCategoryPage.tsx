@@ -2,6 +2,7 @@ import Link from "next/link";
 import ProductCard from "@/components/ProductCard";
 import RetailerButtons from "@/components/RetailerButtons";
 import AtlasAnalyticsEvent from "@/components/AtlasAnalyticsEvent";
+import AtlasTrackedLink from "@/components/AtlasTrackedLink";
 import { getCategory } from "@/data/categories";
 import { products } from "@/data/products";
 
@@ -171,19 +172,36 @@ export default function BestCategoryPage({
                 </div>
 
                 <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-                  <Link
+                  <AtlasTrackedLink
                     href={`/products/${topProduct.slug}`}
+                    eventName="review_click"
+                    eventParams={{
+                      product_slug: topProduct.slug,
+                      product_name: topProduct.name,
+                      category_id: category.id,
+                      category_rank: 1,
+                      source_surface: "ranking_winner",
+                    }}
                     className="rounded-full bg-cyan-400 px-6 py-3 text-center font-semibold text-slate-950 transition hover:bg-cyan-300"
                   >
                     Read full review
-                  </Link>
+                  </AtlasTrackedLink>
 
-                  <Link
+                  <AtlasTrackedLink
                     href={category.compareHref}
+                    eventName="compare_click"
+                    eventParams={{
+                      action: "open_comparison",
+                      product_slug: topProduct.slug,
+                      product_name: topProduct.name,
+                      category_id: category.id,
+                      category_rank: 1,
+                      source_surface: "ranking_winner",
+                    }}
                     className="rounded-full border border-white/20 bg-white/5 px-6 py-3 text-center font-semibold transition hover:border-cyan-400/50 hover:bg-white/10"
                   >
                     Compare with runner-up
-                  </Link>
+                  </AtlasTrackedLink>
 
 
                 </div>

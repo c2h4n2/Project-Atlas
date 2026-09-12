@@ -1,4 +1,5 @@
 import Link from "next/link";
+import AtlasTrackedLink from "@/components/AtlasTrackedLink";
 import ProductExplorer from "@/components/ProductExplorer";
 import { getCategory } from "@/data/categories";
 import { products } from "@/data/products";
@@ -28,9 +29,18 @@ export default function CategoryLanding({ categoryId }: { categoryId: string }) 
             {categoryProducts.length} products reviewed in this category.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link href={category.bestHref} className="rounded-full bg-cyan-400 px-6 py-3.5 font-bold text-slate-950 transition hover:bg-cyan-300">
+            <AtlasTrackedLink
+              href={category.bestHref}
+              eventName="ranking_click"
+              eventParams={{
+                category_id: category.id,
+                category_name: category.label,
+                source_surface: "category_page",
+              }}
+              className="rounded-full bg-cyan-400 px-6 py-3.5 font-bold text-slate-950 transition hover:bg-cyan-300"
+            >
               View top picks
-            </Link>
+            </AtlasTrackedLink>
             <Link href={category.compareHref} className="rounded-full border border-white/20 bg-white/5 px-6 py-3.5 font-bold transition hover:border-cyan-400/50 hover:bg-white/10">
               Compare side by side
             </Link>

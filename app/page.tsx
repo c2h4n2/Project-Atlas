@@ -1,5 +1,6 @@
 import Link from "next/link";
 import ProductCard from "@/components/ProductCard";
+import AtlasTrackedLink from "@/components/AtlasTrackedLink";
 import ProductImage from "@/components/ProductImage";
 import HeroActions from "@/components/HeroActions";
 import { products } from "@/data/products";
@@ -246,12 +247,19 @@ export default function Home() {
                   </p>
 
                   <div className="mt-auto pt-5">
-                    <Link
+                    <AtlasTrackedLink
                       href={`/products/${product.slug}`}
+                      eventName="review_click"
+                      eventParams={{
+                        product_slug: product.slug,
+                        product_name: product.name,
+                        category_id: product.categoryId ?? "",
+                        source_surface: "homepage_top_pick",
+                      }}
                       className="block rounded-full bg-cyan-400 px-5 py-3 text-center text-sm font-bold text-slate-950 transition hover:bg-cyan-300"
                     >
                       Read full review
-                    </Link>
+                    </AtlasTrackedLink>
                   </div>
                 </div>
               </div>

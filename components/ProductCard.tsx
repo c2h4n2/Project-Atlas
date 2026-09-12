@@ -8,6 +8,8 @@ import EditorialScore from "@/components/EditorialScore";
 import { getCategory } from "@/data/categories";
 import { products, type Product } from "@/data/products";
 import ProductVerdict from "@/components/ProductVerdict";
+import AtlasTrackedLink from "@/components/AtlasTrackedLink";
+import { trackAtlasEvent } from "@/lib/analytics";
 
 type Props = {
   product: Product;
@@ -143,6 +145,15 @@ export default function ProductCard({
 
     const updated = [...current, product.slug];
 
+    trackAtlasEvent("compare_click", {
+      action: "add_product",
+      product_slug: product.slug,
+      product_name: product.name,
+      category_id: categoryId,
+      category_rank: categoryRank,
+      source_surface: "product_card",
+    });
+
     saveComparedProducts(categoryId, updated);
     setIsCompared(true);
     setCompareMessage("Added to comparison.");
@@ -263,12 +274,20 @@ export default function ProductCard({
           </div>
           <div className="mt-auto pt-7">
           <div className="flex flex-col gap-3">
-            <Link
+            <AtlasTrackedLink
               href={`/products/${product.slug}`}
+              eventName="review_click"
+              eventParams={{
+                product_slug: product.slug,
+                product_name: product.name,
+                category_id: categoryId,
+                category_rank: categoryRank,
+                source_surface: "product_card",
+              }}
               className="rounded-full bg-cyan-400 px-5 py-3.5 text-center text-sm font-bold text-slate-950 hover:bg-cyan-300"
             >
               Read full review
-            </Link>
+            </AtlasTrackedLink>
 
             <RetailerButtons
               links={product.affiliateLinks}
