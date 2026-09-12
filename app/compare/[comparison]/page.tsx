@@ -53,6 +53,29 @@ export default async function SeoComparisonPage({ params }: Props) {
   const [winner, runnerUp] = [a, b].sort((x, y) => y.editorialScore - x.editorialScore || x.name.localeCompare(y.name));
   const scoreKeys = [...new Set([...Object.keys(a.reviewScores), ...Object.keys(b.reviewScores)])].slice(0, 8);
   const specKeys = [...new Set([...Object.keys(a.specs), ...Object.keys(b.specs)])].slice(0, 10);
+
+  const faqs = [
+    {
+      question: `Which is better, ${a.name} or ${b.name}?`,
+      answer:
+        winner.slug === a.slug
+          ? `${a.name} has the higher C2H4N3 editorial score at ${a.editorialScore.toFixed(1)}/10 versus ${b.editorialScore.toFixed(1)}/10 for ${b.name}. The better choice still depends on your priorities and the trade-offs shown on this page.`
+          : `${b.name} has the higher C2H4N3 editorial score at ${b.editorialScore.toFixed(1)}/10 versus ${a.editorialScore.toFixed(1)}/10 for ${a.name}. The better choice still depends on your priorities and the trade-offs shown on this page.`,
+    },
+    {
+      question: `Who should choose ${a.name}?`,
+      answer: a.bestFor[0] ?? a.pros[0] ?? a.editorVerdict,
+    },
+    {
+      question: `Who should choose ${b.name}?`,
+      answer: b.bestFor[0] ?? b.pros[0] ?? b.editorVerdict,
+    },
+    {
+      question: `What should I compare before choosing between ${a.name} and ${b.name}?`,
+      answer:
+        "Compare the score breakdown, specifications, strengths, drawbacks, intended use, and retailer availability. The higher overall score does not automatically make one product the best fit for every buyer.",
+    },
+  ];
   const pageUrl = `${baseUrl()}/compare/${comparison}`;
   const jsonLd = {
     "@context": "https://schema.org",
@@ -66,6 +89,17 @@ export default async function SeoComparisonPage({ params }: Props) {
         { "@type": "ListItem", position: 2, name: "Compare", item: `${baseUrl()}/compare` },
         { "@type": "ListItem", position: 3, name: `${a.name} vs ${b.name}`, item: pageUrl },
       ]},
+      {
+        "@type": "FAQPage",
+        mainEntity: faqs.map((faq) => ({
+          "@type": "Question",
+          name: faq.question,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: faq.answer,
+          },
+        })),
+      },
     ],
   };
 
@@ -223,6 +257,33 @@ export default async function SeoComparisonPage({ params }: Props) {
         </section>}
 
         <section className="mt-12 grid gap-6 lg:grid-cols-2">{[a, b].map((product) => <article key={product.id} className="rounded-3xl border border-white/10 bg-white/5 p-7"><h2 className="text-2xl font-bold">Why choose {product.name}?</h2><p className="mt-6 text-xs font-bold uppercase tracking-[0.16em] text-emerald-300">Strengths</p><ul className="mt-3 space-y-2 text-sm leading-6 text-slate-300">{product.pros.slice(0, 3).map((x) => <li key={x}>✓ {x}</li>)}</ul><p className="mt-6 text-xs font-bold uppercase tracking-[0.16em] text-rose-300">Trade-offs</p><ul className="mt-3 space-y-2 text-sm leading-6 text-slate-300">{product.cons.slice(0, 3).map((x) => <li key={x}>– {x}</li>)}</ul>{product.bestFor[0] && <p className="mt-6 rounded-2xl border border-white/10 bg-slate-900 p-4 text-sm leading-6 text-slate-300"><span className="font-bold text-white">Best for:</span> {product.bestFor[0]}</p>}</article>)}</section>
+
+        <section className="mt-12 rounded-[2rem] border border-white/10 bg-slate-900 p-7 sm:p-9">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-400">
+            Frequently asked questions
+          </p>
+
+          <h2 className="mt-3 text-3xl font-bold">
+            {a.name} vs {b.name}: FAQ
+          </h2>
+
+          <div className="mt-7 space-y-4">
+            {faqs.map((faq) => (
+              <div
+                key={faq.question}
+                className="rounded-2xl border border-white/10 bg-white/5 p-5"
+              >
+                <h3 className="text-lg font-bold text-white">
+                  {faq.question}
+                </h3>
+
+                <p className="mt-3 leading-7 text-slate-300">
+                  {faq.answer}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
 
         {category && <section className="mt-12 rounded-[2rem] border border-white/10 bg-white/5 p-7 sm:p-9"><p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-400">More options</p><h2 className="mt-3 text-3xl font-bold">Still deciding?</h2><p className="mt-4 max-w-3xl leading-7 text-slate-300">See where both products rank against the rest of the category, or open the interactive comparison tool to build your own shortlist.</p><div className="mt-6 flex flex-wrap gap-3"><AtlasTrackedLink href={category.bestHref} eventName="ranking_click" eventParams={{ category_id: category.id, category_name: category.label, source_surface: "seo_comparison_footer" }} className="rounded-full bg-cyan-400 px-6 py-3 font-bold text-slate-950">View full ranking</AtlasTrackedLink><AtlasTrackedLink href={category.compareHref} eventName="compare_click" eventParams={{ action: "open_comparison_tool", category_id: category.id, source_surface: "seo_comparison_footer" }} className="rounded-full border border-white/20 px-6 py-3 font-bold">Compare more products</AtlasTrackedLink></div></section>}
       </section>
