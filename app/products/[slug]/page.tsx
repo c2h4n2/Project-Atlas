@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import CustomerRating from "@/components/CustomerRating";
 import ProductCard from "@/components/ProductCard";
+import AtlasTrackedLink from "@/components/AtlasTrackedLink";
 import ProductImage from "@/components/ProductImage";
 import ProductVerdict from "@/components/ProductVerdict";
 import RetailerButtons from "@/components/RetailerButtons";
@@ -573,30 +574,72 @@ export default async function ProductPage({
         </div>
 
         {relatedProducts.length > 0 && (
-          <section className="mt-12">
-            <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+          <section className="mt-12 rounded-[2rem] border border-white/10 bg-white/5 p-7 sm:p-9">
+            <div className="flex flex-col justify-between gap-5 lg:flex-row lg:items-end">
               <div>
                 <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-400">
-                  You may also like
+                  Alternatives
                 </p>
 
                 <h2 className="mt-3 text-3xl font-bold">
-                  Related {category?.label ?? product.category}
+                  Compare {product.name} with other top{" "}
+                  {(category?.label ?? product.category).toLowerCase()}
                 </h2>
 
-                <p className="mt-3 max-w-2xl leading-7 text-slate-400">
-                  Compare this product with other highly rated options
-                  from the same category.
+                <p className="mt-4 max-w-3xl leading-7 text-slate-400">
+                  If this product is not the right fit, these are other
+                  highly rated options from the same category. Open a full
+                  review, check the complete ranking, or compare products
+                  side by side before you buy.
                 </p>
               </div>
 
               {category && (
-                <Link
-                  href={category.href}
-                  className="text-sm font-semibold text-cyan-400 transition hover:text-cyan-300"
-                >
-                  Browse full category →
-                </Link>
+                <div className="flex flex-wrap gap-3">
+                  <AtlasTrackedLink
+                    href={category.bestHref}
+                    eventName="ranking_click"
+                    eventParams={{
+                      category_id: category.id,
+                      category_name: category.label,
+                      product_slug: product.slug,
+                      source_surface: "product_alternatives",
+                    }}
+                    className="rounded-full border border-cyan-400/30 bg-cyan-400/5 px-5 py-3 text-sm font-bold text-cyan-300 transition hover:bg-cyan-400/10"
+                  >
+                    View full ranking
+                  </AtlasTrackedLink>
+
+                  <AtlasTrackedLink
+                    href={category.compareHref}
+                    eventName="compare_click"
+                    eventParams={{
+                      action: "open_comparison",
+                      category_id: category.id,
+                      category_name: category.label,
+                      product_slug: product.slug,
+                      product_name: product.name,
+                      source_surface: "product_alternatives",
+                    }}
+                    className="rounded-full border border-white/20 px-5 py-3 text-sm font-bold transition hover:border-cyan-400/50 hover:bg-white/5"
+                  >
+                    Compare alternatives
+                  </AtlasTrackedLink>
+
+                  <AtlasTrackedLink
+                    href={category.href}
+                    eventName="category_click"
+                    eventParams={{
+                      category_id: category.id,
+                      category_name: category.label,
+                      product_slug: product.slug,
+                      source_surface: "product_alternatives",
+                    }}
+                    className="rounded-full border border-white/20 px-5 py-3 text-sm font-bold transition hover:border-cyan-400/50 hover:bg-white/5"
+                  >
+                    Browse all
+                  </AtlasTrackedLink>
+                </div>
               )}
             </div>
 
