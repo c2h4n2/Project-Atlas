@@ -50,8 +50,36 @@ export default function BestCategoryPage({
     ? Object.entries(topProduct.reviewScores)
     : [];
 
+  const topThreeProducts = rankedProducts.slice(0, 3);
+
+  const buyingFactors = Object.values(category.scoreLabels).slice(0, 4);
+
+  const siteUrl =
+    process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
+    "https://project-c2h4n3.vercel.app";
+
+  const rankingJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: `Best ${category.label}`,
+    description: category.description,
+    numberOfItems: rankedProducts.length,
+    itemListElement: rankedProducts.slice(0, 10).map((product, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      url: `${siteUrl}/products/${product.slug}`,
+      name: product.name,
+    })),
+  };
+
   return (
     <main className="min-h-screen bg-slate-950 text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(rankingJsonLd).replace(/</g, "\\u003c"),
+        }}
+      />
       <AtlasAnalyticsEvent
         eventName="ranking_view"
         params={{
@@ -332,6 +360,138 @@ export default function BestCategoryPage({
             </section>
           </div>
         )}
+
+        <section className="mt-16 rounded-[2rem] border border-white/10 bg-white/5 p-7 sm:p-9">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-400">
+            Buyer&apos;s guide
+          </p>
+
+          <h2 className="mt-3 text-3xl font-bold sm:text-4xl">
+            How to choose the best {category.label.toLowerCase()}
+          </h2>
+
+          <p className="mt-5 max-w-4xl text-lg leading-8 text-slate-300">
+            {category.description} Start with the way you plan to use the
+            product, then compare the areas that matter most to you instead of
+            choosing on overall score alone.
+          </p>
+
+          <div className="mt-8 grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
+            <div className="rounded-3xl border border-white/10 bg-slate-900 p-6">
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-cyan-400">
+                What to compare
+              </p>
+
+              <div className="mt-5 space-y-4">
+                {buyingFactors.map((factor, index) => (
+                  <div
+                    key={factor}
+                    className="rounded-2xl border border-white/10 bg-white/5 p-4"
+                  >
+                    <div className="flex items-center gap-3">
+                      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-cyan-400/10 text-sm font-black text-cyan-300">
+                        {index + 1}
+                      </span>
+
+                      <p className="font-bold text-white">
+                        {factor}
+                      </p>
+                    </div>
+
+                    <p className="mt-3 text-sm leading-6 text-slate-400">
+                      Compare {factor.toLowerCase()} alongside your actual use
+                      case, budget, and the trade-offs listed in each full
+                      C2H4N3 review.
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="rounded-3xl border border-white/10 bg-slate-900 p-6">
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-cyan-400">
+                Top 3 at a glance
+              </p>
+
+              <div className="mt-5 space-y-4">
+                {topThreeProducts.map((product, index) => (
+                  <div
+                    key={product.id}
+                    className="rounded-2xl border border-white/10 bg-white/5 p-5"
+                  >
+                    <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-start">
+                      <div className="flex gap-4">
+                        <span
+                          className="text-2xl"
+                          aria-label={
+                            index === 0
+                              ? "Gold medal"
+                              : index === 1
+                                ? "Silver medal"
+                                : "Bronze medal"
+                          }
+                        >
+                          {index === 0 ? "🥇" : index === 1 ? "🥈" : "🥉"}
+                        </span>
+
+                        <div>
+                          <AtlasTrackedLink
+                            href={`/products/${product.slug}`}
+                            eventName="review_click"
+                            eventParams={{
+                              product_slug: product.slug,
+                              product_name: product.name,
+                              category_id: category.id,
+                              category_rank: index + 1,
+                              source_surface: "ranking_buyer_guide",
+                            }}
+                            className="text-lg font-bold text-white transition hover:text-cyan-300"
+                          >
+                            {product.name}
+                          </AtlasTrackedLink>
+
+                          <p className="mt-1 text-sm text-slate-400">
+                            {product.brand}
+                          </p>
+                        </div>
+                      </div>
+
+                      <p className="shrink-0 text-xl font-black text-cyan-300">
+                        {product.editorialScore.toFixed(1)}
+                        <span className="text-sm text-slate-500"> / 10</span>
+                      </p>
+                    </div>
+
+                    {product.bestFor[0] && (
+                      <p className="mt-4 text-sm leading-6 text-slate-300">
+                        <span className="font-semibold text-slate-200">
+                          Best for:
+                        </span>{" "}
+                        {product.bestFor[0]}
+                      </p>
+                    )}
+
+                    <div className="mt-4 grid gap-2 sm:grid-cols-2">
+                      {category.cardFields.slice(0, 2).map((field) => (
+                        <div
+                          key={field.label}
+                          className="rounded-xl border border-white/10 bg-slate-950/60 px-3 py-2"
+                        >
+                          <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-slate-500">
+                            {field.label}
+                          </p>
+                          <p className="mt-1 text-sm font-semibold text-slate-200">
+                            {field.getValue(product)}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
 
         <section className="mt-20">
           <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
