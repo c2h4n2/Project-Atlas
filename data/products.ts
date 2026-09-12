@@ -8,6 +8,7 @@ import { monitors } from "./products/monitors";
 import { newCategoryProducts } from "./products/new-categories";
 import { infrastructureCategoryProducts } from "./products/infrastructure-categories";
 import { inputPeripheralProducts } from "./products/input-peripherals-categories";
+import { revenueExpansion2026 } from "./products/revenue-expansion-2026";
 import { applyCustomerRatingsInPlace } from "@/lib/apply-customer-ratings";
 
 export type ProductSource = {
@@ -78,6 +79,7 @@ export const products: Product[] = [
   ...newCategoryProducts,
   ...infrastructureCategoryProducts,
   ...inputPeripheralProducts,
+  ...revenueExpansion2026,
 ];
 
 applyCustomerRatingsInPlace(products);

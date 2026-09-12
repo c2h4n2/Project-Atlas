@@ -282,6 +282,39 @@ export const localProductImageSlugs = new Set<string>([
   "wd-black-sn8100-2tb",
   "wooting-60he-v2",
   "netgear-nighthawk-rs700s",
+
+  "lg-b5-oled-55",
+  "tcl-qm8l-65",
+  "vizio-mini-led-quantum-55",
+  "samsung-s90h-oled-55",
+  "apple-macbook-neo",
+  "asus-zenbook-duo-ux8407",
+  "asus-zenbook-14-snapdragon-x-2026",
+  "alienware-16-area-51-2026",
+  "asus-rog-swift-oled-pg27aqwp-w",
+  "lg-ultragear-evo-39gx950b",
+  "asus-rog-swift-oled-pg34wcdn",
+  "apple-ipad-air-11-m4",
+  "apple-ipad-pro-m5-13",
+  "oneplus-pad-go-2",
+  "om-system-om-5-mark-ii",
+  "fujifilm-x-m5",
+  "asus-rog-strix-gs-be18000",
+  "tp-link-deco-7-pro-be63",
+  "tp-link-archer-be230",
+
+  "asus-rog-strix-oled-xg32ucwmg",
+  "alienware-aw2726dm",
+  "canon-eos-r6-mark-iii",
+
+  "sony-bravia-5-65",
+  "sony-bravia-7-ii-65",
+  "sony-a7c-ii",
+
+  "framework-laptop-13-ryzen-ai-300",
+  "gigabyte-mo27q28gr",
+  "honor-magicpad-4",
+  "msi-prestige-13-ai-plus",
 ]);
 
 export function hasLocalProductImage(slug?: string): boolean {
