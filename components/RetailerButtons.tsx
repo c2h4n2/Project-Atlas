@@ -1,7 +1,6 @@
 "use client";
 
 import { trackAtlasEvent } from "@/lib/analytics";
-
 import { sortRetailerLinks } from "@/data/retailers";
 import type { AffiliateLink } from "@/data/products";
 
@@ -14,10 +13,22 @@ type Props = {
   sourceSurface?: string;
 };
 
-
 function isAmazonSearch(link: AffiliateLink) {
-  return link.retailer.trim().toLowerCase() === "amazon" &&
-    link.url.includes("amazon.com/s?");
+  const retailer = link.retailer.trim().toLowerCase();
+
+  return (
+    retailer === "amazon" &&
+    (
+      link.url.includes("amazon.com/s?") ||
+      link.url.includes("amazon.com/s/")
+    )
+  );
+}
+
+function getLinkType(link: AffiliateLink) {
+  return isAmazonSearch(link)
+    ? "retailer_search"
+    : "direct_retailer";
 }
 
 export default function RetailerButtons({
@@ -29,17 +40,34 @@ export default function RetailerButtons({
   sourceSurface = "unknown",
 }: Props) {
   const sorted = sortRetailerLinks(links);
-  const visible = typeof maxLinks === "number" ? sorted.slice(0, maxLinks) : sorted;
-  if (visible.length === 0) return null;
+
+  const visible =
+    typeof maxLinks === "number"
+      ? sorted.slice(0, maxLinks)
+      : sorted;
+
+  if (visible.length === 0) {
+    return null;
+  }
 
   return (
     <div>
-      <div className={compact ? "flex flex-col gap-2" : "flex flex-col gap-3 sm:flex-row sm:flex-wrap"}>
+      <div
+        className={
+          compact
+            ? "flex flex-col gap-2"
+            : "flex flex-col gap-3 sm:flex-row sm:flex-wrap"
+        }
+      >
         {visible.map((link, index) => {
           const primary = index === 0;
-          const label = isAmazonSearch(link)
+          const amazonSearch = isAmazonSearch(link);
+
+          const label = amazonSearch
             ? "Search Amazon"
-            : primary ? `Check price at ${link.retailer}` : `Also at ${link.retailer}`;
+            : primary
+              ? `Check current price at ${link.retailer}`
+              : `See price at ${link.retailer}`;
 
           return (
             <a
@@ -47,6 +75,11 @@ export default function RetailerButtons({
               href={link.url}
               target="_blank"
               rel="nofollow sponsored noopener noreferrer"
+              aria-label={
+                amazonSearch && productName
+                  ? `Search Amazon for ${productName}`
+                  : `${label}${productName ? ` for ${productName}` : ""}`
+              }
               onClick={() => {
                 trackAtlasEvent("affiliate_click", {
                   retailer: link.retailer,
@@ -54,6 +87,11 @@ export default function RetailerButtons({
                   product_name: productName ?? "",
                   destination_url: link.url,
                   source_surface: sourceSurface,
+
+                  link_position: index + 1,
+                  is_primary: primary,
+                  link_type: getLinkType(link),
+                  visible_retailer_count: visible.length,
                 });
               }}
               className={
@@ -72,9 +110,15 @@ export default function RetailerButtons({
         })}
       </div>
 
-      <p className={compact ? "mt-2 text-center text-[11px] leading-4 text-slate-500" : "mt-3 text-xs leading-5 text-slate-500"}>
+      <p
+        className={
+          compact
+            ? "mt-2 text-center text-[11px] leading-4 text-slate-500"
+            : "mt-3 text-xs leading-5 text-slate-500"
+        }
+      >
         {compact
-          ? "Affiliate links may earn Atlas a commission at no extra cost to you."
+          ? "Affiliate links may earn Project C2H4N3 a commission at no extra cost to you."
           : "Retailer availability and pricing can change. Project C2H4N3 may earn a commission from qualifying purchases at no additional cost to you."}
       </p>
     </div>
