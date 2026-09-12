@@ -1,3 +1,4 @@
+import { getBestCategoryMetadata } from "@/lib/bestCategoryMetadata";
 import type { Metadata } from "next";
 import BestCategoryPage from "@/components/BestCategoryPage";
 
