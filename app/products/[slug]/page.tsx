@@ -512,19 +512,67 @@ export default async function ProductPage({
           </section>
 
           <section className="rounded-3xl border border-white/10 bg-slate-900 p-7">
-            <h2 className="text-3xl font-bold">Best for</h2>
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-400">
+              Before you buy
+            </p>
 
-            <ul className="mt-7 space-y-4">
-              {product.bestFor.map((item) => (
-                <li
+            <h2 className="mt-3 text-3xl font-bold">
+              What to consider about {product.name}
+            </h2>
+
+            <div className="mt-7 space-y-4">
+              {product.cons.slice(0, 2).map((item) => (
+                <div
                   key={item}
-                  className="flex gap-3 rounded-2xl border border-white/10 bg-white/5 p-4 text-slate-300"
+                  className="rounded-2xl border border-amber-400/20 bg-amber-400/5 p-4"
                 >
-                  <span className="text-cyan-400">✓</span>
-                  {item}
-                </li>
+                  <p className="text-xs font-bold uppercase tracking-[0.16em] text-amber-300">
+                    Trade-off
+                  </p>
+
+                  <p className="mt-2 text-sm leading-6 text-slate-300">
+                    {item}
+                  </p>
+                </div>
               ))}
-            </ul>
+
+              {category?.cardFields.slice(0, 2).map((field) => (
+                <div
+                  key={field.label}
+                  className="rounded-2xl border border-white/10 bg-white/5 p-4"
+                >
+                  <p className="text-xs font-bold uppercase tracking-[0.16em] text-slate-400">
+                    Check {field.label.toLowerCase()}
+                  </p>
+
+                  <p className="mt-2 text-sm leading-6 text-slate-300">
+                    <span className="font-semibold text-white">
+                      {field.getValue(product)}
+                    </span>
+                    {" "}— compare this with the other products you are considering
+                    before deciding.
+                  </p>
+                </div>
+              ))}
+
+              {category && (
+                <AtlasTrackedLink
+                  href={category.compareHref}
+                  eventName="compare_click"
+                  eventParams={{
+                    action: "consider_before_buying",
+                    product_slug: product.slug,
+                    product_name: product.name,
+                    category_id: category.id,
+                    category_rank: categoryRank,
+                    source_surface: "product_before_buy",
+                  }}
+                  className="block rounded-full border border-cyan-400/30 bg-cyan-400/5 px-5 py-3.5 text-center text-sm font-bold text-cyan-300 transition hover:bg-cyan-400/10"
+                >
+                  Compare before you decide
+                </AtlasTrackedLink>
+              )}
+            </div>
           </section>
         </div>
 
