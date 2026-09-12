@@ -1,5 +1,6 @@
 import Link from "next/link";
 import ProductCard from "@/components/ProductCard";
+import RetailerButtons from "@/components/RetailerButtons";
 import { getCategory } from "@/data/categories";
 import { products } from "@/data/products";
 
@@ -42,10 +43,6 @@ export default function BestCategoryPage({
     );
 
   const topProduct = rankedProducts[0];
-
-  const topAffiliateLink = topProduct?.affiliateLinks.find(
-    (link) => link.url.trim() !== "",
-  );
 
   const topReviewScores = topProduct
     ? Object.entries(topProduct.reviewScores)
@@ -177,16 +174,26 @@ export default function BestCategoryPage({
                     Compare with runner-up
                   </Link>
 
-                  {topAffiliateLink && (
-                    <a
-                      href={topAffiliateLink.url}
-                      target="_blank"
-                      rel="nofollow sponsored noopener noreferrer"
-                      className="rounded-full border border-white/20 bg-white/5 px-6 py-3 text-center font-semibold transition hover:border-cyan-400/50 hover:bg-white/10"
-                    >
-                      Check current price at {topAffiliateLink.retailer}
-                    </a>
-                  )}
+
+                </div>
+
+                <div className="mt-6 rounded-2xl border border-cyan-400/20 bg-slate-950/50 p-5">
+                  <p className="text-xs font-black uppercase tracking-[0.16em] text-cyan-300">
+                    Check retailer availability
+                  </p>
+
+                  <div className="mt-4">
+                    <RetailerButtons
+                      links={topProduct.affiliateLinks}
+                      productSlug={topProduct.slug}
+                      productName={topProduct.name}
+                    />
+                  </div>
+
+                  <p className="mt-3 text-xs leading-5 text-slate-500">
+                    Prices and availability may change. Affiliate links may earn
+                    Project C2H4N3 a commission at no additional cost to you.
+                  </p>
                 </div>
               </div>
 
