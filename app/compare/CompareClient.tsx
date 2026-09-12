@@ -7,6 +7,7 @@ import ProductImage from "@/components/ProductImage";
 import RetailerButtons from "@/components/RetailerButtons";
 import { categories, getCategory } from "@/data/categories";
 import { products, type Product } from "@/data/products";
+import { trackAtlasEvent } from "@/lib/analytics";
 
 const MAX_COMPARE_PRODUCTS = 3;
 
@@ -75,6 +76,18 @@ export default function CompareClient() {
   const selectedProducts = selectedSlugs
     .map((slug) => categoryProducts.find((product) => product.slug === slug))
     .filter((product): product is Product => Boolean(product));
+
+  useEffect(() => {
+    if (selectedProducts.length === 0) return;
+
+    trackAtlasEvent("compare_view", {
+      category_id: category.id,
+      category_name: category.label,
+      product_count: selectedProducts.length,
+      product_slugs: selectedProducts.map((product) => product.slug).join(","),
+      product_names: selectedProducts.map((product) => product.name).join(" | "),
+    });
+  }, [category.id, category.label, selectedSlugs.join(",")]);
 
   const categoryRankBySlug = useMemo(
     () =>

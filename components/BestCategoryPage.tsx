@@ -1,6 +1,7 @@
 import Link from "next/link";
 import ProductCard from "@/components/ProductCard";
 import RetailerButtons from "@/components/RetailerButtons";
+import AtlasAnalyticsEvent from "@/components/AtlasAnalyticsEvent";
 import { getCategory } from "@/data/categories";
 import { products } from "@/data/products";
 
@@ -50,6 +51,16 @@ export default function BestCategoryPage({
 
   return (
     <main className="min-h-screen bg-slate-950 text-white">
+      <AtlasAnalyticsEvent
+        eventName="ranking_view"
+        params={{
+          category_id: category.id,
+          category_name: category.label,
+          product_count: rankedProducts.length,
+          top_product_slug: topProduct?.slug ?? "",
+          top_product_name: topProduct?.name ?? "",
+        }}
+      />
       <section className="relative overflow-hidden border-b border-white/10">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(34,211,238,0.14),transparent_35%)]" />
 
