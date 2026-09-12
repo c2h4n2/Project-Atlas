@@ -1,3 +1,4 @@
+import { getCategoryMetadata } from "@/lib/categoryMetadata";
 import type { Metadata } from "next";
 import CategoryLanding from "@/components/CategoryLanding";
 export const metadata: Metadata = { title: "TVs", description: "Compare Project Atlas TV reviews across OLED, mini-LED, gaming, and streaming-focused models." };

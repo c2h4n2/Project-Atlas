@@ -1,3 +1,4 @@
+import { getCategoryMetadata } from "@/lib/categoryMetadata";
 import type { Metadata } from "next";
 import CategoryLanding from "@/components/CategoryLanding";
 export const metadata: Metadata = { title: "Cameras", description: "Compare Project Atlas mirrorless camera reviews for photography, video, travel, and creator workflows." };

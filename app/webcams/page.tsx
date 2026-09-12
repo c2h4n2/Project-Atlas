@@ -1,3 +1,4 @@
+import { getCategoryMetadata } from "@/lib/categoryMetadata";
 import type { Metadata } from "next";
 import CategoryLanding from "@/components/CategoryLanding";
 

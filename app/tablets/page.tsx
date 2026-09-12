@@ -1,3 +1,4 @@
+import { getCategoryMetadata } from "@/lib/categoryMetadata";
 import type { Metadata } from "next";
 import CategoryLanding from "@/components/CategoryLanding";
 export const metadata: Metadata = { title: "Tablets", description: "Compare Project Atlas tablet reviews across Apple, Samsung, OnePlus, Lenovo, and more." };
