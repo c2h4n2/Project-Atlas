@@ -274,6 +274,8 @@ export default function ProductCard({
               links={product.affiliateLinks}
               compact
               maxLinks={2}
+              productSlug={product.slug}
+              productName={product.name}
             />
 
             <button

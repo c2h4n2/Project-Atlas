@@ -8,6 +8,7 @@ import ProductVerdict from "@/components/ProductVerdict";
 import RetailerButtons from "@/components/RetailerButtons";
 import { getCategory } from "@/data/categories";
 import { products } from "@/data/products";
+import { hasLocalProductImage } from "@/data/local-product-images";
 
 type ProductPageProps = {
   params: Promise<{ slug: string }>;
@@ -47,13 +48,15 @@ export async function generateMetadata({
   const productUrl = absolute(`/products/${product.slug}`);
   const imageUrl = product.image.src ? absolute(product.image.src) : null;
 
+  const pageTitle = `${product.name} Review: Pros, Cons, Specs & Verdict`;
+
   return {
-    title: `${product.name} Review`,
+    title: pageTitle,
     description: product.shortDescription,
     alternates: { canonical: productUrl },
     openGraph: {
       type: "article",
-      title: `${product.name} Review`,
+      title: pageTitle,
       description: product.shortDescription,
       url: productUrl,
       siteName: "Project C2H4N3",
@@ -63,7 +66,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: imageUrl ? "summary_large_image" : "summary",
-      title: `${product.name} Review`,
+      title: pageTitle,
       description: product.shortDescription,
       ...(imageUrl ? { images: [imageUrl] } : {}),
     },
@@ -117,16 +120,112 @@ export default async function ProductPage({
   const specifications = Object.entries(product.specs);
 
   const relatedProducts = products
-    .filter(
-      (item) =>
-        item.slug !== product.slug &&
-        (item.categoryId ?? "ai-glasses") === categoryId,
+    .filter((item) => {
+      if (item.slug === product.slug) return false;
+
+      const itemCategory = item.categoryId
+        ? getCategory(item.categoryId)?.label ?? item.category
+        : item.category;
+
+      return (
+        itemCategory.trim().toLowerCase() === rankingCategory
+      );
+    })
+    .sort(
+      (a, b) =>
+        b.editorialScore - a.editorialScore ||
+        a.name.localeCompare(b.name),
     )
-    .sort((a, b) => b.editorialScore - a.editorialScore)
     .slice(0, 3);
+
+  const productUrl = absolute(`/products/${product.slug}`);
+
+  const structuredImageSrc = hasLocalProductImage(product.slug)
+    ? `/products/${product.slug}.webp`
+    : product.image.src;
+
+  const productJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: product.name,
+    description: product.shortDescription,
+    url: productUrl,
+    ...(structuredImageSrc
+      ? { image: [absolute(structuredImageSrc)] }
+      : {}),
+    brand: {
+      "@type": "Brand",
+      name: product.brand,
+    },
+    category: product.category,
+    review: {
+      "@type": "Review",
+      author: {
+        "@type": "Organization",
+        name: "Project C2H4N3",
+      },
+      reviewRating: {
+        "@type": "Rating",
+        ratingValue: product.editorialScore,
+        bestRating: 10,
+        worstRating: 1,
+      },
+      reviewBody: product.editorVerdict,
+    },
+    ...(product.customerRating > 0 &&
+    product.totalReviewCount > 0
+      ? {
+          aggregateRating: {
+            "@type": "AggregateRating",
+            ratingValue: product.customerRating,
+            bestRating: 5,
+            worstRating: 1,
+            reviewCount: product.totalReviewCount,
+          },
+        }
+      : {}),
+  };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: absolute("/"),
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: category?.label ?? product.category,
+        item: absolute(category?.href ?? "/all-products"),
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: product.name,
+        item: productUrl,
+      },
+    ],
+  };
 
   return (
     <main className="min-h-screen bg-slate-950 text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(productJsonLd).replace(/</g, "\\u003c"),
+        }}
+      />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbJsonLd).replace(/</g, "\\u003c"),
+        }}
+      />
       <section className="mx-auto max-w-6xl px-6 py-12 sm:py-16">
         <Link
           href={category?.href ?? "/all-products"}
@@ -239,7 +338,11 @@ export default async function ProductPage({
               </div>
 
               <div className="mt-6">
-                <RetailerButtons links={product.affiliateLinks} />
+                <RetailerButtons
+                  links={product.affiliateLinks}
+                  productSlug={product.slug}
+                  productName={product.name}
+                />
               </div>
             </div>
           </div>

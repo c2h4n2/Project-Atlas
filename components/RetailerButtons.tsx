@@ -3,14 +3,30 @@
 import { sortRetailerLinks } from "@/data/retailers";
 import type { AffiliateLink } from "@/data/products";
 
-type Props = { links: AffiliateLink[]; compact?: boolean; maxLinks?: number };
+type Props = {
+  links: AffiliateLink[];
+  compact?: boolean;
+  maxLinks?: number;
+  productSlug?: string;
+  productName?: string;
+};
+
+type AnalyticsWindow = Window & {
+  gtag?: (...args: unknown[]) => void;
+};
 
 function isAmazonSearch(link: AffiliateLink) {
   return link.retailer.trim().toLowerCase() === "amazon" &&
     link.url.includes("amazon.com/s?");
 }
 
-export default function RetailerButtons({ links, compact = false, maxLinks }: Props) {
+export default function RetailerButtons({
+  links,
+  compact = false,
+  maxLinks,
+  productSlug,
+  productName,
+}: Props) {
   const sorted = sortRetailerLinks(links);
   const visible = typeof maxLinks === "number" ? sorted.slice(0, maxLinks) : sorted;
   if (visible.length === 0) return null;
@@ -30,6 +46,18 @@ export default function RetailerButtons({ links, compact = false, maxLinks }: Pr
               href={link.url}
               target="_blank"
               rel="nofollow sponsored noopener noreferrer"
+              onClick={() => {
+                (window as AnalyticsWindow).gtag?.(
+                  "event",
+                  "affiliate_click",
+                  {
+                    retailer: link.retailer,
+                    product_slug: productSlug ?? "",
+                    product_name: productName ?? "",
+                    destination_url: link.url,
+                  },
+                );
+              }}
               className={
                 compact
                   ? primary
