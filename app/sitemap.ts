@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { categories } from "@/data/categories";
 import { products } from "@/data/products";
+import { seoComparisons } from "@/data/seo-comparisons";
 
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
@@ -27,7 +28,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     (product) => `/products/${product.slug}`,
   );
 
-  return [...staticRoutes, ...categoryRoutes, ...productRoutes].map((path) => ({
+  const comparisonRoutes = seoComparisons.map(
+    (comparison) => `/compare/${comparison.slug}`,
+  );
+
+  return [
+    ...staticRoutes,
+    ...categoryRoutes,
+    ...comparisonRoutes,
+    ...productRoutes,
+  ].map((path) => ({
     url: `${siteUrl}${path}`,
     changeFrequency: path.startsWith("/products/")
       ? ("monthly" as const)
@@ -35,10 +45,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority:
       path === ""
         ? 1
-        : path.startsWith("/products/")
-          ? 0.8
-          : path.startsWith("/best-")
-            ? 0.9
-            : 0.7,
+        : path.startsWith("/compare/")
+          ? 0.9
+          : path.startsWith("/products/")
+            ? 0.8
+            : path.startsWith("/best-")
+              ? 0.9
+              : 0.7,
   }));
 }
