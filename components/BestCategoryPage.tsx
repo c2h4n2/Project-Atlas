@@ -5,6 +5,7 @@ import AtlasAnalyticsEvent from "@/components/AtlasAnalyticsEvent";
 import AtlasTrackedLink from "@/components/AtlasTrackedLink";
 import { getCategory } from "@/data/categories";
 import { products } from "@/data/products";
+import { seoComparisons } from "@/data/seo-comparisons";
 
 function scoreLabel(key: string) {
   const labels: Record<string, string> = {
@@ -51,6 +52,45 @@ export default function BestCategoryPage({
     : [];
 
   const topThreeProducts = rankedProducts.slice(0, 3);
+
+  const categoryComparisons = seoComparisons
+    .map((comparison) => {
+      const first = products.find(
+        (product) => product.slug === comparison.productSlugs[0],
+      );
+
+      const second = products.find(
+        (product) => product.slug === comparison.productSlugs[1],
+      );
+
+      if (!first || !second) return null;
+
+      const firstCategoryId = first.categoryId ?? "ai-glasses";
+      const secondCategoryId = second.categoryId ?? "ai-glasses";
+
+      if (
+        firstCategoryId !== categoryId ||
+        secondCategoryId !== categoryId
+      ) {
+        return null;
+      }
+
+      return {
+        comparison,
+        first,
+        second,
+      };
+    })
+    .filter(
+      (
+        item,
+      ): item is {
+        comparison: (typeof seoComparisons)[number];
+        first: (typeof products)[number];
+        second: (typeof products)[number];
+      } => item !== null,
+    )
+    .slice(0, 4);
 
   const buyingFactors = Object.values(category.scoreLabels).slice(0, 4);
 
@@ -187,7 +227,7 @@ export default function BestCategoryPage({
 
                 <div className="mt-7 flex flex-wrap gap-3">
                   <span className="rounded-full border border-white/10 bg-slate-950/70 px-4 py-2 text-sm">
-                    ⭐ {topProduct.customerRating.toFixed(1)}
+                    ⭐ {(topProduct.customerRating * 2).toFixed(1)}/10
                   </span>
 
                   <span className="rounded-full border border-white/10 bg-slate-950/70 px-4 py-2 text-sm">
@@ -248,10 +288,6 @@ export default function BestCategoryPage({
                     />
                   </div>
 
-                  <p className="mt-3 text-xs leading-5 text-slate-500">
-                    Prices and availability may change. Affiliate links may earn
-                    Project C2H4N3 a commission at no additional cost to you.
-                  </p>
                 </div>
               </div>
 
@@ -492,6 +528,88 @@ export default function BestCategoryPage({
             </div>
           </div>
         </section>
+
+        {categoryComparisons.length > 0 && (
+          <section className="mt-16 rounded-[2rem] border border-white/10 bg-white/5 p-7 sm:p-9">
+            <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-cyan-400">
+                  Popular head-to-head comparisons
+                </p>
+
+                <h2 className="mt-3 text-3xl font-bold">
+                  Compare top {category.label.toLowerCase()}
+                </h2>
+
+                <p className="mt-4 max-w-3xl leading-7 text-slate-300">
+                  See how leading products compare on scores, specifications,
+                  strengths, and trade-offs before choosing your winner.
+                </p>
+              </div>
+
+              <AtlasTrackedLink
+                href={category.compareHref}
+                eventName="compare_click"
+                eventParams={{
+                  action: "open_comparison_tool",
+                  category_id: category.id,
+                  category_name: category.label,
+                  source_surface: "ranking_comparisons",
+                }}
+                className="rounded-full border border-white/20 px-5 py-3 text-sm font-bold transition hover:border-cyan-400/50 hover:bg-white/5"
+              >
+                Build your own comparison
+              </AtlasTrackedLink>
+            </div>
+
+            <div className="mt-7 grid gap-4 md:grid-cols-2">
+              {categoryComparisons.map(
+                ({ comparison, first, second }) => (
+                  <AtlasTrackedLink
+                    key={comparison.slug}
+                    href={`/compare/${comparison.slug}`}
+                    eventName="compare_click"
+                    eventParams={{
+                      action: "open_seo_comparison",
+                      comparison_slug: comparison.slug,
+                      product_1_slug: first.slug,
+                      product_2_slug: second.slug,
+                      category_id: category.id,
+                      source_surface: "ranking_comparisons",
+                    }}
+                    className="rounded-2xl border border-white/10 bg-slate-900 p-5 transition hover:border-cyan-400/40 hover:bg-slate-800"
+                  >
+                    <p className="text-xs font-bold uppercase tracking-[0.16em] text-cyan-300">
+                      Head-to-head
+                    </p>
+
+                    <h3 className="mt-3 text-lg font-bold leading-snug">
+                      {first.name}
+                      <span className="text-slate-500"> vs </span>
+                      {second.name}
+                    </h3>
+
+                    <div className="mt-4 flex items-center justify-between gap-4 text-sm">
+                      <span className="text-slate-400">
+                        C2H4N3 scores
+                      </span>
+
+                      <span className="font-bold text-cyan-300">
+                        {first.editorialScore.toFixed(1)}
+                        <span className="text-slate-500"> vs </span>
+                        {second.editorialScore.toFixed(1)}
+                      </span>
+                    </div>
+
+                    <p className="mt-4 text-sm font-semibold text-cyan-300">
+                      View comparison →
+                    </p>
+                  </AtlasTrackedLink>
+                ),
+              )}
+            </div>
+          </section>
+        )}
 
         <section className="mt-20">
           <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
