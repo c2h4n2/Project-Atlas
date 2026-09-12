@@ -92,8 +92,18 @@ export default async function ProductPage({
     .trim()
     .toLowerCase();
 
+  const categoryProducts = [...products].filter((candidate) => {
+    const candidateCategory = candidate.categoryId
+      ? getCategory(candidate.categoryId)?.label ?? candidate.category
+      : candidate.category;
+
+    return (
+      candidateCategory.trim().toLowerCase() === rankingCategory
+    );
+  });
+
   const categoryRank =
-    [...products]
+    [...categoryProducts]
       .filter((candidate) => {
         const candidateCategory = candidate.categoryId
           ? getCategory(candidate.categoryId)?.label ?? candidate.category
@@ -328,21 +338,68 @@ export default async function ProductPage({
                 </a>
 
                 {category && (
-                  <Link
-                    href={category.compareHref}
-                    className="rounded-full border border-white/20 px-6 py-3.5 text-center font-bold"
-                  >
-                    Compare products
-                  </Link>
+                  <>
+                    <Link
+                      href={category.bestHref}
+                      className="rounded-full border border-cyan-400/30 bg-cyan-400/5 px-6 py-3.5 text-center font-bold text-cyan-300 transition hover:bg-cyan-400/10"
+                    >
+                      View {category.label} rankings
+                    </Link>
+
+                    <Link
+                      href={category.compareHref}
+                      className="rounded-full border border-white/20 px-6 py-3.5 text-center font-bold transition hover:border-cyan-400/50 hover:bg-white/5"
+                    >
+                      Compare products
+                    </Link>
+                  </>
                 )}
               </div>
 
-              <div className="mt-6">
-                <RetailerButtons
-                  links={product.affiliateLinks}
-                  productSlug={product.slug}
-                  productName={product.name}
-                />
+              {categoryRank > 0 && (
+                <div className="mt-6 rounded-2xl border border-white/10 bg-white/5 p-4">
+                  <p className="text-xs font-bold uppercase tracking-[0.16em] text-slate-400">
+                    Category ranking
+                  </p>
+
+                  <div className="mt-2 flex flex-wrap items-center justify-between gap-3">
+                    <p className="font-semibold text-slate-200">
+                      #{categoryRank} of {categoryProducts.length} in{" "}
+                      {category?.label ?? product.category}
+                    </p>
+
+                    {medalRank && (
+                      <span className="text-2xl" aria-label={
+                        medalRank === 1
+                          ? "Gold medal"
+                          : medalRank === 2
+                            ? "Silver medal"
+                            : "Bronze medal"
+                      }>
+                        {medalRank === 1 ? "🥇" : medalRank === 2 ? "🥈" : "🥉"}
+                      </span>
+                    )}
+                  </div>
+                </div>
+              )}
+
+              <div className="mt-6 rounded-2xl border border-cyan-400/20 bg-cyan-400/5 p-5">
+                <p className="text-xs font-black uppercase tracking-[0.16em] text-cyan-300">
+                  Check retailer availability
+                </p>
+
+                <div className="mt-4">
+                  <RetailerButtons
+                    links={product.affiliateLinks}
+                    productSlug={product.slug}
+                    productName={product.name}
+                  />
+                </div>
+
+                <p className="mt-3 text-xs leading-5 text-slate-500">
+                  Prices and availability may change. Affiliate links may earn
+                  Project C2H4N3 a commission at no additional cost to you.
+                </p>
               </div>
             </div>
           </div>
