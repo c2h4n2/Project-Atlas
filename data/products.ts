@@ -10,6 +10,7 @@ import { infrastructureCategoryProducts } from "./products/infrastructure-catego
 import { inputPeripheralProducts } from "./products/input-peripherals-categories";
 import { revenueExpansion2026 } from "./products/revenue-expansion-2026";
 import { applyCustomerRatingsInPlace } from "@/lib/apply-customer-ratings";
+import { revenueExpansionSept2026 } from "@/data/products/revenue-expansion-sept-2026";
 
 export type ProductSource = {
   platform: string;
@@ -80,6 +81,7 @@ export const products: Product[] = [
   ...infrastructureCategoryProducts,
   ...inputPeripheralProducts,
   ...revenueExpansion2026,
+  ...revenueExpansionSept2026,
 ];
 
 applyCustomerRatingsInPlace(products);
